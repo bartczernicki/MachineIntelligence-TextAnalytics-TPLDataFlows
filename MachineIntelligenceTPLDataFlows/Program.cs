@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Threading.Tasks.Dataflow;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
+using Newtonsoft.Json;
 
 namespace MachineIntelligenceTPLDataFlows
 
@@ -22,26 +24,31 @@ namespace MachineIntelligenceTPLDataFlows
             // Note: MlContext is thread-safe
             var mlContext = new MLContext(100);
 
-            // Set language to English
+            // GET Current Environment Folder
+            var currentEnrichmentFolder = System.IO.Path.Combine(Environment.CurrentDirectory, "EnrichedDocuments");
+            System.IO.Directory.CreateDirectory(currentEnrichmentFolder);
+
+            // SET language to English
             StopWordsRemovingEstimator.Language language = StopWordsRemovingEstimator.Language.English;
 
-            // Set the max degree of parallelism
+            // SET the max degree of parallelism
             // Note: Default is four (4) cores, adjust based on size of VM/workstation
             // Note: If cores are hyperthreaded, adjust accordingly (i.e. multiply *2)
             var executionDataFlowOptions = new ExecutionDataflowBlockOptions();
-            executionDataFlowOptions.MaxDegreeOfParallelism = 1;
+            executionDataFlowOptions.MaxDegreeOfParallelism = 4;
 
-            // Set the Data Flow Block Options
+            // SET the Data Flow Block Options
             // This controls the data flow from the Producer level
             var dataFlowBlockOptions = new DataflowBlockOptions {
-                BoundedCapacity = 1,
-                MaxMessagesPerTask = 1 };
+                BoundedCapacity = 5,
+                MaxMessagesPerTask = 5 };
 
-            // Set the data flow pipeline options
+            // SET the data flow pipeline options
             // Note: Set MaxMessages to the number of books to process
-            // Note: For example, etting MaxMessages to 2 will run only two books through the pipeline
+            // Note: For example, setting MaxMessages to 2 will run only two books through the pipeline
             var dataFlowLinkOptions = new DataflowLinkOptions {
-                PropagateCompletion = true
+                PropagateCompletion = true,
+                //MaxMessages = 1
             };
 
 
@@ -83,6 +90,7 @@ namespace MachineIntelligenceTPLDataFlows
 
                 // Replace the text
                 enrichedDocument.Text = enrichedDocument.Text.Replace("\r\n", " ");
+                enrichedDocument.TextLength = enrichedDocument.Text.Length;
 
                 var textData = new TextData { Text = enrichedDocument.Text };
                 var textDataArray = new TextData[] { textData };
@@ -115,13 +123,40 @@ namespace MachineIntelligenceTPLDataFlows
                     .Where(word => word.Length > 3)
                     .GroupBy(x => x)
                     .OrderByDescending(x => x.Count())
-                    .Select(x => new Tuple<string, int>(x.Key, x.Count())).Take(100)
+                    .Select(x => new WordCount { WordName = x.Key, Count = x.Count() }).Take(100)
                     .ToList();
 
                 enrichedDocument.TopWordCounts = result;
 
                 return enrichedDocument;
             }, executionDataFlowOptions);
+
+            // Convert final enriched document to Json
+            var convertToJson = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Converting '{0}' to JSON file", enrichedDocument.BookTitle);
+
+                // Convert to JSON String
+                var jsonString = JsonConvert.SerializeObject(enrichedDocument);
+
+                // Remove special characters from book titles
+                // Author + Book Title
+                var jsonBookFileName =
+                    enrichedDocument.Author.Replace(" ", string.Empty) + "-" +
+                    enrichedDocument.BookTitle.Replace(" ", string.Empty).Replace("'", string.Empty) + ".json";
+
+                // Create the book file path
+                var jsonBookFilePath = Path.Combine(currentEnrichmentFolder, jsonBookFileName);
+
+                // Write out JSON string to local storage
+                using (StreamWriter outputFile = new StreamWriter(jsonBookFilePath))
+                {
+                    outputFile.WriteLine(jsonString);
+                }
+
+                return enrichedDocument;
+            });
 
             // Prints out final information of enriched document
             var printEnrichedDocument = new ActionBlock<EnrichedDocument>(enrichedDocument =>
@@ -134,14 +169,18 @@ namespace MachineIntelligenceTPLDataFlows
             });
 
 
+            // Build the pipeline graph
             var enrichmentPipeline = new BufferBlock<EnrichedDocument>(dataFlowBlockOptions);
             enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
             downloadBookText.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
             machineLearningEnrichment.LinkTo(textAnalytics, dataFlowLinkOptions);
-            textAnalytics.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
+            textAnalytics.LinkTo(convertToJson, dataFlowLinkOptions);
+            convertToJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
 
+            // Start the producer by feeding it a list of books
             var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
 
+            // Since this is an asynchronous Task proceess, wait for the producer to finish
             Task.WhenAll(enrichmentProducer);
 
             // Wait for the last block in the pipeline to process all messages.

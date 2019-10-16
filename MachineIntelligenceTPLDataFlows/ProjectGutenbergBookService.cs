@@ -9,6 +9,40 @@ namespace MachineIntelligenceTPLDataFlows
         {
             var books = new List<ProjectGutenbergBook>
             {
+                // Oscar Wilde
+                new ProjectGutenbergBook{
+                    BookTitle = "The Importance of Being Earnest: A Trivial Comedy for Serious People",
+                    Author = "Oscar Wilde",
+                    Url = "http://www.gutenberg.org/cache/epub/844/pg844.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Picture of Dorian Gray",
+                    Author = "Oscar Wilde",
+                    Url = "http://www.gutenberg.org/cache/epub/174/pg174.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Happy Prince and Other Tales",
+                    Author = "Oscar Wilde",
+                    Url = "http://www.gutenberg.org/files/902/902-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "An Ideal Husband",
+                    Author = "Oscar Wilde",
+                    Url = "http://www.gutenberg.org/files/885/885-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "De Profundis",
+                    Author = "Oscar Wilde",
+                    Url = "http://www.gutenberg.org/cache/epub/921/pg921.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "Lady Windermere's Fan",
+                    Author = "Oscar Wilde",
+                    Url = "http://www.gutenberg.org/files/790/790-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Canterville Ghost",
+                    Author = "Oscar Wilde",
+                    Url = "http://www.gutenberg.org/cache/epub/14522/pg14522.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "Lord Arthur Savile's Crime",
+                    Author = "Oscar Wilde",
+                    Url = "http://www.gutenberg.org/files/773/773-0.txt"},
+
                 // Bram Stoker
                 new ProjectGutenbergBook{
                     BookTitle = "Dracula",

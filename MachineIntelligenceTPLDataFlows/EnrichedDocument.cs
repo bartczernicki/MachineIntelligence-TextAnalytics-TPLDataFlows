@@ -11,11 +11,12 @@ namespace MachineIntelligenceTPLDataFlows
         public new string Url { get; set; }
 
         // Enrichment
+        public int TextLength { get; set; }
         public string Text { get; set; }
         public string NormalizedText { get; set; }
         public string[] WordTokens { get; set; }
         public string[] WordTokensRemovedStopWords { get; set; }
 
-        public List<Tuple<string, int>> TopWordCounts { get; set; }
+        public List<WordCount> TopWordCounts { get; set; }
     }
 }
