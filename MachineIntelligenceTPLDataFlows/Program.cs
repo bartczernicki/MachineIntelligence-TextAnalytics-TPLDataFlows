@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
-using static Microsoft.ML.Transforms.Text.StopWordsRemovingEstimator.Language;
 
 namespace MachineIntelligenceTPLDataFlows
 
