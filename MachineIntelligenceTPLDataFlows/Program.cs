@@ -17,6 +17,7 @@ namespace MachineIntelligenceTPLDataFlows
         {
             Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows";
 
+            // CONFIG 
             // Instantiate new ML.NET Context
             // Note: MlContext is thread-safe
             var mlContext = new MLContext(100);
@@ -24,18 +25,36 @@ namespace MachineIntelligenceTPLDataFlows
             // Set language to English
             StopWordsRemovingEstimator.Language language = StopWordsRemovingEstimator.Language.English;
 
-            // Set the max degree of parallelism to four (4) cores
-            var options = new ExecutionDataflowBlockOptions();
-            options.MaxDegreeOfParallelism = 4;
+            // Set the max degree of parallelism
+            // Note: Default is four (4) cores, adjust based on size of VM/workstation
+            // Note: If cores are hyperthreaded, adjust accordingly (i.e. multiply *2)
+            var executionDataFlowOptions = new ExecutionDataflowBlockOptions();
+            executionDataFlowOptions.MaxDegreeOfParallelism = 1;
+
+            // Set the Data Flow Block Options
+            // This controls the data flow from the Producer level
+            var dataFlowBlockOptions = new DataflowBlockOptions {
+                BoundedCapacity = 1,
+                MaxMessagesPerTask = 1 };
+
+            // Set the data flow pipeline options
+            // Note: Set MaxMessages to the number of books to process
+            // Note: For example, etting MaxMessages to 2 will run only two books through the pipeline
+            var dataFlowLinkOptions = new DataflowLinkOptions {
+                PropagateCompletion = true
+            };
+
 
             static async Task ProduceGutenbergBooks(BufferBlock<EnrichedDocument> queue,
                 IEnumerable<ProjectGutenbergBook> projectGutenbergBooks)
             {
                 foreach (var projectGutenbergBook in projectGutenbergBooks)
                 {
+                    // Add baseline information from the document
                     var enrichedDocument = new EnrichedDocument
                     {
                         BookTitle = projectGutenbergBook.BookTitle,
+                        Author = projectGutenbergBook.Author,
                         Url = projectGutenbergBook.Url
                     };
 
@@ -45,18 +64,18 @@ namespace MachineIntelligenceTPLDataFlows
                 queue.Complete();
             }
 
-            // Download the requested book resource as a string.
+            // Download the requested Gutenberg book resources as a string.
             var downloadBookText = new TransformBlock<EnrichedDocument, EnrichedDocument>(async enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Downloading '{0}'...", enrichedDocument.Url);
+                Console.WriteLine("Downloading '{0}'...", enrichedDocument.BookTitle);
 
                 enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
 
                 return enrichedDocument;
-            }, options);
+            }, executionDataFlowOptions);
 
-            // Separates the specified text into an array of words.
+            // Peforms Machine Learning on the book texts
             var machineLearningEnrichment = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -78,14 +97,15 @@ namespace MachineIntelligenceTPLDataFlows
 
                 var prediction = predictionEngine.Predict(textData);
 
-                // Set enrichment variables
+                // Set Enriched document variables
                 enrichedDocument.NormalizedText = prediction.NormalizedText;
                 enrichedDocument.WordTokens = prediction.WordTokens;
                 enrichedDocument.WordTokensRemovedStopWords = prediction.WordTokensRemovedStopWords;
 
                 return enrichedDocument;
-            }, options);
+            }, executionDataFlowOptions);
 
+            // Performs additional book analytics
             var textAnalytics = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -101,8 +121,9 @@ namespace MachineIntelligenceTPLDataFlows
                 enrichedDocument.TopWordCounts = result;
 
                 return enrichedDocument;
-            }, options);
+            }, executionDataFlowOptions);
 
+            // Prints out final information of enriched document
             var printEnrichedDocument = new ActionBlock<EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -112,13 +133,12 @@ namespace MachineIntelligenceTPLDataFlows
                    enrichedDocument.WordTokensRemovedStopWords.Length.ToString());
             });
 
-            var linkOptions = new DataflowLinkOptions { PropagateCompletion = true };
 
-            var enrichmentPipeline = new BufferBlock<EnrichedDocument>(new DataflowBlockOptions { BoundedCapacity = 5, EnsureOrdered = true });
-            enrichmentPipeline.LinkTo(downloadBookText, linkOptions);
-            downloadBookText.LinkTo(machineLearningEnrichment, linkOptions);
-            machineLearningEnrichment.LinkTo(textAnalytics, linkOptions);
-            textAnalytics.LinkTo(printEnrichedDocument, linkOptions);
+            var enrichmentPipeline = new BufferBlock<EnrichedDocument>(dataFlowBlockOptions);
+            enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
+            downloadBookText.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
+            machineLearningEnrichment.LinkTo(textAnalytics, dataFlowLinkOptions);
+            textAnalytics.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
 
             var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
 

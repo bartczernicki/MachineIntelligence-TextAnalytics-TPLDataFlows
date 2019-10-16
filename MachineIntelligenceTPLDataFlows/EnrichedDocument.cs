@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 namespace MachineIntelligenceTPLDataFlows
 {
-    public class EnrichedDocument
+    public class EnrichedDocument : ProjectGutenbergBook
     {
         // Source
-        public string BookTitle { get; set; }
-        public string Url { get; set; }
+        public new string BookTitle { get; set; }
+        public new string Author { get; set; }
+        public new string Url { get; set; }
 
         // Enrichment
         public string Text { get; set; }
