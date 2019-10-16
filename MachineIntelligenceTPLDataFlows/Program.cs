@@ -32,10 +32,14 @@ namespace MachineIntelligenceTPLDataFlows
             StopWordsRemovingEstimator.Language language = StopWordsRemovingEstimator.Language.English;
 
             // SET the max degree of parallelism
-            // Note: Default is four (4) cores, adjust based on size of VM/workstation
+            // Note: Default is to use 75% of the workstation or server cores.
             // Note: If cores are hyperthreaded, adjust accordingly (i.e. multiply *2)
+            var isHyperThreaded = false;
             var executionDataFlowOptions = new ExecutionDataflowBlockOptions();
-            executionDataFlowOptions.MaxDegreeOfParallelism = 4;
+            executionDataFlowOptions.MaxDegreeOfParallelism =
+                // Use 75% of the cores, if hyper-threading multiply cores *2
+                Convert.ToInt32(Math.Ceiling((Environment.ProcessorCount * 0.75) *
+                (isHyperThreaded ? 2: 1)));
 
             // SET the Data Flow Block Options
             // This controls the data flow from the Producer level
