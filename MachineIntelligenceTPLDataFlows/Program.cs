@@ -26,6 +26,7 @@ namespace MachineIntelligenceTPLDataFlows
             // Set language to English
             StopWordsRemovingEstimator.Language language = StopWordsRemovingEstimator.Language.English;
 
+            // Set the max degree of parallelism to four (4) cores
             var options = new ExecutionDataflowBlockOptions();
             options.MaxDegreeOfParallelism = 4;
 
