@@ -148,7 +148,11 @@ namespace MachineIntelligenceTPLDataFlows
                 // Author + Book Title
                 var jsonBookFileName =
                     enrichedDocument.Author.Replace(" ", string.Empty) + "-" +
-                    enrichedDocument.BookTitle.Replace(" ", string.Empty).Replace("'", string.Empty) + ".json";
+                    enrichedDocument.BookTitle
+                        .Replace(" ", string.Empty)
+                        .Replace("'", string.Empty)
+                        .Replace(":", string.Empty)
+                        + ".json";
 
                 // Create the book file path
                 var jsonBookFilePath = Path.Combine(currentEnrichmentFolder, jsonBookFileName);
