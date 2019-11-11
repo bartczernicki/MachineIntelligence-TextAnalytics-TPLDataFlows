@@ -11,7 +11,7 @@ Features:
 
 Requirements:
 * Visual Studio 2019, .NET Core 3.0
-* NuGet Packages Used: ML.NET v1.3.1, Newtonsoft.Json, System.Threading.Tasks.Dataflow
+* NuGet Packages Used: ML.NET v1.4, Newtonsoft.Json, System.Threading.Tasks.Dataflow
 
 ![Training Job](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/ConsoleScreenshot.png)
 
