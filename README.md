@@ -10,8 +10,8 @@ Features:
 * The console application is cross-platform; it will run on macOS (screenshot below & Windows)
 
 Requirements:
-* Visual Studio 2019, .NET Core 3.0
-* NuGet Packages Used: ML.NET v1.4, Newtonsoft.Json, System.Threading.Tasks.Dataflow
+* Visual Studio 2019, .NET 5.x
+* NuGet Packages Used: ML.NET v1.5.4, Newtonsoft.Json, System.Threading.Tasks.Dataflow
 
 ![Training Job](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/ConsoleScreenshot.png)
 
