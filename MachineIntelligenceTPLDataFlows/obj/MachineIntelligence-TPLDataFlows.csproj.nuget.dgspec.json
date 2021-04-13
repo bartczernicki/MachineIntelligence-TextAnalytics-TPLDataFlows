@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj": {}
+    "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj": {
+    "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+        "projectUniqueName": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
         "projectName": "MachineIntelligence-TPLDataFlows",
-        "projectPath": "C:\\Users\\Bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
-        "packagesPath": "C:\\Users\\Bart\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
+        "projectPath": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+        "packagesPath": "C:\\Users\\bart\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Bart\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bart\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,8 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet5/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -43,11 +42,11 @@
           "dependencies": {
             "Microsoft.ML": {
               "target": "Package",
-              "version": "[1.5.4, )"
+              "version": "[1.5.5, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[12.0.3, )"
+              "version": "[13.0.1, )"
             },
             "System.Threading.Tasks.Dataflow": {
               "target": "Package",
@@ -64,12 +63,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.4, 5.0.4]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20614.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.3.21202.5\\RuntimeIdentifierGraph.json"
         }
       }
     }

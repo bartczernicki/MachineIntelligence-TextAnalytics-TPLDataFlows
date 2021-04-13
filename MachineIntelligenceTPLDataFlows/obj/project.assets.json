@@ -2,11 +2,11 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "Microsoft.ML/1.5.4": {
+      "Microsoft.ML/1.5.5": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ML.CpuMath": "1.5.4",
-          "Microsoft.ML.DataView": "1.5.4",
+          "Microsoft.ML.CpuMath": "1.5.5",
+          "Microsoft.ML.DataView": "1.5.5",
           "Newtonsoft.Json": "10.0.3",
           "System.CodeDom": "4.4.0",
           "System.Collections.Immutable": "1.5.0",
@@ -55,7 +55,7 @@
           }
         }
       },
-      "Microsoft.ML.CpuMath/1.5.4": {
+      "Microsoft.ML.CpuMath/1.5.5": {
         "type": "package",
         "compile": {
           "lib/netcoreapp3.1/Microsoft.ML.CpuMath.dll": {}
@@ -85,7 +85,7 @@
           }
         }
       },
-      "Microsoft.ML.DataView/1.5.4": {
+      "Microsoft.ML.DataView/1.5.5": {
         "type": "package",
         "dependencies": {
           "System.Collections.Immutable": "1.5.0",
@@ -116,7 +116,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Newtonsoft.Json/12.0.3": {
+      "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -271,10 +271,10 @@
     }
   },
   "libraries": {
-    "Microsoft.ML/1.5.4": {
-      "sha512": "2r7wUesWRCHip6wLfdEFvQ3kAXIPJOJ9M1xeiQE75x1wGwsuPyJC42L1eoe21i00BloqzSNIsMT9EIJkX/kOBA==",
+    "Microsoft.ML/1.5.5": {
+      "sha512": "nurKk3ABWSFEVWKxCx/c1mB+SiunzpoIUucT/f+Scann8h2ph8ETxXbQVyQq5UJQb7Q8xUwZFZPVJJrLlT7ROA==",
       "type": "package",
-      "path": "microsoft.ml/1.5.4",
+      "path": "microsoft.ml/1.5.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -296,7 +296,7 @@
         "lib/netstandard2.0/Microsoft.ML.Transforms.xml",
         "lib/netstandard2.0/Microsoft.ML.dll",
         "lib/netstandard2.0/Microsoft.ML.xml",
-        "microsoft.ml.1.5.4.nupkg.sha512",
+        "microsoft.ml.1.5.5.nupkg.sha512",
         "microsoft.ml.nuspec",
         "mlnetlogo.png",
         "runtimes/linux-x64/native/libLdaNative.so",
@@ -305,10 +305,10 @@
         "runtimes/win-x86/native/LdaNative.dll"
       ]
     },
-    "Microsoft.ML.CpuMath/1.5.4": {
-      "sha512": "+sNXKNizd6Rp6Kzg2ikzllrZfTqVVdySiycW8bB7hDTTsEbgxCugURdpSXXQI12XOGi6iersJ2DsAifptYjIOA==",
+    "Microsoft.ML.CpuMath/1.5.5": {
+      "sha512": "W6wRFhZvZuy2mw1m8TIoThX/QvWRd2g4+Fgnv6tWzPDjlWaZWKtqhW93pW4hU9uGuYumJc1UZm4IzXKBAy68fQ==",
       "type": "package",
-      "path": "microsoft.ml.cpumath/1.5.4",
+      "path": "microsoft.ml.cpumath/1.5.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -319,7 +319,7 @@
         "lib/netcoreapp3.1/Microsoft.ML.CpuMath.xml",
         "lib/netstandard2.0/Microsoft.ML.CpuMath.dll",
         "lib/netstandard2.0/Microsoft.ML.CpuMath.xml",
-        "microsoft.ml.cpumath.1.5.4.nupkg.sha512",
+        "microsoft.ml.cpumath.1.5.5.nupkg.sha512",
         "microsoft.ml.cpumath.nuspec",
         "mlnetlogo.png",
         "runtimes/linux-x64/nativeassets/netcoreapp3.1/_._",
@@ -332,10 +332,10 @@
         "runtimes/win-x86/nativeassets/netstandard2.0/CpuMathNative.dll"
       ]
     },
-    "Microsoft.ML.DataView/1.5.4": {
-      "sha512": "vg3SvbFCOQtof5r/J1BCQ0p+zN6436GppWVIwodsP6DkKXRz1rpJUT1gTPSRGsjTIJoBDEw/cL7ei+GWZ7YZFw==",
+    "Microsoft.ML.DataView/1.5.5": {
+      "sha512": "O8FW8lFUdd5VRy/mCgSzhEdi8LfStMs00oyI5Yb6RwzRe0EoWFZgcta1oeBvSDRIF8SaAzFUcetKMllLzGRgNg==",
       "type": "package",
-      "path": "microsoft.ml.dataview/1.5.4",
+      "path": "microsoft.ml.dataview/1.5.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -343,7 +343,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.ML.DataView.dll",
         "lib/netstandard2.0/Microsoft.ML.DataView.xml",
-        "microsoft.ml.dataview.1.5.4.nupkg.sha512",
+        "microsoft.ml.dataview.1.5.5.nupkg.sha512",
         "microsoft.ml.dataview.nuspec",
         "mlnetlogo.png"
       ]
@@ -378,10 +378,10 @@
         "runtime.json"
       ]
     },
-    "Newtonsoft.Json/12.0.3": {
-      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
-      "path": "newtonsoft.json/12.0.3",
+      "path": "newtonsoft.json/13.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -400,11 +400,7 @@
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
@@ -1064,25 +1060,25 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Microsoft.ML >= 1.5.4",
-      "Newtonsoft.Json >= 12.0.3",
+      "Microsoft.ML >= 1.5.5",
+      "Newtonsoft.Json >= 13.0.1",
       "System.Threading.Tasks.Dataflow >= 5.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bart\\.nuget\\packages\\": {}
+    "C:\\Users\\bart\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+      "projectUniqueName": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
       "projectName": "MachineIntelligence-TPLDataFlows",
-      "projectPath": "C:\\Users\\Bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
-      "packagesPath": "C:\\Users\\Bart\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
+      "projectPath": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+      "packagesPath": "C:\\Users\\bart\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Bart\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bart\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1090,8 +1086,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet5/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
@@ -1111,11 +1106,11 @@
         "dependencies": {
           "Microsoft.ML": {
             "target": "Package",
-            "version": "[1.5.4, )"
+            "version": "[1.5.5, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "[12.0.3, )"
+            "version": "[13.0.1, )"
           },
           "System.Threading.Tasks.Dataflow": {
             "target": "Package",
@@ -1132,12 +1127,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.4, 5.0.4]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20614.14\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.3.21202.5\\RuntimeIdentifierGraph.json"
       }
     }
   }
