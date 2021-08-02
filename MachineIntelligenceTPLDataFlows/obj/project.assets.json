@@ -2,11 +2,11 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "Microsoft.ML/1.5.5": {
+      "Microsoft.ML/1.6.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ML.CpuMath": "1.5.5",
-          "Microsoft.ML.DataView": "1.5.5",
+          "Microsoft.ML.CpuMath": "1.6.0",
+          "Microsoft.ML.DataView": "1.6.0",
           "Newtonsoft.Json": "10.0.3",
           "System.CodeDom": "4.4.0",
           "System.Collections.Immutable": "1.5.0",
@@ -37,9 +37,21 @@
           "build/netstandard2.0/Microsoft.ML.targets": {}
         },
         "runtimeTargets": {
+          "runtimes/linux-arm/native/libLdaNative.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/native/libLdaNative.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
           "runtimes/linux-x64/native/libLdaNative.so": {
             "assetType": "native",
             "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/libLdaNative.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
           },
           "runtimes/osx-x64/native/libLdaNative.dylib": {
             "assetType": "native",
@@ -55,7 +67,7 @@
           }
         }
       },
-      "Microsoft.ML.CpuMath/1.5.5": {
+      "Microsoft.ML.CpuMath/1.6.0": {
         "type": "package",
         "compile": {
           "lib/netcoreapp3.1/Microsoft.ML.CpuMath.dll": {}
@@ -67,9 +79,21 @@
           "build/netstandard2.0/_._": {}
         },
         "runtimeTargets": {
+          "runtimes/linux-arm/nativeassets/netcoreapp3.1/_._": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/nativeassets/netcoreapp3.1/_._": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
           "runtimes/linux-x64/nativeassets/netcoreapp3.1/_._": {
             "assetType": "native",
             "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/nativeassets/netcoreapp3.1/_._": {
+            "assetType": "native",
+            "rid": "osx-arm64"
           },
           "runtimes/osx-x64/nativeassets/netcoreapp3.1/_._": {
             "assetType": "native",
@@ -85,7 +109,7 @@
           }
         }
       },
-      "Microsoft.ML.DataView/1.5.5": {
+      "Microsoft.ML.DataView/1.6.0": {
         "type": "package",
         "dependencies": {
           "System.Collections.Immutable": "1.5.0",
@@ -271,10 +295,10 @@
     }
   },
   "libraries": {
-    "Microsoft.ML/1.5.5": {
-      "sha512": "nurKk3ABWSFEVWKxCx/c1mB+SiunzpoIUucT/f+Scann8h2ph8ETxXbQVyQq5UJQb7Q8xUwZFZPVJJrLlT7ROA==",
+    "Microsoft.ML/1.6.0": {
+      "sha512": "zkDI36NE/xX076TRYT4IZ1bdHc5Sr0KVHeUeEANP1R4jOZpztJXTxHVK/izK+Jz1137Xszp5zdyzw7VOd+WsSA==",
       "type": "package",
-      "path": "microsoft.ml/1.5.5",
+      "path": "microsoft.ml/1.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -296,19 +320,22 @@
         "lib/netstandard2.0/Microsoft.ML.Transforms.xml",
         "lib/netstandard2.0/Microsoft.ML.dll",
         "lib/netstandard2.0/Microsoft.ML.xml",
-        "microsoft.ml.1.5.5.nupkg.sha512",
+        "microsoft.ml.1.6.0.nupkg.sha512",
         "microsoft.ml.nuspec",
         "mlnetlogo.png",
+        "runtimes/linux-arm/native/libLdaNative.so",
+        "runtimes/linux-arm64/native/libLdaNative.so",
         "runtimes/linux-x64/native/libLdaNative.so",
+        "runtimes/osx-arm64/native/libLdaNative.dylib",
         "runtimes/osx-x64/native/libLdaNative.dylib",
         "runtimes/win-x64/native/LdaNative.dll",
         "runtimes/win-x86/native/LdaNative.dll"
       ]
     },
-    "Microsoft.ML.CpuMath/1.5.5": {
-      "sha512": "W6wRFhZvZuy2mw1m8TIoThX/QvWRd2g4+Fgnv6tWzPDjlWaZWKtqhW93pW4hU9uGuYumJc1UZm4IzXKBAy68fQ==",
+    "Microsoft.ML.CpuMath/1.6.0": {
+      "sha512": "tcDUQ84xG9D8VFgBgXcps/stBoefEK14+deMfftUms8vb9qUmc3A6yTQRZyaggL6Fxybi4LiHLn5DhGs0NvOBw==",
       "type": "package",
-      "path": "microsoft.ml.cpumath/1.5.5",
+      "path": "microsoft.ml.cpumath/1.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -319,11 +346,14 @@
         "lib/netcoreapp3.1/Microsoft.ML.CpuMath.xml",
         "lib/netstandard2.0/Microsoft.ML.CpuMath.dll",
         "lib/netstandard2.0/Microsoft.ML.CpuMath.xml",
-        "microsoft.ml.cpumath.1.5.5.nupkg.sha512",
+        "microsoft.ml.cpumath.1.6.0.nupkg.sha512",
         "microsoft.ml.cpumath.nuspec",
         "mlnetlogo.png",
+        "runtimes/linux-arm/nativeassets/netcoreapp3.1/_._",
+        "runtimes/linux-arm64/nativeassets/netcoreapp3.1/_._",
         "runtimes/linux-x64/nativeassets/netcoreapp3.1/_._",
         "runtimes/linux-x64/nativeassets/netstandard2.0/libCpuMathNative.so",
+        "runtimes/osx-arm64/nativeassets/netcoreapp3.1/_._",
         "runtimes/osx-x64/nativeassets/netcoreapp3.1/_._",
         "runtimes/osx-x64/nativeassets/netstandard2.0/libCpuMathNative.dylib",
         "runtimes/win-x64/nativeassets/netcoreapp3.1/_._",
@@ -332,10 +362,10 @@
         "runtimes/win-x86/nativeassets/netstandard2.0/CpuMathNative.dll"
       ]
     },
-    "Microsoft.ML.DataView/1.5.5": {
-      "sha512": "O8FW8lFUdd5VRy/mCgSzhEdi8LfStMs00oyI5Yb6RwzRe0EoWFZgcta1oeBvSDRIF8SaAzFUcetKMllLzGRgNg==",
+    "Microsoft.ML.DataView/1.6.0": {
+      "sha512": "o32XTTTledXjrX8e14habbzk+WJhj+Zgs1UV1OiTwO+rVUwnT4KSROri4L/5kuWdSxMCcTFb5sE1JnjHb+y1Gg==",
       "type": "package",
-      "path": "microsoft.ml.dataview/1.5.5",
+      "path": "microsoft.ml.dataview/1.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -343,7 +373,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.ML.DataView.dll",
         "lib/netstandard2.0/Microsoft.ML.DataView.xml",
-        "microsoft.ml.dataview.1.5.5.nupkg.sha512",
+        "microsoft.ml.dataview.1.6.0.nupkg.sha512",
         "microsoft.ml.dataview.nuspec",
         "mlnetlogo.png"
       ]
@@ -1060,7 +1090,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Microsoft.ML >= 1.5.5",
+      "Microsoft.ML >= 1.6.0",
       "Newtonsoft.Json >= 13.0.1",
       "System.Threading.Tasks.Dataflow >= 5.0.0"
     ]
@@ -1071,11 +1101,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+      "projectUniqueName": "C:\\Users\\bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
       "projectName": "MachineIntelligence-TPLDataFlows",
-      "projectPath": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+      "projectPath": "C:\\Users\\bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
       "packagesPath": "C:\\Users\\bart\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
+      "outputPath": "C:\\Users\\bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bart\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1106,7 +1136,7 @@
         "dependencies": {
           "Microsoft.ML": {
             "target": "Package",
-            "version": "[1.5.5, )"
+            "version": "[1.6.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -1127,18 +1157,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.4, 5.0.4]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.3.21202.5\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.4.21255.9\\RuntimeIdentifierGraph.json"
       }
     }
   }

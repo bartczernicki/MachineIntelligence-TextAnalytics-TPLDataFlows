@@ -29,4 +29,7 @@ C:\Users\Bart\Source\Repos\MachineIntelligence-TextAnalytics-TPLDataFlows\Machin
 C:\Users\Bart\Source\Repos\MachineIntelligence-TextAnalytics-TPLDataFlows\MachineIntelligenceTPLDataFlows\obj\Debug\net5.0\ref\MachineIntelligence-TPLDataFlows.dll
 C:\Users\Bart\Source\Repos\MachineIntelligence-TextAnalytics-TPLDataFlows\MachineIntelligenceTPLDataFlows\obj\Debug\net5.0\MachineIntelligence-TPLDataFlows.pdb
 C:\Users\Bart\Source\Repos\MachineIntelligence-TextAnalytics-TPLDataFlows\MachineIntelligenceTPLDataFlows\obj\Debug\net5.0\MachineIntelligence-TPLDataFlows.genruntimeconfig.cache
-C:\Users\bart\source\repos\MachineIntelligence-TextAnalytics-TPLDataFlows\MachineIntelligenceTPLDataFlows\obj\Debug\net5.0\MachineIntelligence-TPLDataFlows.csprojAssemblyReference.cache
+C:\Users\bart\Source\Repos\MachineIntelligence-TextAnalytics-TPLDataFlows\MachineIntelligenceTPLDataFlows\bin\Debug\net5.0\runtimes\linux-arm\native\libLdaNative.so
+C:\Users\bart\Source\Repos\MachineIntelligence-TextAnalytics-TPLDataFlows\MachineIntelligenceTPLDataFlows\bin\Debug\net5.0\runtimes\linux-arm64\native\libLdaNative.so
+C:\Users\bart\Source\Repos\MachineIntelligence-TextAnalytics-TPLDataFlows\MachineIntelligenceTPLDataFlows\bin\Debug\net5.0\runtimes\osx-arm64\native\libLdaNative.dylib
+C:\Users\bart\Source\Repos\MachineIntelligence-TextAnalytics-TPLDataFlows\MachineIntelligenceTPLDataFlows\obj\Debug\net5.0\MachineIntelligence-TPLDataFlows.csproj.AssemblyReference.cache

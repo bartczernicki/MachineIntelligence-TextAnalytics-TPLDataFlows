@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "MachineIntelligence-TPLDataFlows/1.0.0": {
         "dependencies": {
-          "Microsoft.ML": "1.5.5",
+          "Microsoft.ML": "1.6.0",
           "Newtonsoft.Json": "13.0.1",
           "System.Threading.Tasks.Dataflow": "5.0.0"
         },
@@ -16,10 +16,10 @@
           "MachineIntelligence-TPLDataFlows.dll": {}
         }
       },
-      "Microsoft.ML/1.5.5": {
+      "Microsoft.ML/1.6.0": {
         "dependencies": {
-          "Microsoft.ML.CpuMath": "1.5.5",
-          "Microsoft.ML.DataView": "1.5.5",
+          "Microsoft.ML.CpuMath": "1.6.0",
+          "Microsoft.ML.DataView": "1.6.0",
           "Newtonsoft.Json": "13.0.1",
           "System.CodeDom": "4.4.0",
           "System.Collections.Immutable": "1.5.0",
@@ -30,36 +30,51 @@
         "runtime": {
           "lib/netstandard2.0/Microsoft.ML.Core.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.500.521.15302"
+            "fileVersion": "1.600.21.36503"
           },
           "lib/netstandard2.0/Microsoft.ML.Data.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.500.521.15302"
+            "fileVersion": "1.600.21.36503"
           },
           "lib/netstandard2.0/Microsoft.ML.KMeansClustering.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.500.521.15302"
+            "fileVersion": "1.600.21.36503"
           },
           "lib/netstandard2.0/Microsoft.ML.PCA.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.500.521.15302"
+            "fileVersion": "1.600.21.36503"
           },
           "lib/netstandard2.0/Microsoft.ML.StandardTrainers.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.500.521.15302"
+            "fileVersion": "1.600.21.36503"
           },
           "lib/netstandard2.0/Microsoft.ML.Transforms.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.500.521.15302"
+            "fileVersion": "1.600.21.36503"
           },
           "lib/netstandard2.0/Microsoft.ML.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.500.521.15302"
+            "fileVersion": "1.600.21.36503"
           }
         },
         "runtimeTargets": {
+          "runtimes/linux-arm/native/libLdaNative.so": {
+            "rid": "linux-arm",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-arm64/native/libLdaNative.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
           "runtimes/linux-x64/native/libLdaNative.so": {
             "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-arm64/native/libLdaNative.dylib": {
+            "rid": "osx-arm64",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
           },
@@ -71,24 +86,24 @@
           "runtimes/win-x64/native/LdaNative.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "0.1700.521.15302"
+            "fileVersion": "0.1800.21.36503"
           },
           "runtimes/win-x86/native/LdaNative.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "0.1700.521.15302"
+            "fileVersion": "0.1800.21.36503"
           }
         }
       },
-      "Microsoft.ML.CpuMath/1.5.5": {
+      "Microsoft.ML.CpuMath/1.6.0": {
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.ML.CpuMath.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.500.521.15302"
+            "fileVersion": "1.600.21.36503"
           }
         }
       },
-      "Microsoft.ML.DataView/1.5.5": {
+      "Microsoft.ML.DataView/1.6.0": {
         "dependencies": {
           "System.Collections.Immutable": "1.5.0",
           "System.Memory": "4.5.3"
@@ -96,7 +111,7 @@
         "runtime": {
           "lib/netstandard2.0/Microsoft.ML.DataView.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.500.521.15302"
+            "fileVersion": "1.600.21.36503"
           }
         }
       },
@@ -190,26 +205,26 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.ML/1.5.5": {
+    "Microsoft.ML/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nurKk3ABWSFEVWKxCx/c1mB+SiunzpoIUucT/f+Scann8h2ph8ETxXbQVyQq5UJQb7Q8xUwZFZPVJJrLlT7ROA==",
-      "path": "microsoft.ml/1.5.5",
-      "hashPath": "microsoft.ml.1.5.5.nupkg.sha512"
+      "sha512": "sha512-zkDI36NE/xX076TRYT4IZ1bdHc5Sr0KVHeUeEANP1R4jOZpztJXTxHVK/izK+Jz1137Xszp5zdyzw7VOd+WsSA==",
+      "path": "microsoft.ml/1.6.0",
+      "hashPath": "microsoft.ml.1.6.0.nupkg.sha512"
     },
-    "Microsoft.ML.CpuMath/1.5.5": {
+    "Microsoft.ML.CpuMath/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-W6wRFhZvZuy2mw1m8TIoThX/QvWRd2g4+Fgnv6tWzPDjlWaZWKtqhW93pW4hU9uGuYumJc1UZm4IzXKBAy68fQ==",
-      "path": "microsoft.ml.cpumath/1.5.5",
-      "hashPath": "microsoft.ml.cpumath.1.5.5.nupkg.sha512"
+      "sha512": "sha512-tcDUQ84xG9D8VFgBgXcps/stBoefEK14+deMfftUms8vb9qUmc3A6yTQRZyaggL6Fxybi4LiHLn5DhGs0NvOBw==",
+      "path": "microsoft.ml.cpumath/1.6.0",
+      "hashPath": "microsoft.ml.cpumath.1.6.0.nupkg.sha512"
     },
-    "Microsoft.ML.DataView/1.5.5": {
+    "Microsoft.ML.DataView/1.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-O8FW8lFUdd5VRy/mCgSzhEdi8LfStMs00oyI5Yb6RwzRe0EoWFZgcta1oeBvSDRIF8SaAzFUcetKMllLzGRgNg==",
-      "path": "microsoft.ml.dataview/1.5.5",
-      "hashPath": "microsoft.ml.dataview.1.5.5.nupkg.sha512"
+      "sha512": "sha512-o32XTTTledXjrX8e14habbzk+WJhj+Zgs1UV1OiTwO+rVUwnT4KSROri4L/5kuWdSxMCcTFb5sE1JnjHb+y1Gg==",
+      "path": "microsoft.ml.dataview/1.6.0",
+      "hashPath": "microsoft.ml.dataview.1.6.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
