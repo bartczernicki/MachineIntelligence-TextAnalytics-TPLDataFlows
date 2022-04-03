@@ -2,11 +2,11 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Microsoft.ML/1.7.0": {
+      "Microsoft.ML/1.7.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ML.CpuMath": "1.7.0",
-          "Microsoft.ML.DataView": "1.7.0",
+          "Microsoft.ML.CpuMath": "1.7.1",
+          "Microsoft.ML.DataView": "1.7.1",
           "Newtonsoft.Json": "10.0.3",
           "System.CodeDom": "4.4.0",
           "System.Collections.Immutable": "1.5.0",
@@ -67,7 +67,7 @@
           }
         }
       },
-      "Microsoft.ML.CpuMath/1.7.0": {
+      "Microsoft.ML.CpuMath/1.7.1": {
         "type": "package",
         "compile": {
           "lib/netcoreapp3.1/Microsoft.ML.CpuMath.dll": {}
@@ -109,7 +109,7 @@
           }
         }
       },
-      "Microsoft.ML.DataView/1.7.0": {
+      "Microsoft.ML.DataView/1.7.1": {
         "type": "package",
         "dependencies": {
           "System.Collections.Immutable": "1.5.0",
@@ -283,7 +283,7 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "System.Threading.Tasks.Dataflow/6.0.0": {
+      "System.Threading.Tasks.Dataflow/6.0.2-mauipre.1.22102.15": {
         "type": "package",
         "compile": {
           "lib/net6.0/System.Threading.Tasks.Dataflow.dll": {}
@@ -298,10 +298,10 @@
     }
   },
   "libraries": {
-    "Microsoft.ML/1.7.0": {
-      "sha512": "VWNzTz3Owt7qBxsLD1cxjx3fN7YuyVKu26OIwKIF83r+3Fm8B/OkiXugP8rjIYg0c3+KK8G3ks96eiOfdzT26g==",
+    "Microsoft.ML/1.7.1": {
+      "sha512": "t33nUR6A8VwYMInbsEM5eSGJaHWdScikAX7mER0Yh0H4e85W7FRw0KBlCixHHuivSF2y7ez+2IGpfb2PUgVVow==",
       "type": "package",
-      "path": "microsoft.ml/1.7.0",
+      "path": "microsoft.ml/1.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -323,7 +323,7 @@
         "lib/netstandard2.0/Microsoft.ML.Transforms.xml",
         "lib/netstandard2.0/Microsoft.ML.dll",
         "lib/netstandard2.0/Microsoft.ML.xml",
-        "microsoft.ml.1.7.0.nupkg.sha512",
+        "microsoft.ml.1.7.1.nupkg.sha512",
         "microsoft.ml.nuspec",
         "mlnetlogo.png",
         "runtimes/linux-arm/native/libLdaNative.so",
@@ -335,10 +335,10 @@
         "runtimes/win-x86/native/LdaNative.dll"
       ]
     },
-    "Microsoft.ML.CpuMath/1.7.0": {
-      "sha512": "ibot+EJKOG21DE47YQCy8djLpSJ31hgbwkJPkG2a5KSieb2eEGySCzzMLBAcP2jR5vd8+5Gss3FuGYvfY9Bncw==",
+    "Microsoft.ML.CpuMath/1.7.1": {
+      "sha512": "kkUm/o1pBFAtRI+5LRwtJpvXhf8l8YyeQ8OYZNkTGrn5exn5C3YrwrRRX3fDz7yPPKA38XY4EPy2WVltArO0aw==",
       "type": "package",
-      "path": "microsoft.ml.cpumath/1.7.0",
+      "path": "microsoft.ml.cpumath/1.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -349,7 +349,7 @@
         "lib/netcoreapp3.1/Microsoft.ML.CpuMath.xml",
         "lib/netstandard2.0/Microsoft.ML.CpuMath.dll",
         "lib/netstandard2.0/Microsoft.ML.CpuMath.xml",
-        "microsoft.ml.cpumath.1.7.0.nupkg.sha512",
+        "microsoft.ml.cpumath.1.7.1.nupkg.sha512",
         "microsoft.ml.cpumath.nuspec",
         "mlnetlogo.png",
         "runtimes/linux-arm/nativeassets/netcoreapp3.1/_._",
@@ -365,10 +365,10 @@
         "runtimes/win-x86/nativeassets/netstandard2.0/CpuMathNative.dll"
       ]
     },
-    "Microsoft.ML.DataView/1.7.0": {
-      "sha512": "pMfpOsoRcexVnsNqwRqcqRsdfzw2dN3kBu3QzmZ3YqPuiZLLoDHaB3ZYEAvnIUEhpnIe4wVD4UnUWvatzoVWcQ==",
+    "Microsoft.ML.DataView/1.7.1": {
+      "sha512": "j7BwSzNJUjxI8aSkzv4yCi0/kem1mYFVWiuLQcG0vcMEs3BNqvkunt+qdRmUMYuPY7/9AK22a70laAxjcJ2GGA==",
       "type": "package",
-      "path": "microsoft.ml.dataview/1.7.0",
+      "path": "microsoft.ml.dataview/1.7.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -376,7 +376,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.ML.DataView.dll",
         "lib/netstandard2.0/Microsoft.ML.DataView.xml",
-        "microsoft.ml.dataview.1.7.0.nupkg.sha512",
+        "microsoft.ml.dataview.1.7.1.nupkg.sha512",
         "microsoft.ml.dataview.nuspec",
         "mlnetlogo.png"
       ]
@@ -1064,10 +1064,10 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "System.Threading.Tasks.Dataflow/6.0.0": {
-      "sha512": "+tyDCU3/B1lDdOOAJywHQoFwyXIUghIaP2BxG79uvhfTnO+D9qIgjVlL/JV2NTliYbMHpd6eKDmHp2VHpij7MA==",
+    "System.Threading.Tasks.Dataflow/6.0.2-mauipre.1.22102.15": {
+      "sha512": "Sb6kamq3LCtg3Y3y6OPd4Ofg9j1f6v3O8hGWo9Zehvh7XUqDvoyYQu8xqYthsfkLpFHrkCnG6SSYsNe8hbEmQA==",
       "type": "package",
-      "path": "system.threading.tasks.dataflow/6.0.0",
+      "path": "system.threading.tasks.dataflow/6.0.2-mauipre.1.22102.15",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1084,7 +1084,7 @@
         "lib/netstandard2.0/System.Threading.Tasks.Dataflow.xml",
         "lib/netstandard2.1/System.Threading.Tasks.Dataflow.dll",
         "lib/netstandard2.1/System.Threading.Tasks.Dataflow.xml",
-        "system.threading.tasks.dataflow.6.0.0.nupkg.sha512",
+        "system.threading.tasks.dataflow.6.0.2-mauipre.1.22102.15.nupkg.sha512",
         "system.threading.tasks.dataflow.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1092,9 +1092,9 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Microsoft.ML >= 1.7.0",
+      "Microsoft.ML >= 1.7.1",
       "Newtonsoft.Json >= 13.0.1",
-      "System.Threading.Tasks.Dataflow >= 6.0.0"
+      "System.Threading.Tasks.Dataflow >= 6.0.2-mauipre.1.22102.15"
     ]
   },
   "packageFolders": {
@@ -1143,7 +1143,7 @@
         "dependencies": {
           "Microsoft.ML": {
             "target": "Package",
-            "version": "[1.7.0, )"
+            "version": "[1.7.1, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -1151,7 +1151,7 @@
           },
           "System.Threading.Tasks.Dataflow": {
             "target": "Package",
-            "version": "[6.0.0, )"
+            "version": "[6.0.2-mauipre.1.22102.15, )"
           }
         },
         "imports": [
@@ -1164,12 +1164,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.0, 6.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.0, 6.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.0, 6.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100-preview.2.22153.17\\RuntimeIdentifierGraph.json"
       }
     }
   }
