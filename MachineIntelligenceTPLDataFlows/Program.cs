@@ -86,7 +86,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             }, executionDataFlowOptions);
 
-            // Peforms Machine Learning on the book texts
+            // Performs Machine Learning on the book texts
             var machineLearningEnrichment = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -188,7 +188,7 @@ namespace MachineIntelligenceTPLDataFlows
             // Start the producer by feeding it a list of books
             var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
 
-            // Since this is an asynchronous Task proceess, wait for the producer to finish
+            // Since this is an asynchronous Task process, wait for the producer to finish
             Task.WhenAll(enrichmentProducer);
 
             // Wait for the last block in the pipeline to process all messages.
