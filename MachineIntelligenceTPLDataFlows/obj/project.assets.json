@@ -1,16 +1,16 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
-      "Microsoft.ML/2.0.1": {
+    "net8.0": {
+      "Microsoft.ML/3.0.0-preview.23266.6": {
         "type": "package",
         "dependencies": {
-          "Microsoft.ML.CpuMath": "2.0.1",
-          "Microsoft.ML.DataView": "2.0.1",
+          "Microsoft.ML.CpuMath": "3.0.0-preview.23266.6",
+          "Microsoft.ML.DataView": "3.0.0-preview.23266.6",
           "Newtonsoft.Json": "13.0.1",
           "System.CodeDom": "4.5.0",
           "System.Collections.Immutable": "1.5.0",
-          "System.Memory": "4.5.3",
+          "System.Memory": "4.5.5",
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Threading.Channels": "4.7.1"
         },
@@ -95,15 +95,15 @@
           }
         }
       },
-      "Microsoft.ML.CpuMath/2.0.1": {
+      "Microsoft.ML.CpuMath/3.0.0-preview.23266.6": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.1/Microsoft.ML.CpuMath.dll": {
+          "lib/net6.0/Microsoft.ML.CpuMath.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netcoreapp3.1/Microsoft.ML.CpuMath.dll": {
+          "lib/net6.0/Microsoft.ML.CpuMath.dll": {
             "related": ".xml"
           }
         },
@@ -111,41 +111,41 @@
           "build/netstandard2.0/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/linux-arm/nativeassets/netcoreapp3.1/_._": {
+          "runtimes/linux-arm/nativeassets/net6.0/_._": {
             "assetType": "native",
             "rid": "linux-arm"
           },
-          "runtimes/linux-arm64/nativeassets/netcoreapp3.1/_._": {
+          "runtimes/linux-arm64/nativeassets/net6.0/_._": {
             "assetType": "native",
             "rid": "linux-arm64"
           },
-          "runtimes/linux-x64/nativeassets/netcoreapp3.1/_._": {
+          "runtimes/linux-x64/nativeassets/net6.0/_._": {
             "assetType": "native",
             "rid": "linux-x64"
           },
-          "runtimes/osx-arm64/nativeassets/netcoreapp3.1/_._": {
+          "runtimes/osx-arm64/nativeassets/net6.0/_._": {
             "assetType": "native",
             "rid": "osx-arm64"
           },
-          "runtimes/osx-x64/nativeassets/netcoreapp3.1/_._": {
+          "runtimes/osx-x64/nativeassets/net6.0/_._": {
             "assetType": "native",
             "rid": "osx-x64"
           },
-          "runtimes/win-x64/nativeassets/netcoreapp3.1/_._": {
+          "runtimes/win-x64/nativeassets/net6.0/_._": {
             "assetType": "native",
             "rid": "win-x64"
           },
-          "runtimes/win-x86/nativeassets/netcoreapp3.1/_._": {
+          "runtimes/win-x86/nativeassets/net6.0/_._": {
             "assetType": "native",
             "rid": "win-x86"
           }
         }
       },
-      "Microsoft.ML.DataView/2.0.1": {
+      "Microsoft.ML.DataView/3.0.0-preview.23266.6": {
         "type": "package",
         "dependencies": {
           "System.Collections.Immutable": "1.5.0",
-          "System.Memory": "4.5.3"
+          "System.Memory": "4.5.5"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.ML.DataView.dll": {
@@ -228,7 +228,7 @@
           }
         }
       },
-      "System.Memory/4.5.3": {
+      "System.Memory/4.5.5": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.1/_._": {}
@@ -349,15 +349,15 @@
           }
         }
       },
-      "System.Threading.Tasks.Dataflow/7.0.0": {
+      "System.Threading.Tasks.Dataflow/8.0.0-preview.4.23259.5": {
         "type": "package",
         "compile": {
-          "lib/net7.0/System.Threading.Tasks.Dataflow.dll": {
+          "lib/net8.0/System.Threading.Tasks.Dataflow.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/System.Threading.Tasks.Dataflow.dll": {
+          "lib/net8.0/System.Threading.Tasks.Dataflow.dll": {
             "related": ".xml"
           }
         },
@@ -368,10 +368,10 @@
     }
   },
   "libraries": {
-    "Microsoft.ML/2.0.1": {
-      "sha512": "yD5kWZfisykwiGG66wJToSicY9MP847Grl8kLALQyqyiyQjr408ChdGW1JG7D0wHN7Zbs1KkCZvidi6pMFYR/A==",
+    "Microsoft.ML/3.0.0-preview.23266.6": {
+      "sha512": "ooJ72A38A8zgHfBm/kAcfVyjS1DlLXqF7a1JHAaM+AiSujcFOKeY5D++HRyo009S1jLuKsrEkoSHlRtrsRmBww==",
       "type": "package",
-      "path": "microsoft.ml/2.0.1",
+      "path": "microsoft.ml/3.0.0-preview.23266.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -394,7 +394,7 @@
         "lib/netstandard2.0/Microsoft.ML.Transforms.xml",
         "lib/netstandard2.0/Microsoft.ML.dll",
         "lib/netstandard2.0/Microsoft.ML.xml",
-        "microsoft.ml.2.0.1.nupkg.sha512",
+        "microsoft.ml.3.0.0-preview.23266.6.nupkg.sha512",
         "microsoft.ml.nuspec",
         "mlnetlogo.png",
         "runtimes/linux-arm/native/libLdaNative.so",
@@ -406,40 +406,40 @@
         "runtimes/win-x86/native/LdaNative.dll"
       ]
     },
-    "Microsoft.ML.CpuMath/2.0.1": {
-      "sha512": "UjxC9Ju6QPqyvTkj4ggsvnsqKYnbGO1TEypDzKDiIPBGlU/t7Pvx+oV9DDVhZzDKvb34zpLhAm/g79oBuJS3aw==",
+    "Microsoft.ML.CpuMath/3.0.0-preview.23266.6": {
+      "sha512": "00Jl/EALEWgMVlcNO5yCSJJJ81ii55lKiMX7IMrMKJrr32W8WekZQOxRbYTHBGzk7+NyVN5zNn9yYpzNnVD0pw==",
       "type": "package",
-      "path": "microsoft.ml.cpumath/2.0.1",
+      "path": "microsoft.ml.cpumath/3.0.0-preview.23266.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "THIRD-PARTY-NOTICES.TXT",
         "build/netstandard2.0/Microsoft.ML.CpuMath.props",
-        "lib/netcoreapp3.1/Microsoft.ML.CpuMath.dll",
-        "lib/netcoreapp3.1/Microsoft.ML.CpuMath.xml",
+        "lib/net6.0/Microsoft.ML.CpuMath.dll",
+        "lib/net6.0/Microsoft.ML.CpuMath.xml",
         "lib/netstandard2.0/Microsoft.ML.CpuMath.dll",
         "lib/netstandard2.0/Microsoft.ML.CpuMath.xml",
-        "microsoft.ml.cpumath.2.0.1.nupkg.sha512",
+        "microsoft.ml.cpumath.3.0.0-preview.23266.6.nupkg.sha512",
         "microsoft.ml.cpumath.nuspec",
         "mlnetlogo.png",
-        "runtimes/linux-arm/nativeassets/netcoreapp3.1/_._",
-        "runtimes/linux-arm64/nativeassets/netcoreapp3.1/_._",
-        "runtimes/linux-x64/nativeassets/netcoreapp3.1/_._",
+        "runtimes/linux-arm/nativeassets/net6.0/_._",
+        "runtimes/linux-arm64/nativeassets/net6.0/_._",
+        "runtimes/linux-x64/nativeassets/net6.0/_._",
         "runtimes/linux-x64/nativeassets/netstandard2.0/libCpuMathNative.so",
-        "runtimes/osx-arm64/nativeassets/netcoreapp3.1/_._",
-        "runtimes/osx-x64/nativeassets/netcoreapp3.1/_._",
+        "runtimes/osx-arm64/nativeassets/net6.0/_._",
+        "runtimes/osx-x64/nativeassets/net6.0/_._",
         "runtimes/osx-x64/nativeassets/netstandard2.0/libCpuMathNative.dylib",
-        "runtimes/win-x64/nativeassets/netcoreapp3.1/_._",
+        "runtimes/win-x64/nativeassets/net6.0/_._",
         "runtimes/win-x64/nativeassets/netstandard2.0/CpuMathNative.dll",
-        "runtimes/win-x86/nativeassets/netcoreapp3.1/_._",
+        "runtimes/win-x86/nativeassets/net6.0/_._",
         "runtimes/win-x86/nativeassets/netstandard2.0/CpuMathNative.dll"
       ]
     },
-    "Microsoft.ML.DataView/2.0.1": {
-      "sha512": "w+GkAXlxaut65Lm+Fbp34YTfp0/9jGRn9uiVlL7Lls0/v+4IJM7SMTHfhvegPU48cyI6K2kzaK9j2Va/labhTA==",
+    "Microsoft.ML.DataView/3.0.0-preview.23266.6": {
+      "sha512": "PIlJOSZInY0/iSQbzYG9PjZ9XsknMmfGfOgatlUUtTwtAUwiZCZLq8+XE/vDsbWDBQucl9qe+RhvCQqovMUKHg==",
       "type": "package",
-      "path": "microsoft.ml.dataview/2.0.1",
+      "path": "microsoft.ml.dataview/3.0.0-preview.23266.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -447,7 +447,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.ML.DataView.dll",
         "lib/netstandard2.0/Microsoft.ML.DataView.xml",
-        "microsoft.ml.dataview.2.0.1.nupkg.sha512",
+        "microsoft.ml.dataview.3.0.0-preview.23266.6.nupkg.sha512",
         "microsoft.ml.dataview.nuspec",
         "mlnetlogo.png"
       ]
@@ -637,22 +637,24 @@
         "system.io.nuspec"
       ]
     },
-    "System.Memory/4.5.3": {
-      "sha512": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
+    "System.Memory/4.5.5": {
+      "sha512": "XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
       "type": "package",
-      "path": "system.memory/4.5.3",
+      "path": "system.memory/4.5.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Memory.dll",
+        "lib/net461/System.Memory.xml",
         "lib/netcoreapp2.1/_._",
         "lib/netstandard1.1/System.Memory.dll",
         "lib/netstandard1.1/System.Memory.xml",
         "lib/netstandard2.0/System.Memory.dll",
         "lib/netstandard2.0/System.Memory.xml",
         "ref/netcoreapp2.1/_._",
-        "system.memory.4.5.3.nupkg.sha512",
+        "system.memory.4.5.5.nupkg.sha512",
         "system.memory.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -1138,10 +1140,10 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "System.Threading.Tasks.Dataflow/7.0.0": {
-      "sha512": "BmSJ4b0e2nlplV/RdWVxvH7WECTHACofv06dx/JwOYc0n56eK1jIWdQKNYYsReSO4w8n1QA5stOzSQcfaVBkJg==",
+    "System.Threading.Tasks.Dataflow/8.0.0-preview.4.23259.5": {
+      "sha512": "nKVI4e1b1wvLeE30I2epCq0VbauSUjSHXONv90vozUb1Ou9xBMcRf64GFJ5yTAlmHTqaoFYMwZCR/R0jvcnF6w==",
       "type": "package",
-      "path": "system.threading.tasks.dataflow/7.0.0",
+      "path": "system.threading.tasks.dataflow/8.0.0-preview.4.23259.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1158,25 +1160,28 @@
         "lib/net6.0/System.Threading.Tasks.Dataflow.xml",
         "lib/net7.0/System.Threading.Tasks.Dataflow.dll",
         "lib/net7.0/System.Threading.Tasks.Dataflow.xml",
+        "lib/net8.0/System.Threading.Tasks.Dataflow.dll",
+        "lib/net8.0/System.Threading.Tasks.Dataflow.xml",
         "lib/netstandard2.0/System.Threading.Tasks.Dataflow.dll",
         "lib/netstandard2.0/System.Threading.Tasks.Dataflow.xml",
         "lib/netstandard2.1/System.Threading.Tasks.Dataflow.dll",
         "lib/netstandard2.1/System.Threading.Tasks.Dataflow.xml",
-        "system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
+        "system.threading.tasks.dataflow.8.0.0-preview.4.23259.5.nupkg.sha512",
         "system.threading.tasks.dataflow.nuspec",
         "useSharedDesignerContext.txt"
       ]
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0": [
-      "Microsoft.ML >= 2.0.1",
+    "net8.0": [
+      "Microsoft.ML >= 3.0.0-preview.23266.6",
       "Newtonsoft.Json >= 13.0.3",
-      "System.Threading.Tasks.Dataflow >= 7.0.0"
+      "System.Threading.Tasks.Dataflow >= 8.0.0-preview.4.23259.5"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bart\\.nuget\\packages\\": {}
+    "C:\\Users\\Bart\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -1187,20 +1192,25 @@
       "packagesPath": "C:\\Users\\Bart\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\Bart\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -1211,12 +1221,12 @@
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.ML": {
             "target": "Package",
-            "version": "[2.0.1, )"
+            "version": "[3.0.0-preview.23266.6, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -1224,7 +1234,7 @@
           },
           "System.Threading.Tasks.Dataflow": {
             "target": "Package",
-            "version": "[7.0.0, )"
+            "version": "[8.0.0-preview.4.23259.5, )"
           }
         },
         "imports": [
@@ -1243,7 +1253,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.4.23260.5\\RuntimeIdentifierGraph.json"
       }
     }
   }
