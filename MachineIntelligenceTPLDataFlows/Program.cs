@@ -10,6 +10,7 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
 using Newtonsoft.Json;
+using Microsoft.SemanticKernel.Text;
 
 namespace MachineIntelligenceTPLDataFlows
 
@@ -31,6 +32,9 @@ namespace MachineIntelligenceTPLDataFlows
 
             // SET language to English
             StopWordsRemovingEstimator.Language language = StopWordsRemovingEstimator.Language.English;
+
+            TextChunker.SplitPlainTextLines(string.Empty, 1024);
+
 
             // SET the max degree of parallelism
             // Note: Default is to use 75% of the workstation or server cores.
@@ -86,6 +90,17 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.WriteLine("Downloading '{0}'...", enrichedDocument.BookTitle);
 
                 enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
+
+                return enrichedDocument;
+            }, executionDataFlowOptions);
+
+            // TPL: Download the requested Gutenberg book resources as a text string
+            var chunkedLinesEnrichment = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Chunking text for '{0}'...", enrichedDocument.BookTitle);
+
+                enrichedDocument.TextLines = TextChunker.SplitPlainTextLines(enrichedDocument.Text, 1024);
 
                 return enrichedDocument;
             }, executionDataFlowOptions);
@@ -185,7 +200,8 @@ namespace MachineIntelligenceTPLDataFlows
             // Build the pipeline workflow graph
             var enrichmentPipeline = new BufferBlock<EnrichedDocument>(dataFlowBlockOptions);
             enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
-            downloadBookText.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
+            downloadBookText.LinkTo(chunkedLinesEnrichment, dataFlowLinkOptions);
+            chunkedLinesEnrichment.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
             machineLearningEnrichment.LinkTo(textAnalytics, dataFlowLinkOptions);
             textAnalytics.LinkTo(convertToJson, dataFlowLinkOptions);
             convertToJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);

@@ -14,6 +14,7 @@ namespace MachineIntelligenceTPLDataFlows.Classes
         // Enrichment
         public int TextLength { get; set; }
         public string Text { get; set; }
+        public List<string> TextLines { get; set; } = new List<string>(100);
         public string NormalizedText { get; set; }
         public string[] WordTokens { get; set; }
         public string[] WordTokensRemovedStopWords { get; set; }

@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[3.0.0-preview.23266.6, )"
             },
+            "Microsoft.SemanticKernel": {
+              "target": "Package",
+              "version": "[0.15.230609.2-preview, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"

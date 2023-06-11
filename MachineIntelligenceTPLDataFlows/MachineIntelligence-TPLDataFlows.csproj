@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.SemanticKernel" Version="0.15.230609.2-preview" />
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="8.0.0-preview.4.23259.5" />
     <PackageReference Include="Microsoft.ML" Version="3.0.0-preview.23266.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
