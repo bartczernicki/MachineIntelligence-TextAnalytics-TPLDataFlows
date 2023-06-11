@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Classes
+namespace MachineIntelligenceTPLDataFlows.Classes
 {
     public class EnrichedDocument : ProjectGutenbergBook
     {

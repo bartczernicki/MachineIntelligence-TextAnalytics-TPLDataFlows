@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-using Classes;
+using MachineIntelligenceTPLDataFlows.Classes;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
@@ -198,10 +198,7 @@ namespace MachineIntelligenceTPLDataFlows
         }
     }
 
-    public class TextData
-    {
-        public string Text { get; set; }
-    }
+
 
     public class TransformedTextData
     {

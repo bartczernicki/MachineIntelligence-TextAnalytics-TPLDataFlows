@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Classes
+namespace MachineIntelligenceTPLDataFlows.Classes
 {
     public class ProjectGutenbergBook
     {
