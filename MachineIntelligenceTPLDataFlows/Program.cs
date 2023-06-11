@@ -44,19 +44,22 @@ namespace MachineIntelligenceTPLDataFlows
 
             // SET the Data Flow Block Options
             // This controls the data flow from the Producer level
+            // Note: This example is making web requests directly to Project Gutenberg
+            // Note: If this is set to high, you may receive errors. In production, you would ensure request througput
             var dataFlowBlockOptions = new DataflowBlockOptions {
-                BoundedCapacity = 5,
-                MaxMessagesPerTask = 5 };
+                BoundedCapacity = 10,
+                MaxMessagesPerTask = 10 };
 
             // SET the data flow pipeline options
-            // Note: Set MaxMessages to the number of books to process
+            // Note: OPTIONAL Set MaxMessages to the number of books to process
             // Note: For example, setting MaxMessages to 2 will run only two books through the pipeline
+            // Note: Set MaxMessages to 1 to process in sequence
             var dataFlowLinkOptions = new DataflowLinkOptions {
                 PropagateCompletion = true,
                 //MaxMessages = 1
             };
 
-
+            // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books
             static async Task ProduceGutenbergBooks(BufferBlock<EnrichedDocument> queue,
                 IEnumerable<ProjectGutenbergBook> projectGutenbergBooks)
             {
@@ -76,7 +79,7 @@ namespace MachineIntelligenceTPLDataFlows
                 queue.Complete();
             }
 
-            // Download the requested Gutenberg book resources as a string.
+            // TPL: Download the requested Gutenberg book resources as a text string
             var downloadBookText = new TransformBlock<EnrichedDocument, EnrichedDocument>(async enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -87,7 +90,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             }, executionDataFlowOptions);
 
-            // Performs Machine Learning on the book texts
+            // TPL: Performs text Machine Learning on the book texts
             var machineLearningEnrichment = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -118,7 +121,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             }, executionDataFlowOptions);
 
-            // Performs additional book analytics
+            // TPL: Performs additional book analytics
             var textAnalytics = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -136,7 +139,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             }, executionDataFlowOptions);
 
-            // Convert final enriched document to Json
+            // TPL: Convert final enriched document to Json
             var convertToJson = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -167,7 +170,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             });
 
-            // Prints out final information of enriched document
+            // TPL: Prints out final information of enriched document
             var printEnrichedDocument = new ActionBlock<EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Green;
