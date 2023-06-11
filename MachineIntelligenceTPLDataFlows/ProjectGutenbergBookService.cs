@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Classes;
 
 namespace MachineIntelligenceTPLDataFlows
 {
@@ -7,6 +8,8 @@ namespace MachineIntelligenceTPLDataFlows
     {
         public static List<ProjectGutenbergBook> GetBooks()
         {
+            // List of example hard-coded books from Project Gutenberg
+            // Oscar Wilde, Bram Stoker, Edgar Allen Poe
             var books = new List<ProjectGutenbergBook>
             {
                 // Oscar Wilde

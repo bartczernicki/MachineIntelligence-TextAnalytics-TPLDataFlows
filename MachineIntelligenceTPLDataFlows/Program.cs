@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Classes;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
@@ -171,13 +172,14 @@ namespace MachineIntelligenceTPLDataFlows
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\"{0}\" | Text Size: {1} | Word Count: {2} | Word Count Removed Stop Words: {3}",
-                   enrichedDocument.BookTitle, enrichedDocument.Text.Length.ToString(),
+                   enrichedDocument.ID,
+                   enrichedDocument.Text.Length.ToString(),
                    enrichedDocument.WordTokens.Length.ToString(),
                    enrichedDocument.WordTokensRemovedStopWords.Length.ToString());
             });
 
 
-            // Build the pipeline graph
+            // Build the pipeline workflow graph
             var enrichmentPipeline = new BufferBlock<EnrichedDocument>(dataFlowBlockOptions);
             enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
             downloadBookText.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
@@ -193,57 +195,6 @@ namespace MachineIntelligenceTPLDataFlows
 
             // Wait for the last block in the pipeline to process all messages.
             printEnrichedDocument.Completion.Wait();
-
-            //// Separates the specified text into an array of words.
-            //var createWordList = new TransformBlock<string, string[]>(text =>
-            //{
-            //    Console.WriteLine("Creating word list...");
-
-            //    var textData = new TextData { Text = text };
-            //    var textDataArray = new TextData[] { textData };
-
-            //    IDataView emptyDataView = mlContext.Data.LoadFromEnumerable(new List<TextData>());
-            //    EstimatorChain<StopWordsRemovingTransformer> textPipeline = mlContext.Transforms.Text
-            //        .NormalizeText("Text", caseMode: TextNormalizingEstimator.CaseMode.Lower, keepDiacritics: true, keepPunctuations: false, keepNumbers: false)
-            //        .Append(mlContext.Transforms.Text.TokenizeIntoWords("Words", "Text", separators: new[] { ' ' }))
-            //        .Append(mlContext.Transforms.Text.RemoveDefaultStopWords("WordsRemovedStopWords", "Words", language: language));
-            //    TransformerChain<StopWordsRemovingTransformer> textTransformer = textPipeline.Fit(emptyDataView);
-            //    PredictionEngine<TextData, TransformedTextData> predictionEngine = mlContext.Model.CreatePredictionEngine<TextData, TransformedTextData>(textTransformer);
-
-            //    //    var prediction = predictionEngine.Predict(textData);
-
-            //    var textDataView = mlContext.Data.LoadFromEnumerable<TextData>(textDataArray);
-
-            //    //var pipeline =
-            //    //    // One-stop shop to run the full text featurization.
-            //    //    mlContext.Transforms.Text.FeaturizeText("TextFeatures", "Text");
-            //    //var transformedData = pipeline.Fit(textDataView).Transform(textDataView);
-            //    //var test = transformedData.GetColumn<float[]>("TextFeatures").Take(10).ToArray();
-
-            //    var pipeline2 = mlContext.Transforms.Text
-            //             .NormalizeText("Text", caseMode: TextNormalizingEstimator.CaseMode.Lower, keepDiacritics: true, keepPunctuations: false, keepNumbers: false)
-            //            .Append(mlContext.Transforms.Text.TokenizeIntoWords("Words", "Text"))
-            //            .Append(mlContext.Transforms.Text.ApplyWordEmbedding("Features", "Words", WordEmbeddingEstimator.PretrainedModelKind.GloVe50D));
-            //    var transformedData2 = pipeline2.Fit(textDataView);
-
-            //    var predictionEngine2 = mlContext.Model.CreatePredictionEngine<TextData,
-            //        TransformedTextData>(transformedData2);
-            //    // Call the prediction API to convert the text into embedding vector.
-            //    var data2 = new TextData
-            //    {
-            //        Text = "This is a great product. I would " +
-            //        "like to buy it again."
-            //    };
-            //    var prediction2 = predictionEngine2.Predict(data2);
-
-            //    // Remove common punctuation by replacing all non-letter characters 
-            //    // with a space character.
-            //    char[] tokens = text.Select(c => char.IsLetter(c) ? c : ' ').ToArray();
-            //    text = new string(tokens);
-
-            //    // Separate the text into an array of words.
-            //    return text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            //}, options);
         }
     }
 
