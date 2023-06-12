@@ -10,6 +10,12 @@ namespace MachineIntelligenceTPLDataFlows.Classes
         public new string Author { get; set; }
         public new string BookTitle { get; set; }
         public new string Url { get; set; }
+        public string JsonFileName => this.Author.Replace(" ", string.Empty) + "-" +
+                        this.BookTitle
+                        .Replace(" ", string.Empty)
+                        .Replace("'", string.Empty)
+                        .Replace(":", string.Empty)
+                        + ".json";
 
         // Enrichment - Order of properties is specific so the properties don't get lost in JSON with large amount of text
         public int TextLength { get; set; }

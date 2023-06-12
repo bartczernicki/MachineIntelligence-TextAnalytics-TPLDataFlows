@@ -12,6 +12,7 @@ using Microsoft.ML.Transforms.Text;
 using Newtonsoft.Json;
 using Microsoft.SemanticKernel.Text;
 using SharpToken;
+using System.Diagnostics;
 
 namespace MachineIntelligenceTPLDataFlows
 
@@ -20,7 +21,11 @@ namespace MachineIntelligenceTPLDataFlows
     {
         static void Main(string[] args)
         {
-            Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows";
+            Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows & Vector Embeddings";
+
+            // START the timer
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
             // CONFIG 
             // Instantiate new ML.NET Context
@@ -28,13 +33,13 @@ namespace MachineIntelligenceTPLDataFlows
             var mlContext = new MLContext(100);
 
             // GET Current Environment Folder
+            // Note: This will have the JSON documents from the checked-in code and overwrite each time run
+            // Note: Can be used for offline mode in-stead of downloading (not to get your IP blocked), or use VPN
             var currentEnrichmentFolder = System.IO.Path.Combine(Environment.CurrentDirectory, "EnrichedDocuments");
             System.IO.Directory.CreateDirectory(currentEnrichmentFolder);
 
             // SET language to English
             StopWordsRemovingEstimator.Language language = StopWordsRemovingEstimator.Language.English;
-
-            TextChunker.SplitPlainTextLines(string.Empty, 1024);
 
 
             // SET the max degree of parallelism
@@ -70,7 +75,7 @@ namespace MachineIntelligenceTPLDataFlows
             {
                 foreach (var projectGutenbergBook in projectGutenbergBooks)
                 {
-                    // Add baseline information from the document
+                    // Add baseline information from the document book list
                     var enrichedDocument = new EnrichedDocument
                     {
                         BookTitle = projectGutenbergBook.BookTitle,
@@ -84,7 +89,7 @@ namespace MachineIntelligenceTPLDataFlows
                 queue.Complete();
             }
 
-            // TPL: Download the requested Gutenberg book resources as a text string
+            // TPL Block: Download the requested Gutenberg book resources as a text string
             var downloadBookText = new TransformBlock<EnrichedDocument, EnrichedDocument>(async enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -95,7 +100,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             }, executionDataFlowOptions);
 
-            // TPL: Download the requested Gutenberg book resources as a text string
+            // TPL Block: Download the requested Gutenberg book resources as a text string
             var chunkedLinesEnrichment = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -109,7 +114,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             }, executionDataFlowOptions);
 
-            // TPL: Performs text Machine Learning on the book texts
+            // TPL Block: Performs text Machine Learning on the book texts
             var machineLearningEnrichment = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -140,7 +145,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             }, executionDataFlowOptions);
 
-            // TPL: Performs additional book analytics
+            // TPL Block: Performs additional book analytics
             var textAnalytics = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -158,27 +163,17 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             }, executionDataFlowOptions);
 
-            // TPL: Convert final enriched document to Json
+            // TPL Block: Convert final enriched document to Json
             var convertToJson = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Converting '{0}' to JSON file", enrichedDocument.BookTitle);
 
-                // Convert to JSON String
+                // Convert to JSON String (all the public properties)
                 var jsonString = JsonConvert.SerializeObject(enrichedDocument);
 
-                // Remove special characters from book titles
-                // Author + Book Title
-                var jsonBookFileName =
-                    enrichedDocument.Author.Replace(" ", string.Empty) + "-" +
-                    enrichedDocument.BookTitle
-                        .Replace(" ", string.Empty)
-                        .Replace("'", string.Empty)
-                        .Replace(":", string.Empty)
-                        + ".json";
-
                 // Create the book file path
-                var jsonBookFilePath = Path.Combine(currentEnrichmentFolder, jsonBookFileName);
+                var jsonBookFilePath = Path.Combine(currentEnrichmentFolder, enrichedDocument.JsonFileName);
 
                 // Write out JSON string to local storage
                 using (StreamWriter outputFile = new StreamWriter(jsonBookFilePath))
@@ -189,7 +184,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             });
 
-            // TPL: Prints out final information of enriched document
+            // TPL Block: Prints out final information of enriched document
             var printEnrichedDocument = new ActionBlock<EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -201,7 +196,7 @@ namespace MachineIntelligenceTPLDataFlows
             });
 
 
-            // Build the pipeline workflow graph
+            // TPL Pipeline: Build the pipeline workflow graph from the TPL Blocks
             var enrichmentPipeline = new BufferBlock<EnrichedDocument>(dataFlowBlockOptions);
             enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
             downloadBookText.LinkTo(chunkedLinesEnrichment, dataFlowLinkOptions);
@@ -210,7 +205,7 @@ namespace MachineIntelligenceTPLDataFlows
             textAnalytics.LinkTo(convertToJson, dataFlowLinkOptions);
             convertToJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
 
-            // Start the producer by feeding it a list of books
+            // TPL: Start the producer by feeding it a list of books
             var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
 
             // Since this is an asynchronous Task process, wait for the producer to finish
@@ -218,6 +213,11 @@ namespace MachineIntelligenceTPLDataFlows
 
             // Wait for the last block in the pipeline to process all messages.
             printEnrichedDocument.Completion.Wait();
+
+            stopwatch.Stop();
+            // Print out duration of work
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Job Completed In: " + stopwatch.Elapsed.TotalSeconds);
         }
     }
 
