@@ -96,6 +96,12 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.WriteLine("Downloading '{0}'...", enrichedDocument.BookTitle);
 
                 enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
+                // remove the last part of the Project Gutenberg info to retrieve just the text
+                var indexOfBookEnd = enrichedDocument.Text.IndexOf("*** END OF THE PROJECT GUTENBERG EBOOK");
+                if (indexOfBookEnd > 0)
+                {
+                    enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("*** END OF THE PROJECT GUTENBERG EBOOK"));
+                }
 
                 return enrichedDocument;
             }, executionDataFlowOptions);
@@ -121,7 +127,7 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.WriteLine("Machine Learning enrichment for: " + enrichedDocument.BookTitle);
 
                 // Replace the text
-                enrichedDocument.Text = enrichedDocument.Text.Replace("\r\n", " ");
+                //enrichedDocument.Text = enrichedDocument.Text.Replace("\r\n", " ");
                 enrichedDocument.TextLength = enrichedDocument.Text.Length;
 
                 var textData = new TextData { Text = enrichedDocument.Text };
