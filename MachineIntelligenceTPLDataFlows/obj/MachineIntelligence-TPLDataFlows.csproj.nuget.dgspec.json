@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
+            "SharpToken": {
+              "target": "Package",
+              "version": "[1.0.28, )"
+            },
             "System.Threading.Tasks.Dataflow": {
               "target": "Package",
               "version": "[8.0.0-preview.4.23259.5, )"

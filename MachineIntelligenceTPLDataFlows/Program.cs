@@ -11,6 +11,7 @@ using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
 using Newtonsoft.Json;
 using Microsoft.SemanticKernel.Text;
+using SharpToken;
 
 namespace MachineIntelligenceTPLDataFlows
 
@@ -100,7 +101,10 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Chunking text for '{0}'...", enrichedDocument.BookTitle);
 
-                enrichedDocument.TextLines = TextChunker.SplitPlainTextLines(enrichedDocument.Text, 1024);
+                // Get the encoding for text-embedding-ada-002
+                var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
+                var encodedTokens = cl100kBaseEncoding.Encode(enrichedDocument.Text);
+                enrichedDocument.TokenLength = encodedTokens.Count;
 
                 return enrichedDocument;
             }, executionDataFlowOptions);

@@ -387,6 +387,15 @@
           }
         }
       },
+      "SharpToken/1.0.28": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SharpToken.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/SharpToken.dll": {}
+        }
+      },
       "System.CodeDom/4.5.0": {
         "type": "package",
         "compile": {
@@ -1051,6 +1060,21 @@
         "newtonsoft.json.13.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
+      ]
+    },
+    "SharpToken/1.0.28": {
+      "sha512": "PPlTJX9Dm7puLPPcl2wQEtZWOE1gsyE/ezTEupUXSY136INszqc8MpVKMdVBrEVJ28tv4tTJVjQ1207Pf37+kA==",
+      "type": "package",
+      "path": "sharptoken/1.0.28",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "lib/net6.0/SharpToken.dll",
+        "lib/netstandard2.0/SharpToken.dll",
+        "sharptoken.1.0.28.nupkg.sha512",
+        "sharptoken.nuspec"
       ]
     },
     "System.CodeDom/4.5.0": {
@@ -1947,6 +1971,7 @@
       "Microsoft.ML >= 3.0.0-preview.23266.6",
       "Microsoft.SemanticKernel >= 0.15.230609.2-preview",
       "Newtonsoft.Json >= 13.0.3",
+      "SharpToken >= 1.0.28",
       "System.Threading.Tasks.Dataflow >= 8.0.0-preview.4.23259.5"
     ]
   },
@@ -2006,6 +2031,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "SharpToken": {
+            "target": "Package",
+            "version": "[1.0.28, )"
           },
           "System.Threading.Tasks.Dataflow": {
             "target": "Package",
