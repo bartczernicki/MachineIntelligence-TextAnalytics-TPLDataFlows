@@ -15,4 +15,96 @@
   <ItemGroup>
     <Folder Include="EnrichedDocuments\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="EnrichedDocuments\BramStoker-Dracula.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\BramStoker-DraculasGuest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\BramStoker-FamousImpostors.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\BramStoker-TheJewelofSevenStars.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\BramStoker-TheLadyoftheShroud.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\BramStoker-TheLairoftheWhiteWorm.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\BramStoker-TheMan.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\BramStoker-TheMysteryoftheSea.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-EdgarAllanPoesCompletePoeticalWorks.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-EurekaAProsePoem.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-SelectionsfromPoe.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheBells,andOtherPoems.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheCaskofAmontillado.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheFalloftheHouseofUsher.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheMaskofRedDeath.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheNarrativeofArthurGordonPymofNantucket.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheRaven.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheWorksofEdgarAllenPoeVolume1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheWorksofEdgarAllenPoeVolume2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheWorksofEdgarAllenPoeVolume3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheWorksofEdgarAllenPoeVolume4.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\EdgarAllenPoe-TheWorksofEdgarAllenPoeVolume5.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\OscarWilde-AnIdealHusband.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\OscarWilde-DeProfundis.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\OscarWilde-LadyWindermeresFan.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\OscarWilde-LordArthurSavilesCrime.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\OscarWilde-TheCantervilleGhost.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\OscarWilde-TheHappyPrinceandOtherTales.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\OscarWilde-TheImportanceofBeingEarnestATrivialComedyforSeriousPeople.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnrichedDocuments\OscarWilde-ThePictureofDorianGray.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
