@@ -57,6 +57,7 @@ namespace MachineIntelligenceTPLDataFlows
             // Note: This example is making web requests directly to Project Gutenberg
             // Note: If this is set to high, you may receive errors. In production, you would ensure request througput
             var dataFlowBlockOptions = new DataflowBlockOptions {
+                EnsureOrdered = true, // Ensures order, this is purely optional
                 BoundedCapacity = 10,
                 MaxMessagesPerTask = 10 };
 

@@ -5,7 +5,7 @@ namespace MachineIntelligenceTPLDataFlows.Classes
 {
     public class EnrichedDocument : ProjectGutenbergBook
     {
-        // Source
+        // SOURCE
         public string ID => this.Author + "-" + this.BookTitle;
         public new string Author { get; set; }
         public new string BookTitle { get; set; }
@@ -17,7 +17,7 @@ namespace MachineIntelligenceTPLDataFlows.Classes
                         .Replace(":", string.Empty)
                         + ".json";
 
-        // Enrichment - Order of properties is specific so the properties don't get lost in JSON with large amount of text
+        // ENRICHMENT - Order of properties is specific so the properties don't get lost in JSON with large amount of text
         public int TextLength { get; set; }
         public int TokenLength { get; set; }
         public string Text { get; set; }
