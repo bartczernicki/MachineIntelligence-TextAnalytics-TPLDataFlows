@@ -636,7 +636,7 @@
           }
         }
       },
-      "System.Threading.Tasks.Dataflow/8.0.0-preview.4.23259.5": {
+      "System.Threading.Tasks.Dataflow/8.0.0-preview.5.23280.8": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.Threading.Tasks.Dataflow.dll": {
@@ -1897,10 +1897,10 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "System.Threading.Tasks.Dataflow/8.0.0-preview.4.23259.5": {
-      "sha512": "nKVI4e1b1wvLeE30I2epCq0VbauSUjSHXONv90vozUb1Ou9xBMcRf64GFJ5yTAlmHTqaoFYMwZCR/R0jvcnF6w==",
+    "System.Threading.Tasks.Dataflow/8.0.0-preview.5.23280.8": {
+      "sha512": "OmeYpYClrGbR0L7NWOqiFfdHIabJ+zdTtqerNRr3H1mtlRdZzxpJfs3a/xFEnwPbzjckl0g0uAtLkcG0CFFzng==",
       "type": "package",
-      "path": "system.threading.tasks.dataflow/8.0.0-preview.4.23259.5",
+      "path": "system.threading.tasks.dataflow/8.0.0-preview.5.23280.8",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1923,7 +1923,7 @@
         "lib/netstandard2.0/System.Threading.Tasks.Dataflow.xml",
         "lib/netstandard2.1/System.Threading.Tasks.Dataflow.dll",
         "lib/netstandard2.1/System.Threading.Tasks.Dataflow.xml",
-        "system.threading.tasks.dataflow.8.0.0-preview.4.23259.5.nupkg.sha512",
+        "system.threading.tasks.dataflow.8.0.0-preview.5.23280.8.nupkg.sha512",
         "system.threading.tasks.dataflow.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1972,7 +1972,7 @@
       "Microsoft.SemanticKernel >= 0.15.230609.2-preview",
       "Newtonsoft.Json >= 13.0.3",
       "SharpToken >= 1.0.28",
-      "System.Threading.Tasks.Dataflow >= 8.0.0-preview.4.23259.5"
+      "System.Threading.Tasks.Dataflow >= 8.0.0-preview.5.23280.8"
     ]
   },
   "packageFolders": {
@@ -2038,7 +2038,7 @@
           },
           "System.Threading.Tasks.Dataflow": {
             "target": "Package",
-            "version": "[8.0.0-preview.4.23259.5, )"
+            "version": "[8.0.0-preview.5.23280.8, )"
           }
         },
         "imports": [

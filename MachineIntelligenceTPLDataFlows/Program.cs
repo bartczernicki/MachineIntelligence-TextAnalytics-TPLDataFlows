@@ -99,11 +99,21 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.WriteLine("Downloading '{0}'...", enrichedDocument.BookTitle);
 
                 enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
-                // remove the last part of the Project Gutenberg info to retrieve just the text
-                var indexOfBookEnd = enrichedDocument.Text.IndexOf("*** END OF THE PROJECT GUTENBERG EBOOK");
+
+                // Remove the last part of the Project Gutenberg info to retrieve just the text
+                var indexOfBookEnd = enrichedDocument.Text.IndexOf("***END OF THE PROJECT GUTENBERG EBOOK");
                 if (indexOfBookEnd > 0)
                 {
-                    enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("*** END OF THE PROJECT GUTENBERG EBOOK"));
+                    enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("***END OF THE PROJECT GUTENBERG EBOOK"));
+                }
+
+                if (indexOfBookEnd < 0)
+                {
+                    indexOfBookEnd = enrichedDocument.Text.IndexOf("*** END OF THE PROJECT GUTENBERG EBOOK");
+                    if (indexOfBookEnd > 0)
+                    {
+                        enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("*** END OF THE PROJECT GUTENBERG EBOOK"));
+                    }
                 }
 
                 return enrichedDocument;

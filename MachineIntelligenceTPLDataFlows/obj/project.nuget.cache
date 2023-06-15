@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VKAlF3jrofrI3qFCw+rmtbnxqj6JlyLKq1qacJnYyz3ta14GxJ9JIUM73NSoodQCFAo2GDKlykPRWa9oXYKnNg==",
+  "dgSpecHash": "/C031FXKlx9iZmfRw4RqPZz3wLbP0tRmHQjArItKKlFWPylHoQVdctMvY4OylKYg7AJ9t86RZHiPzhZlJ/Hj+g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
   "expectedPackageFiles": [
@@ -39,7 +39,7 @@
     "C:\\Users\\Bart\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512",
     "C:\\Users\\Bart\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512",
     "C:\\Users\\Bart\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\Bart\\.nuget\\packages\\system.threading.tasks.dataflow\\8.0.0-preview.4.23259.5\\system.threading.tasks.dataflow.8.0.0-preview.4.23259.5.nupkg.sha512",
+    "C:\\Users\\Bart\\.nuget\\packages\\system.threading.tasks.dataflow\\8.0.0-preview.5.23280.8\\system.threading.tasks.dataflow.8.0.0-preview.5.23280.8.nupkg.sha512",
     "C:\\Users\\Bart\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
   "logs": []
