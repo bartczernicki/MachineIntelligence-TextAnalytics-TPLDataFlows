@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Microsoft.SemanticKernel.Text;
 using SharpToken;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace MachineIntelligenceTPLDataFlows
 
@@ -26,6 +27,7 @@ namespace MachineIntelligenceTPLDataFlows
             // START the timer
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
+            var tokenLength = 0;
 
             // CONFIG 
             // Instantiate new ML.NET Context
@@ -55,9 +57,9 @@ namespace MachineIntelligenceTPLDataFlows
             // SET the Data Flow Block Options
             // This controls the data flow from the Producer level
             // Note: This example is making web requests directly to Project Gutenberg
-            // Note: If this is set to high, you may receive errors. In production, you would ensure request througput
+            // Note: If this is set to high, you may receive errors. In production, you would ensure request throughput
             var dataFlowBlockOptions = new DataflowBlockOptions {
-                EnsureOrdered = true, // Ensures order, this is purely optional
+                EnsureOrdered = true, // Ensures order, this is purely optional but messages will flow in order
                 BoundedCapacity = 10,
                 MaxMessagesPerTask = 10 };
 
@@ -117,6 +119,7 @@ namespace MachineIntelligenceTPLDataFlows
                 var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
                 var encodedTokens = cl100kBaseEncoding.Encode(enrichedDocument.Text);
                 enrichedDocument.TokenLength = encodedTokens.Count;
+                tokenLength += encodedTokens.Count;
 
                 return enrichedDocument;
             }, executionDataFlowOptions);
@@ -144,20 +147,12 @@ namespace MachineIntelligenceTPLDataFlows
 
                 var prediction = predictionEngine.Predict(textData);
 
-                // Set Enriched document variables
+                // Set ML Enriched document variables
                 enrichedDocument.NormalizedText = prediction.NormalizedText;
                 enrichedDocument.WordTokens = prediction.WordTokens;
                 enrichedDocument.WordTokensRemovedStopWords = prediction.WordTokensRemovedStopWords;
 
-                return enrichedDocument;
-            }, executionDataFlowOptions);
-
-            // TPL Block: Performs additional book analytics
-            var textAnalytics = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
-            {
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Text Analytics For: " + enrichedDocument.BookTitle);
-
+                // Calculate Stop Words
                 var result = enrichedDocument.WordTokensRemovedStopWords.AsParallel()
                     .Where(word => word.Length > 3)
                     .GroupBy(x => x)
@@ -208,8 +203,7 @@ namespace MachineIntelligenceTPLDataFlows
             enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
             downloadBookText.LinkTo(chunkedLinesEnrichment, dataFlowLinkOptions);
             chunkedLinesEnrichment.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
-            machineLearningEnrichment.LinkTo(textAnalytics, dataFlowLinkOptions);
-            textAnalytics.LinkTo(convertToJson, dataFlowLinkOptions);
+            machineLearningEnrichment.LinkTo(convertToJson, dataFlowLinkOptions);
             convertToJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
 
             // TPL: Start the producer by feeding it a list of books
@@ -224,7 +218,8 @@ namespace MachineIntelligenceTPLDataFlows
             stopwatch.Stop();
             // Print out duration of work
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Job Completed In: " + stopwatch.Elapsed.TotalSeconds);
+            Console.WriteLine("Job Completed In:  {0} seconds", + stopwatch.Elapsed.TotalSeconds);
+            Console.WriteLine("Total Text Tokens: " + tokenLength);
         }
     }
 
