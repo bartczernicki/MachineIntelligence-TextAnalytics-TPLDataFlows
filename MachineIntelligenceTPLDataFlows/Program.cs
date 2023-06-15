@@ -100,6 +100,22 @@ namespace MachineIntelligenceTPLDataFlows
 
                 enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
 
+                // Remove the beginning part of the Project Gutenberg info
+                var indexOfBookBeginning = enrichedDocument.Text.IndexOf("***START OF THE PROJECT GUTENBERG EBOOK");// + "***START OF THE PROJECT GUTENBERG EBOOK".Length;
+                if (indexOfBookBeginning > 0)
+                {
+                    enrichedDocument.Text = enrichedDocument.Text.Substring(indexOfBookBeginning, enrichedDocument.Text.Length - indexOfBookBeginning);
+                }
+
+                if (indexOfBookBeginning < 0)
+                {
+                    indexOfBookBeginning = enrichedDocument.Text.IndexOf("*** START OF THE PROJECT GUTENBERG EBOOK") + "*** START OF THE PROJECT GUTENBERG EBOOK".Length;
+                    if (indexOfBookBeginning > 0)
+                    {
+                        enrichedDocument.Text = enrichedDocument.Text.Substring(indexOfBookBeginning, enrichedDocument.Text.Length - indexOfBookBeginning);
+                    }
+                }
+
                 // Remove the last part of the Project Gutenberg info to retrieve just the text
                 var indexOfBookEnd = enrichedDocument.Text.IndexOf("***END OF THE PROJECT GUTENBERG EBOOK");
                 if (indexOfBookEnd > 0)
@@ -127,7 +143,9 @@ namespace MachineIntelligenceTPLDataFlows
 
                 // Get the encoding for text-embedding-ada-002
                 var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
+                // Return the optimal text encodings, this is if tokens can be split perfect (no overlap)
                 var encodedTokens = cl100kBaseEncoding.Encode(enrichedDocument.Text);
+
                 enrichedDocument.TokenLength = encodedTokens.Count;
                 tokenLength += encodedTokens.Count;
 
@@ -171,6 +189,10 @@ namespace MachineIntelligenceTPLDataFlows
                     .ToList();
 
                 enrichedDocument.TopWordCounts = result;
+
+                // Calculate the Paragraphs based on TokenCount
+                var enrichedDocumentLines = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextLines(enrichedDocument.Text, 200);
+                enrichedDocument.Paragraphs = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextParagraphs(enrichedDocumentLines, 600);
 
                 return enrichedDocument;
             }, executionDataFlowOptions);
