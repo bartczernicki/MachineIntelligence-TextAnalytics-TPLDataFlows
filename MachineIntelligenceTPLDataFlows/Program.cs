@@ -1,28 +1,40 @@
-﻿using System;
+﻿using Azure.AI.OpenAI;
+using MachineIntelligenceTPLDataFlows.Classes;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using Microsoft.ML;
+using Microsoft.ML.Data;
+using Microsoft.ML.Transforms.Text;
+using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Connectors.AI.OpenAI.TextEmbedding;
+using Microsoft.SemanticKernel.Memory;
+using Microsoft.SemanticKernel.Reliability;
+using Newtonsoft.Json;
+using SharpToken;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-using MachineIntelligenceTPLDataFlows.Classes;
-using Microsoft.ML;
-using Microsoft.ML.Data;
-using Microsoft.ML.Transforms.Text;
-using Newtonsoft.Json;
-using Microsoft.SemanticKernel.Text;
-using SharpToken;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 
 namespace MachineIntelligenceTPLDataFlows
 
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows & Vector Embeddings";
+
+            //var connectionString = "Data Source=DESKTOP-PQTKU3M;Initial Catalog = ProjectGutenberg;Integrated Security=SSPI; TrustServerCertificate=true";
+            ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+            IConfiguration configuration = configurationBuilder.AddUserSecrets<Program>().Build();
+            var connectionString = configuration.GetSection("SQL")["SqlConnection"];
+            var openAIAPIKey = configuration.GetSection("OpenAI")["APIKey"];
+            var azureOpenAIAPIKey = configuration.GetSection("AzureOpenAI")["APIKey"];
 
             // START the timer
             Stopwatch stopwatch = new Stopwatch();
@@ -33,6 +45,10 @@ namespace MachineIntelligenceTPLDataFlows
             // Instantiate new ML.NET Context
             // Note: MlContext is thread-safe
             var mlContext = new MLContext(100);
+
+            // var openAIEmbeddingsGeneration = new OpenAITextEmbeddingGeneration("text-embedding-ada-002", openAIAPIKey);
+            var azureOpenAIClient = new OpenAIClient(
+                new Uri("https://openaiappliedai.openai.azure.com"), new Azure.AzureKeyCredential(azureOpenAIAPIKey));
 
             // GET Current Environment Folder
             // Note: This will have the JSON documents from the checked-in code and overwrite each time run
@@ -197,12 +213,55 @@ namespace MachineIntelligenceTPLDataFlows
                 return enrichedDocument;
             }, executionDataFlowOptions);
 
-            // TPL Block: Convert final enriched document to Json
-            var convertToJson = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
+            // TPL Block: Get OpenAI Embeddings
+            var retrieveEmbeddings = new TransformBlock<EnrichedDocument, EnrichedDocument>(async enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Converting '{0}' to JSON file", enrichedDocument.BookTitle);
+                Console.WriteLine("OpenAI Embeddings '{0}' processing", enrichedDocument.BookTitle);
 
+                foreach (var paragraph in enrichedDocument.Paragraphs)
+                {
+                    var embeddings = new EmbeddingsOptions(paragraph);
+                    var result = await azureOpenAIClient.GetEmbeddingsAsync("text-embedding-ada-002-v2", embeddings);
+                    var embeddingsVector = result.Value.Data[0].Embedding;
+                    enrichedDocument.ParagraphEmbeddings.Add(embeddingsVector.ToList());
+                }
+
+                return enrichedDocument;
+
+            }, executionDataFlowOptions);
+
+            // TPL Block: Convert final enriched document to Json
+            var persistToDatabaseAndJson = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Converting '{0}' to Database and JSON file", enrichedDocument.BookTitle);
+
+                // 1 - Save to SQL Server
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    for (int i = 0; i != enrichedDocument.Paragraphs.Count; i++)
+                    {
+                        using (SqlCommand command = new SqlCommand(string.Empty, connection))
+                        {
+                            command.CommandText = "INSERT INTO ProjectGutenbergBooks(Author, BookTitle, Url, Paragraph, ParagraphEmbeddings) VALUES(@author, @bookTitle, @url, @paragraph, @paragraphEmbeddings)";
+                            command.Parameters.AddWithValue("@author", enrichedDocument.Author);
+                            command.Parameters.AddWithValue("@bookTitle", enrichedDocument.BookTitle);
+                            command.Parameters.AddWithValue("@url", enrichedDocument.Url);
+                            command.Parameters.AddWithValue("@paragraph", enrichedDocument.Paragraphs[i]);
+                            var jsonStringParagraphEmbeddings = JsonConvert.SerializeObject(enrichedDocument.ParagraphEmbeddings[i]);
+                            command.Parameters.AddWithValue("@paragraphEmbeddings", jsonStringParagraphEmbeddings);
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    connection.Close();
+                }
+
+                // 2 - Write out JSON file
                 // Convert to JSON String (all the public properties)
                 var jsonString = JsonConvert.SerializeObject(enrichedDocument);
 
@@ -235,8 +294,9 @@ namespace MachineIntelligenceTPLDataFlows
             enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
             downloadBookText.LinkTo(chunkedLinesEnrichment, dataFlowLinkOptions);
             chunkedLinesEnrichment.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
-            machineLearningEnrichment.LinkTo(convertToJson, dataFlowLinkOptions);
-            convertToJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
+            machineLearningEnrichment.LinkTo(retrieveEmbeddings, dataFlowLinkOptions);
+            retrieveEmbeddings.LinkTo(persistToDatabaseAndJson, dataFlowLinkOptions);
+            persistToDatabaseAndJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
 
             // TPL: Start the producer by feeding it a list of books
             var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
