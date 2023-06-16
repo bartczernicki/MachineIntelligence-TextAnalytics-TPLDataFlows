@@ -5,10 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
-using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.Connectors.AI.OpenAI.TextEmbedding;
-using Microsoft.SemanticKernel.Memory;
-using Microsoft.SemanticKernel.Reliability;
 using Newtonsoft.Json;
 using SharpToken;
 using System;
@@ -121,7 +117,7 @@ namespace MachineIntelligenceTPLDataFlows
                 enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
 
                 // Remove the beginning part of the Project Gutenberg info
-                var indexOfBookBeginning = enrichedDocument.Text.IndexOf("***START OF THE PROJECT GUTENBERG EBOOK");// + "***START OF THE PROJECT GUTENBERG EBOOK".Length;
+                var indexOfBookBeginning = enrichedDocument.Text.IndexOf("GUTENBERG EBOOK") + "GUTENBERG EBOOK ".Length + enrichedDocument.BookTitle.Length;
                 if (indexOfBookBeginning > 0)
                 {
                     enrichedDocument.Text = enrichedDocument.Text.Substring(indexOfBookBeginning, enrichedDocument.Text.Length - indexOfBookBeginning);
@@ -129,7 +125,7 @@ namespace MachineIntelligenceTPLDataFlows
 
                 if (indexOfBookBeginning < 0)
                 {
-                    indexOfBookBeginning = enrichedDocument.Text.IndexOf("*** START OF THE PROJECT GUTENBERG EBOOK") + "*** START OF THE PROJECT GUTENBERG EBOOK".Length;
+                    indexOfBookBeginning = enrichedDocument.Text.IndexOf("GUTENBERG EBOOK") + "GUTENBERG EBOOK ".Length + enrichedDocument.BookTitle.Length;
                     if (indexOfBookBeginning > 0)
                     {
                         enrichedDocument.Text = enrichedDocument.Text.Substring(indexOfBookBeginning, enrichedDocument.Text.Length - indexOfBookBeginning);
@@ -137,18 +133,18 @@ namespace MachineIntelligenceTPLDataFlows
                 }
 
                 // Remove the last part of the Project Gutenberg info to retrieve just the text
-                var indexOfBookEnd = enrichedDocument.Text.IndexOf("***END OF THE PROJECT GUTENBERG EBOOK");
+                var indexOfBookEnd = enrichedDocument.Text.IndexOf("*** END OF");
                 if (indexOfBookEnd > 0)
                 {
-                    enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("***END OF THE PROJECT GUTENBERG EBOOK"));
+                    enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("***END OF"));
                 }
 
                 if (indexOfBookEnd < 0)
                 {
-                    indexOfBookEnd = enrichedDocument.Text.IndexOf("*** END OF THE PROJECT GUTENBERG EBOOK");
+                    indexOfBookEnd = enrichedDocument.Text.IndexOf("*** END OF");
                     if (indexOfBookEnd > 0)
                     {
-                        enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("*** END OF THE PROJECT GUTENBERG EBOOK"));
+                        enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("*** END OF"));
                     }
                 }
 
