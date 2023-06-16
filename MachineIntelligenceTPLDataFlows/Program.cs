@@ -47,8 +47,12 @@ namespace MachineIntelligenceTPLDataFlows
             var mlContext = new MLContext(100);
 
             // var openAIEmbeddingsGeneration = new OpenAITextEmbeddingGeneration("text-embedding-ada-002", openAIAPIKey);
-            var azureOpenAIClient = new OpenAIClient(
-                new Uri("https://openaiappliedai.openai.azure.com"), new Azure.AzureKeyCredential(azureOpenAIAPIKey));
+
+            // Azure OpenAI
+            //var openAIClient = new OpenAIClient(
+            //    new Uri("https://openaiappliedai.openai.azure.com"), new Azure.AzureKeyCredential(azureOpenAIAPIKey));
+            // OpenAI
+            var openAIClient = new OpenAIClient(openAIAPIKey);
 
             // GET Current Environment Folder
             // Note: This will have the JSON documents from the checked-in code and overwrite each time run
@@ -222,7 +226,7 @@ namespace MachineIntelligenceTPLDataFlows
                 foreach (var paragraph in enrichedDocument.Paragraphs)
                 {
                     var embeddings = new EmbeddingsOptions(paragraph);
-                    var result = await azureOpenAIClient.GetEmbeddingsAsync("text-embedding-ada-002-v2", embeddings);
+                    var result = await openAIClient.GetEmbeddingsAsync("text-embedding-ada-002", embeddings);
                     var embeddingsVector = result.Value.Data[0].Embedding;
                     enrichedDocument.ParagraphEmbeddings.Add(embeddingsVector.ToList());
                 }
