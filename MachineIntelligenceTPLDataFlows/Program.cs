@@ -136,15 +136,15 @@ namespace MachineIntelligenceTPLDataFlows
                 var indexOfBookEnd = enrichedDocument.Text.IndexOf("*** END OF");
                 if (indexOfBookEnd > 0)
                 {
-                    enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("***END OF"));
+                    enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("*** END OF"));
                 }
 
                 if (indexOfBookEnd < 0)
                 {
-                    indexOfBookEnd = enrichedDocument.Text.IndexOf("*** END OF");
+                    indexOfBookEnd = enrichedDocument.Text.IndexOf("***END OF");
                     if (indexOfBookEnd > 0)
                     {
-                        enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("*** END OF"));
+                        enrichedDocument.Text = enrichedDocument.Text.Substring(0, enrichedDocument.Text.IndexOf("***END OF"));
                     }
                 }
 
