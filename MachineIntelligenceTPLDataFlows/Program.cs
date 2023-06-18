@@ -27,7 +27,7 @@ namespace MachineIntelligenceTPLDataFlows
 
             ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
             IConfiguration configuration = configurationBuilder.AddUserSecrets<Program>().Build();
-            var connectionString = configuration.GetSection("SQL")["SqlConnection"];
+            string connectionString = configuration.GetSection("SQL")["SqlConnection"];
             var openAIAPIKey = configuration.GetSection("OpenAI")["APIKey"];
             var azureOpenAIAPIKey = configuration.GetSection("AzureOpenAI")["APIKey"];
 
@@ -88,33 +88,9 @@ namespace MachineIntelligenceTPLDataFlows
             };
 
             // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books
-            static async Task ProduceGutenbergBooks(BufferBlock<EnrichedDocument> queue,
+            async Task ProduceGutenbergBooks(BufferBlock<EnrichedDocument> queue,
                 IEnumerable<ProjectGutenbergBook> projectGutenbergBooks)
             {
-                foreach (var projectGutenbergBook in projectGutenbergBooks)
-                {
-                    // Add baseline information from the document book list
-                    var enrichedDocument = new EnrichedDocument
-                    {
-                        BookTitle = projectGutenbergBook.BookTitle,
-                        Author = projectGutenbergBook.Author,
-                        Url = projectGutenbergBook.Url
-                    };
-
-                    await queue.SendAsync(enrichedDocument);
-                }
-
-                queue.Complete();
-            }
-
-            // TPL Block: Create the database objects (tables, stored procedures)
-            var createDatabase = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
-            {
-                // RUN THIS SCRIPT ONCE
-
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Creating Project Gutenberg Database Scripts", enrichedDocument.BookTitle);
-
                 var currentSQLScriptsFolder = System.IO.Path.Combine(Environment.CurrentDirectory, "SQL");
                 var sqlScriptsFilePath = Path.Combine(currentSQLScriptsFolder, "ProjectGutenbergScripts.sql");
                 var scriptText = File.ReadAllText(sqlScriptsFilePath);
@@ -133,8 +109,21 @@ namespace MachineIntelligenceTPLDataFlows
                     connection.Close();
                 }
 
-                return enrichedDocument;
-            });
+                foreach (var projectGutenbergBook in projectGutenbergBooks)
+                {
+                    // Add baseline information from the document book list
+                    var enrichedDocument = new EnrichedDocument
+                    {
+                        BookTitle = projectGutenbergBook.BookTitle,
+                        Author = projectGutenbergBook.Author,
+                        Url = projectGutenbergBook.Url
+                    };
+
+                    await queue.SendAsync(enrichedDocument);
+                }
+
+                queue.Complete();
+            }
 
             // TPL Block: Download the requested Gutenberg book resources as a text string
             var downloadBookText = new TransformBlock<EnrichedDocument, EnrichedDocument>(async enrichedDocument =>
@@ -144,7 +133,7 @@ namespace MachineIntelligenceTPLDataFlows
 
                 enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
 
-                // Remove the beginning part of the Project Gutenberg info
+                // Remove the beginning part of the Project Gutenberg i`nfo
                 var indexOfBookBeginning = enrichedDocument.Text.IndexOf("GUTENBERG EBOOK") + "GUTENBERG EBOOK ".Length + enrichedDocument.BookTitle.Length;
                 if (indexOfBookBeginning > 0)
                 {
@@ -319,8 +308,7 @@ namespace MachineIntelligenceTPLDataFlows
 
             // TPL Pipeline: Build the pipeline workflow graph from the TPL Blocks
             var enrichmentPipeline = new BufferBlock<EnrichedDocument>(dataFlowBlockOptions);
-            enrichmentPipeline.LinkTo(createDatabase, dataFlowLinkOptions);
-            createDatabase.LinkTo(downloadBookText, dataFlowLinkOptions);
+            enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
             downloadBookText.LinkTo(chunkedLinesEnrichment, dataFlowLinkOptions);
             chunkedLinesEnrichment.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
             machineLearningEnrichment.LinkTo(retrieveEmbeddings, dataFlowLinkOptions);
