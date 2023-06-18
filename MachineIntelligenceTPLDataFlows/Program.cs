@@ -25,7 +25,6 @@ namespace MachineIntelligenceTPLDataFlows
         {
             Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows & Vector Embeddings";
 
-            //var connectionString = "Data Source=DESKTOP-PQTKU3M;Initial Catalog = ProjectGutenberg;Integrated Security=SSPI; TrustServerCertificate=true";
             ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
             IConfiguration configuration = configurationBuilder.AddUserSecrets<Program>().Build();
             var connectionString = configuration.GetSection("SQL")["SqlConnection"];
@@ -44,10 +43,10 @@ namespace MachineIntelligenceTPLDataFlows
 
             // var openAIEmbeddingsGeneration = new OpenAITextEmbeddingGeneration("text-embedding-ada-002", openAIAPIKey);
 
-            // Azure OpenAI
+            // Azure OpenAI (Azure not OpenAI)
             //var openAIClient = new OpenAIClient(
             //    new Uri("https://openaiappliedai.openai.azure.com"), new Azure.AzureKeyCredential(azureOpenAIAPIKey));
-            // OpenAI
+            // OpenAI Client (not Azure OpenAI)
             var openAIClient = new OpenAIClient(openAIAPIKey);
 
             // GET Current Environment Folder
@@ -84,7 +83,7 @@ namespace MachineIntelligenceTPLDataFlows
             // Note: For example, setting MaxMessages to 2 will run only two books through the pipeline
             // Note: Set MaxMessages to 1 to process in sequence
             var dataFlowLinkOptions = new DataflowLinkOptions {
-                PropagateCompletion = true,
+                PropagateCompletion = true, 
                 //MaxMessages = 1
             };
 
@@ -107,6 +106,35 @@ namespace MachineIntelligenceTPLDataFlows
 
                 queue.Complete();
             }
+
+            // TPL Block: Create the database objects (tables, stored procedures)
+            var createDatabase = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
+            {
+                // RUN THIS SCRIPT ONCE
+
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Creating Project Gutenberg Database Scripts", enrichedDocument.BookTitle);
+
+                var currentSQLScriptsFolder = System.IO.Path.Combine(Environment.CurrentDirectory, "SQL");
+                var sqlScriptsFilePath = Path.Combine(currentSQLScriptsFolder, "ProjectGutenbergScripts.sql");
+                var scriptText = File.ReadAllText(sqlScriptsFilePath);
+
+                // Execute script to create database objects (tables, stored procedures)
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(string.Empty, connection))
+                    {
+                        command.CommandText = scriptText;
+                        command.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+
+                return enrichedDocument;
+            });
 
             // TPL Block: Download the requested Gutenberg book resources as a text string
             var downloadBookText = new TransformBlock<EnrichedDocument, EnrichedDocument>(async enrichedDocument =>
@@ -231,7 +259,7 @@ namespace MachineIntelligenceTPLDataFlows
 
             }, executionDataFlowOptions);
 
-            // TPL Block: Convert final enriched document to Json
+            // TPL Block: Persist the document embeddings and the final enriched document to Json
             var persistToDatabaseAndJson = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -291,7 +319,8 @@ namespace MachineIntelligenceTPLDataFlows
 
             // TPL Pipeline: Build the pipeline workflow graph from the TPL Blocks
             var enrichmentPipeline = new BufferBlock<EnrichedDocument>(dataFlowBlockOptions);
-            enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
+            enrichmentPipeline.LinkTo(createDatabase, dataFlowLinkOptions);
+            createDatabase.LinkTo(downloadBookText, dataFlowLinkOptions);
             downloadBookText.LinkTo(chunkedLinesEnrichment, dataFlowLinkOptions);
             chunkedLinesEnrichment.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
             machineLearningEnrichment.LinkTo(retrieveEmbeddings, dataFlowLinkOptions);
@@ -302,7 +331,7 @@ namespace MachineIntelligenceTPLDataFlows
             var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
 
             // Since this is an asynchronous Task process, wait for the producer to finish
-            Task.WhenAll(enrichmentProducer);
+            await Task.WhenAll(enrichmentProducer);
 
             // Wait for the last block in the pipeline to process all messages.
             printEnrichedDocument.Completion.Wait();
@@ -313,16 +342,5 @@ namespace MachineIntelligenceTPLDataFlows
             Console.WriteLine("Job Completed In:  {0} seconds", + stopwatch.Elapsed.TotalSeconds);
             Console.WriteLine("Total Text Tokens: " + tokenLength);
         }
-    }
-
-
-
-    public class TransformedTextData
-    {
-        public string NormalizedText { get; set; }
-
-        public string[] WordTokens { get; set; }
-
-        public string[] WordTokensRemovedStopWords { get; set; }
     }
 }
