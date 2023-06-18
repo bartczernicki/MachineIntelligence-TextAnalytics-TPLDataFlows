@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
@@ -68,6 +69,7 @@ namespace MachineIntelligenceTPLDataFlows
                 // Use 75% of the cores, if hyper-threading multiply cores *2
                 Convert.ToInt32(Math.Ceiling((Environment.ProcessorCount * 0.75) *
                 (isHyperThreaded ? 2: 1)));
+            executionDataFlowOptions.MaxMessagesPerTask = 1;
 
             // SET the Data Flow Block Options
             // This controls the data flow from the Producer level
@@ -83,8 +85,8 @@ namespace MachineIntelligenceTPLDataFlows
             // Note: For example, setting MaxMessages to 2 will run only two books through the pipeline
             // Note: Set MaxMessages to 1 to process in sequence
             var dataFlowLinkOptions = new DataflowLinkOptions {
-                PropagateCompletion = true, 
-                //MaxMessages = 1
+                PropagateCompletion = true,
+                MaxMessages = -1
             };
 
             // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books
@@ -129,7 +131,7 @@ namespace MachineIntelligenceTPLDataFlows
             var downloadBookText = new TransformBlock<EnrichedDocument, EnrichedDocument>(async enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Downloading '{0}'...", enrichedDocument.BookTitle);
+                Console.WriteLine("Downloading: '{0}'", enrichedDocument.BookTitle);
 
                 enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
 
@@ -172,7 +174,7 @@ namespace MachineIntelligenceTPLDataFlows
             var chunkedLinesEnrichment = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Chunking text for '{0}'...", enrichedDocument.BookTitle);
+                Console.WriteLine("Chunking text for: '{0}'", enrichedDocument.BookTitle);
 
                 // Get the encoding for text-embedding-ada-002
                 var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
@@ -189,7 +191,7 @@ namespace MachineIntelligenceTPLDataFlows
             var machineLearningEnrichment = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Machine Learning enrichment for: " + enrichedDocument.BookTitle);
+                Console.WriteLine("Machine Learning enrichment for: '{0}'", enrichedDocument.BookTitle);
 
                 // Replace the text
                 //enrichedDocument.Text = enrichedDocument.Text.Replace("\r\n", " ");
@@ -234,7 +236,7 @@ namespace MachineIntelligenceTPLDataFlows
             var retrieveEmbeddings = new TransformBlock<EnrichedDocument, EnrichedDocument>(async enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("OpenAI Embeddings '{0}' processing", enrichedDocument.BookTitle);
+                Console.WriteLine("OpenAI Embeddings for: '{0}'", enrichedDocument.BookTitle);
 
                 foreach (var paragraph in enrichedDocument.Paragraphs)
                 {
@@ -252,7 +254,7 @@ namespace MachineIntelligenceTPLDataFlows
             var persistToDatabaseAndJson = new TransformBlock<EnrichedDocument, EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Converting '{0}' to Database and JSON file", enrichedDocument.BookTitle);
+                Console.WriteLine("Persisting to DB & converting to JSON file: '{0}'", enrichedDocument.BookTitle);
 
                 // 1 - Save to SQL Server
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -303,6 +305,8 @@ namespace MachineIntelligenceTPLDataFlows
                    enrichedDocument.Text.Length.ToString(),
                    enrichedDocument.WordTokens.Length.ToString(),
                    enrichedDocument.WordTokensRemovedStopWords.Length.ToString());
+
+                Console.ForegroundColor = ConsoleColor.Green;
             });
 
 
@@ -318,11 +322,13 @@ namespace MachineIntelligenceTPLDataFlows
             // TPL: Start the producer by feeding it a list of books
             var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
 
-            // Since this is an asynchronous Task process, wait for the producer to finish
+            // Since this is an asynchronous Task process, wait for the producer to finish putting all the messages on the queue
+            // Works when queue is limited and not a "forever" queue
             await Task.WhenAll(enrichmentProducer);
 
             // Wait for the last block in the pipeline to process all messages.
             printEnrichedDocument.Completion.Wait();
+
 
             stopwatch.Stop();
             // Print out duration of work

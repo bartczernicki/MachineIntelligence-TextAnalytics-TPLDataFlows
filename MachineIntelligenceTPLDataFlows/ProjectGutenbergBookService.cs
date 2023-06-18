@@ -149,9 +149,9 @@ namespace MachineIntelligenceTPLDataFlows
             };
 
             // for debugging return a single book
-            // return books.Take(1).ToList();
+            return books.Take(2).ToList();
 
-            return books;
+            //return books;
         }
     }
 }
