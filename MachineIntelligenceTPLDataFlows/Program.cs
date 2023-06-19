@@ -36,7 +36,8 @@ namespace MachineIntelligenceTPLDataFlows
             // START the timer
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            var tokenLength = 0;
+            var totalTokenLength = 0;
+            var totalTextLength = 0;
 
             // CONFIG 
             // Instantiate new ML.NET Context
@@ -187,7 +188,7 @@ namespace MachineIntelligenceTPLDataFlows
                 var encodedTokens = cl100kBaseEncoding.Encode(enrichedDocument.Text);
 
                 enrichedDocument.TokenLength = encodedTokens.Count;
-                tokenLength += encodedTokens.Count;
+                totalTokenLength += enrichedDocument.TokenLength;
 
                 return enrichedDocument;
             }, executionDataFlowOptions);
@@ -198,9 +199,8 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Machine Learning enrichment for: '{0}'", enrichedDocument.BookTitle);
 
-                // Replace the text
-                //enrichedDocument.Text = enrichedDocument.Text.Replace("\r\n", " ");
                 enrichedDocument.TextLength = enrichedDocument.Text.Length;
+                totalTextLength += enrichedDocument.TextLength;
 
                 var textData = new TextData { Text = enrichedDocument.Text };
                 var textDataArray = new TextData[] { textData };
@@ -412,7 +412,8 @@ namespace MachineIntelligenceTPLDataFlows
             // Print out duration of work
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Job Completed In:  {0} seconds", + stopwatch.Elapsed.TotalSeconds);
-            Console.WriteLine("Total Text Tokens: " + tokenLength);
+            Console.WriteLine("Total Text Tokens Processed: " + totalTokenLength.ToString("N0"));
+            Console.WriteLine("Total Text Length Processed: " + totalTextLength.ToString("N0"));
         }
     }
 }
