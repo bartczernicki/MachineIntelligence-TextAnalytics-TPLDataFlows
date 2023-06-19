@@ -55,7 +55,7 @@
             },
             "Microsoft.Extensions.Configuration.UserSecrets": {
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[8.0.0-preview.5.23280.8, )"
             },
             "Microsoft.ML": {
               "target": "Package",
@@ -63,11 +63,7 @@
             },
             "Microsoft.SemanticKernel": {
               "target": "Package",
-              "version": "[0.15.230609.2-preview, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.3, )"
+              "version": "[0.16.230615.1-preview, )"
             },
             "SharpToken": {
               "target": "Package",

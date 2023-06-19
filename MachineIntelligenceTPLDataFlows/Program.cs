@@ -5,16 +5,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
-using Microsoft.SemanticKernel.TemplateEngine.Blocks;
 using Newtonsoft.Json;
 using SharpToken;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.Arm;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
@@ -345,33 +346,67 @@ namespace MachineIntelligenceTPLDataFlows
             });
 
             // TPL Block: Search Vector Index
-            var searchVectorIndex = new ActionBlock<SearchMessage>(searchMessage =>
+            var retrieveEmbeddingsForSearch = new TransformBlock<SearchMessage, SearchMessage>(async searchMessage =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Searching Vector Index for '{0}", searchMessage.SearchString);
+                Console.WriteLine("Retrieving OpenAI Embeddings for: '{0}'", searchMessage.SearchString);
 
+                var embeddings = new EmbeddingsOptions(searchMessage.SearchString);
+                var result = await openAIClient.GetEmbeddingsAsync("text-embedding-ada-002", embeddings);
+                var embeddingsVector = result.Value.Data[0].Embedding;
+                searchMessage.EmbeddingsJsonString = System.Text.Json.JsonSerializer.Serialize(embeddingsVector);
+
+                return searchMessage;
+            });
+
+            // TPL Block: Search Vector Index
+            var searchVectorIndex = new ActionBlock<SearchMessage>(async searchMessage =>
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Searching Project Gutenberg Vector Index for '{0}'", searchMessage.SearchString);
+
+                var dataSet = new DataSet();
 
                 // Execute script to create database objects (tables, stored procedures)
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
                     using (SqlCommand command = new SqlCommand(string.Empty, connection))
                     {
                         command.CommandText = "spSearchProjectGutenbergVectors";
                         command.CommandType = System.Data.CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@jsonOpenAIEmbeddings", searchMessage.SearchString);
-                        command.ExecuteNonQuery();
+                        command.Parameters.AddWithValue("@jsonOpenAIEmbeddings", searchMessage.EmbeddingsJsonString);
+
+                        var sqlAdapter = new SqlDataAdapter(command);
+                        sqlAdapter.Fill(dataSet);
                     }
 
                     connection.Close();
                 }
+
+                var paragraphResults = dataSet.Tables[0].AsEnumerable()
+                    .Select(dataRow => new ParagraphResults
+                    {
+                        Id = dataRow.Field<int>("Id"),
+                        BookTitle = dataRow.Field<string>("BookTitle"),
+                        Author = dataRow.Field<string>("Author"),
+                        CosineDistance = dataRow.Field<double>("CosineDistance"),
+                        Paragraph = dataRow.Field<string>("Paragraph")
+                    }).ToList();
+
+                searchMessage.TopParagraphSearchResults = paragraphResults;
+
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("Top paragraph for search question: {0}. Cosine Distance {1} - {2}", searchMessage.SearchString, searchMessage.TopParagraphSearchResults[0].CosineDistance,
+                    searchMessage.TopParagraphSearchResults[0].Paragraph);
             });
 
             // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books
             async Task ProduceGutenbergBooksSearches(BufferBlock<SearchMessage> searchQueue,
                 IEnumerable<SearchMessage> searchMessages)
             {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Creating Book Search...");
 
                 foreach (var searchMessage in searchMessages)
                 {
@@ -406,6 +441,15 @@ namespace MachineIntelligenceTPLDataFlows
 
 
             // Search the Vectors Index
+            var searchMessagePipeline = new BufferBlock<SearchMessage>(dataFlowBlockOptions);
+            searchMessagePipeline.LinkTo(retrieveEmbeddingsForSearch, dataFlowLinkOptions);
+            retrieveEmbeddingsForSearch.LinkTo(searchVectorIndex, dataFlowLinkOptions);
+
+            // TPL: Start the producer by feeding it a list of books
+            var bookSearchesProducer = ProduceGutenbergBooksSearches(searchMessagePipeline, ProjectGutenbergBookService.GetQueries());
+            await Task.WhenAll(bookSearchesProducer);
+            // TPL: Wait for the last block in the pipeline to process all messages.
+            searchVectorIndex.Completion.Wait();
 
 
             stopwatch.Stop();

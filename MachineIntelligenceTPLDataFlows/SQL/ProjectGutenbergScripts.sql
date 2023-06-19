@@ -52,7 +52,7 @@ select
 into
 	#t
 from 
-    openjson(@jsonOpenAIEmbeddings, '$.data[0].embedding')
+    openjson(@jsonOpenAIEmbeddings, '$') -- '$.data[0].embedding')
 
 drop table if exists #results;
 select top(10)
@@ -81,8 +81,8 @@ select
     a.BookTitle,
 	a.Author,
 	a.Paragraph,
-    a.Url,
-    r.cosine_distance
+    --a.Url,
+    r.cosine_distance as CosineDistance
 from 
     #results r
 inner join 
