@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
+using Microsoft.SemanticKernel.TemplateEngine.Blocks;
 using Newtonsoft.Json;
 using SharpToken;
 using System;
@@ -97,18 +98,22 @@ namespace MachineIntelligenceTPLDataFlows
                 var sqlScriptsFilePath = Path.Combine(currentSQLScriptsFolder, "ProjectGutenbergScripts.sql");
                 var scriptText = File.ReadAllText(sqlScriptsFilePath);
 
-                // Execute script to create database objects (tables, stored procedures)
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                // SQL scripts that are multi-command split by GO
+                var sqlCommandsInScripts = scriptText.Split(new[] { "GO", "Go", "go" }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var commandText in sqlCommandsInScripts)
                 {
-                    connection.Open();
-
-                    using (SqlCommand command = new SqlCommand(string.Empty, connection))
+                    using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        command.CommandText = scriptText;
-                        command.ExecuteNonQuery();
-                    }
+                        connection.Open();
 
-                    connection.Close();
+                        using (SqlCommand command = new SqlCommand(string.Empty, connection))
+                        {
+                            command.CommandText = commandText;
+                            command.ExecuteNonQuery();
+                        }
+
+                        connection.Close();
+                    }
                 }
 
                 foreach (var projectGutenbergBook in projectGutenbergBooks)
@@ -309,6 +314,72 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Green;
             });
 
+            // TPL Block: Persist the document embeddings and the final enriched document to Json
+            var createVectorIndex = new ActionBlock<string>(stringMessage =>
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Creating Project Gutenberg Books Index...");
+
+                // 1 - Save to SQL Server
+                var currentSQLScriptsFolder = System.IO.Path.Combine(Environment.CurrentDirectory, "SQL");
+                var sqlScriptsFilePath = Path.Combine(currentSQLScriptsFolder, "spCreateProjectGutenbergVectorsIndex.sql");
+                var scriptText = File.ReadAllText(sqlScriptsFilePath);
+
+                // Execute script to create database objects (tables, stored procedures)
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    // SQL scripts that are multi-command split by GO
+                    var sqlCommandsInScript = scriptText.Split(new[] { "GO", "Go", "go" }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var commandText in sqlCommandsInScript)
+                    {
+                        using (SqlCommand command = new SqlCommand(string.Empty, connection))
+                        {
+                            command.CommandText = commandText;
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    connection.Close();
+                }
+            });
+
+            // TPL Block: Search Vector Index
+            var searchVectorIndex = new ActionBlock<SearchMessage>(searchMessage =>
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Searching Vector Index for '{0}", searchMessage.SearchString);
+
+
+                // Execute script to create database objects (tables, stored procedures)
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(string.Empty, connection))
+                    {
+                        command.CommandText = "spSearchProjectGutenbergVectors";
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@jsonOpenAIEmbeddings", searchMessage.SearchString);
+                        command.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            });
+
+            // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books
+            async Task ProduceGutenbergBooksSearches(BufferBlock<SearchMessage> searchQueue,
+                IEnumerable<SearchMessage> searchMessages)
+            {
+
+                foreach (var searchMessage in searchMessages)
+                {
+                    await searchQueue.SendAsync(searchMessage);
+                }
+
+                searchQueue.Complete();
+            }
 
             // TPL Pipeline: Build the pipeline workflow graph from the TPL Blocks
             var enrichmentPipeline = new BufferBlock<EnrichedDocument>(dataFlowBlockOptions);
@@ -322,12 +393,19 @@ namespace MachineIntelligenceTPLDataFlows
             // TPL: Start the producer by feeding it a list of books
             var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
 
-            // Since this is an asynchronous Task process, wait for the producer to finish putting all the messages on the queue
+            // TPL: Since this is an asynchronous Task process, wait for the producer to finish putting all the messages on the queue
             // Works when queue is limited and not a "forever" queue
             await Task.WhenAll(enrichmentProducer);
-
-            // Wait for the last block in the pipeline to process all messages.
+            // TPL: Wait for the last block in the pipeline to process all messages.
             printEnrichedDocument.Completion.Wait();
+
+            // Create the Vectors Index
+            var accepted = await createVectorIndex.SendAsync(string.Empty);
+            createVectorIndex.Complete();
+            createVectorIndex.Completion.Wait();
+
+
+            // Search the Vectors Index
 
 
             stopwatch.Stop();

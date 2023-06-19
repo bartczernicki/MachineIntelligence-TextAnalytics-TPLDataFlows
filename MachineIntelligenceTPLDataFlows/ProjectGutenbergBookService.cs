@@ -27,6 +27,10 @@ namespace MachineIntelligenceTPLDataFlows
                     Author = "Oscar Wilde",
                     Url = mirrorLocation + "844/844-0.txt"},
                 new ProjectGutenbergBook{
+                    BookTitle = "An Ideal Husband",
+                    Author = "Oscar Wilde",
+                    Url = mirrorLocation + "885/885-0.txt"},
+                new ProjectGutenbergBook{
                     BookTitle = "The Picture of Dorian Gray",
                     Author = "Oscar Wilde",
                     Url = mirrorLocation + "174/174-0.txt"},
@@ -34,10 +38,6 @@ namespace MachineIntelligenceTPLDataFlows
                     BookTitle = "The Happy Prince and Other Tales",
                     Author = "Oscar Wilde",
                     Url = mirrorLocation + "902/902-0.txt"},
-                new ProjectGutenbergBook{
-                    BookTitle = "An Ideal Husband",
-                    Author = "Oscar Wilde",
-                    Url = mirrorLocation + "885/885-0.txt"},
                 new ProjectGutenbergBook{
                     BookTitle = "De Profundis",
                     Author = "Oscar Wilde",
@@ -152,6 +152,19 @@ namespace MachineIntelligenceTPLDataFlows
             return books.Take(2).ToList();
 
             //return books;
+        }
+
+        public static List<SearchMessage> GetQueries()
+        {
+            var searchMessages = new List<SearchMessage>
+            {
+                // Oscar Wilde
+                new SearchMessage{
+                    SearchString = "Lady Markby arrives with an unexpected guest"
+                }
+            };
+
+            return searchMessages;
         }
     }
 }
