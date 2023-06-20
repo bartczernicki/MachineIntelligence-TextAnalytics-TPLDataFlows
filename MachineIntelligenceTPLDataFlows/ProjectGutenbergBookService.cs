@@ -149,7 +149,7 @@ namespace MachineIntelligenceTPLDataFlows
             };
 
             // for debugging return a single book
-            // return books.Take(2).ToList();
+            //return books.Take(2).ToList();
 
             return books;
         }
@@ -160,7 +160,7 @@ namespace MachineIntelligenceTPLDataFlows
             {
                 // Oscar Wilde
                 new SearchMessage{
-                    SearchString = "Lady Markby arrives with an unexpected guest"
+                    SearchString = "Lady Markby arrives with which unexpected guest?"
                 }
             };
 

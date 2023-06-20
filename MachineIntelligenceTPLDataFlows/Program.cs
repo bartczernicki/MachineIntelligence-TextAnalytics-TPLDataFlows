@@ -5,6 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
+using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Orchestration;
+using Microsoft.SemanticKernel.SemanticFunctions;
 using Newtonsoft.Json;
 using SharpToken;
 using System;
@@ -360,7 +363,7 @@ namespace MachineIntelligenceTPLDataFlows
             });
 
             // TPL Block: Search Vector Index
-            var searchVectorIndex = new ActionBlock<SearchMessage>(async searchMessage =>
+            var searchVectorIndex = new TransformBlock<SearchMessage, SearchMessage>(async searchMessage =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Searching Project Gutenberg Vector Index for '{0}'", searchMessage.SearchString);
@@ -396,9 +399,63 @@ namespace MachineIntelligenceTPLDataFlows
 
                 searchMessage.TopParagraphSearchResults = paragraphResults;
 
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("Top paragraph for search question: {0}. Cosine Distance {1} - {2}", searchMessage.SearchString, searchMessage.TopParagraphSearchResults[0].CosineDistance,
-                    searchMessage.TopParagraphSearchResults[0].Paragraph);
+                return searchMessage;
+
+                //Console.ForegroundColor = ConsoleColor.Magenta;
+                //Console.WriteLine("Top paragraph for search question: {0}. Cosine Distance {1} - {2}", searchMessage.SearchString, searchMessage.TopParagraphSearchResults[0].CosineDistance,
+                //    searchMessage.TopParagraphSearchResults[0].Paragraph);
+            });
+
+            var answerQuestionWithOpenAI = new ActionBlock<SearchMessage>(async searchMessage =>
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Answering Question using OpenAI for '{0}'", searchMessage.SearchString);
+
+                var semanticKernel = Kernel.Builder
+                    .WithOpenAITextCompletionService(modelId: "text-davinci-003", apiKey: openAIAPIKey)
+                    .Build();
+
+                string answerQuestionContext = """
+                    Answer the following question based on the context paragraph below: 
+                    ---Begin Question---
+                    {{$SEARCHSTRING}}
+                    ---End Question---
+                    ---Begin Paragraph---
+                    {{$PARAGRAPH}}
+                    ---End Paragraph---
+                    """;
+
+                var questionContext = new ContextVariables();
+                questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
+                questionContext.Set("PARAGRAPH", searchMessage.TopParagraphSearchResults[0].Paragraph);
+
+                var questionPromptConfig = new PromptTemplateConfig
+                {
+                    Description = "Search & Answer", 
+                    Completion =
+                        {
+                            MaxTokens = 1000,
+                            Temperature = 0.7,
+                            TopP = 0.6,
+                        }
+                };
+
+                var myPromptTemplate = new PromptTemplate(
+                    answerQuestionContext,
+                    questionPromptConfig,
+                    semanticKernel
+                );
+
+                var myFunctionConfig = new SemanticFunctionConfig(questionPromptConfig, myPromptTemplate);
+                var answerFunction = semanticKernel.RegisterSemanticFunction(
+                    "VectorSearchAndAnswer",
+                    "AnswerFromQuestion",
+                    myFunctionConfig);
+
+                var openAIQuestionAnswer = await semanticKernel.RunAsync(questionContext, answerFunction);
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Answer for question '{0}'. Based on vector index search and OpenAI Text Completion: '{1}'", searchMessage.SearchString, openAIQuestionAnswer.Result);
             });
 
             // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books
@@ -440,21 +497,23 @@ namespace MachineIntelligenceTPLDataFlows
             createVectorIndex.Completion.Wait();
 
 
-            // Search the Vectors Index
+            // Search the Vectors Index, then answer the question using Semantic Kernel
             var searchMessagePipeline = new BufferBlock<SearchMessage>(dataFlowBlockOptions);
             searchMessagePipeline.LinkTo(retrieveEmbeddingsForSearch, dataFlowLinkOptions);
             retrieveEmbeddingsForSearch.LinkTo(searchVectorIndex, dataFlowLinkOptions);
+            searchVectorIndex.LinkTo(answerQuestionWithOpenAI, dataFlowLinkOptions);
 
             // TPL: Start the producer by feeding it a list of books
             var bookSearchesProducer = ProduceGutenbergBooksSearches(searchMessagePipeline, ProjectGutenbergBookService.GetQueries());
             await Task.WhenAll(bookSearchesProducer);
             // TPL: Wait for the last block in the pipeline to process all messages.
-            searchVectorIndex.Completion.Wait();
+            answerQuestionWithOpenAI.Completion.Wait();
 
 
             stopwatch.Stop();
             // Print out duration of work
             Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Job Completed In:  {0} seconds", + stopwatch.Elapsed.TotalSeconds);
             Console.WriteLine("Total Text Tokens Processed: " + totalTokenLength.ToString("N0"));
             Console.WriteLine("Total Text Length Processed: " + totalTextLength.ToString("N0"));
