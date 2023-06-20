@@ -2,6 +2,8 @@
 
 Machine Intelligence Text Analytics Enrichment Actor Model, implemented using Task Parallel Library Data Flow Pipelines.
 
+![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
+
 Features:
 * The console uses book text from the Project Gutenberg site from various authors: Oscar Wilde, Bram Stoker, Edgar Allen Poe and performs enrichment using multiple steps
 * Downloads books, processes text analytics & embeddings, creates a vector database in SQL, demonstrates vector search and answers a sample question with provided
