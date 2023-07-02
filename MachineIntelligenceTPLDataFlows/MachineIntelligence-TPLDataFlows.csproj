@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SQL\._Example-OpenAI-Search-LadyMarkbySecretGuest.sql" />
+    <None Remove="SQL\._spCreateProjectGutenbergVectorsIndex.sql" />
     <None Remove="SQL\ProjectGutenbergScripts.sql" />
   </ItemGroup>
 
