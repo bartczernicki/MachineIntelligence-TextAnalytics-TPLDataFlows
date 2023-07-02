@@ -340,7 +340,7 @@ namespace MachineIntelligenceTPLDataFlows
                         using (SqlCommand command = new SqlCommand(string.Empty, connection))
                         {
                             // Increase the command timeout to ensure enough time for processing on slow servers
-                            command.CommandTimeout = 1000;
+                            command.CommandTimeout = 1000; // seconds
                             command.CommandText = commandText;
                             command.ExecuteNonQuery();
                         }
