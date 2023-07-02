@@ -339,6 +339,8 @@ namespace MachineIntelligenceTPLDataFlows
                     {
                         using (SqlCommand command = new SqlCommand(string.Empty, connection))
                         {
+                            // Increase the command timeout to ensure enough time for processing on slow servers
+                            command.CommandTimeout = 1000;
                             command.CommandText = commandText;
                             command.ExecuteNonQuery();
                         }
@@ -363,7 +365,7 @@ namespace MachineIntelligenceTPLDataFlows
             });
 
             // TPL Block: Search Vector Index
-            var searchVectorIndex = new TransformBlock<SearchMessage, SearchMessage>(async searchMessage =>
+            var searchVectorIndex = new TransformBlock<SearchMessage, SearchMessage>(searchMessage =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Searching Project Gutenberg Vector Index for '{0}'", searchMessage.SearchString);

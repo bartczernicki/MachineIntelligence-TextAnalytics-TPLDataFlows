@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,12 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="SQL\._CheckSQLResources.sql" />
     <None Remove="SQL\._Example-OpenAI-Search-LadyMarkbySecretGuest.sql" />
+    <None Remove="SQL\._Example-OpenAI-Search-WhatDidRavenSay.sql" />
+    <None Remove="SQL\._ProjectGutenbergScripts.sql" />
     <None Remove="SQL\._spCreateProjectGutenbergVectorsIndex.sql" />
+    <None Remove="SQL\CheckSQLResources.sql" />
+    <None Remove="SQL\Example-OpenAI-Search-LadyMarkbySecretGuest.sql" />
+    <None Remove="SQL\Example-OpenAI-Search-WhatDidRavenSay.sql" />
     <None Remove="SQL\ProjectGutenbergScripts.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="SQL\CheckSQLResources.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQL\Example-OpenAI-Search-LadyMarkbySecretGuest.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQL\Example-OpenAI-Search-WhatDidRavenSay.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SQL\ProjectGutenbergScripts.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -23,13 +23,13 @@ namespace MachineIntelligenceTPLDataFlows
             {
                 // Oscar Wilde
                 new ProjectGutenbergBook{
-                    BookTitle = "The Importance of Being Earnest: A Trivial Comedy for Serious People",
-                    Author = "Oscar Wilde",
-                    Url = mirrorLocation + "844/844-0.txt"},
-                new ProjectGutenbergBook{
                     BookTitle = "An Ideal Husband",
                     Author = "Oscar Wilde",
                     Url = mirrorLocation + "885/885-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Importance of Being Earnest: A Trivial Comedy for Serious People",
+                    Author = "Oscar Wilde",
+                    Url = mirrorLocation + "844/844-0.txt"},
                 new ProjectGutenbergBook{
                     BookTitle = "The Picture of Dorian Gray",
                     Author = "Oscar Wilde",
@@ -118,10 +118,10 @@ namespace MachineIntelligenceTPLDataFlows
                     BookTitle = "The Cask of Amontillado",
                     Author = "Edgar Allen Poe",
                     Url = mirrorLocation + "1063/1063.txt"},
-                //new ProjectGutenbergBook{
-                //    BookTitle = "The Mask of Red Death",
-                //    Author = "Edgar Allen Poe",
-                //    Url = "http://www.gutenberg.org/cache/epub/1064/pg1064.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Mask of Red Death",
+                    Author = "Edgar Allen Poe",
+                    Url = mirrorLocation + "1064/1064-0.txt"},
                 new ProjectGutenbergBook{
                     BookTitle = "The Narrative of Arthur Gordon Pym of Nantucket",
                     Author = "Edgar Allen Poe",
@@ -148,8 +148,9 @@ namespace MachineIntelligenceTPLDataFlows
                     Url = mirrorLocation + "8893/8893-0.txt"}
             };
 
-            // for debugging return a single book
-            //return books.Take(2).ToList();
+            // For debugging return a two books
+            // It will process the full question from the top two books
+            // return books.Take(2).ToList();
 
             return books;
         }
