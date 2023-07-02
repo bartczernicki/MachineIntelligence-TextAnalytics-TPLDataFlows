@@ -1,7 +1,8 @@
 # MachineIntelligence-TextAnalytics-TPLDataFlows
 
 Machine Intelligence Text Analytics Enrichment implemented using Task Parallel Library Data Flow Pipelines:
-* Document Enrichment Pipeline - builds the entire Vector DB
+* Document Enrichment Pipeline - Builds the entire Vector DB in SQL using selected book text
+* Q&A Over Vector DB - Searches the Vector DB with provided text
 
 ![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
 
