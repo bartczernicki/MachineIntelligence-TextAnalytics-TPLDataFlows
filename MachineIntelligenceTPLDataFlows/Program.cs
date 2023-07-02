@@ -113,6 +113,8 @@ namespace MachineIntelligenceTPLDataFlows
 
                         using (SqlCommand command = new SqlCommand(string.Empty, connection))
                         {
+                            // This is just executing SQL scripts, so timeout should be relatively low
+                            command.CommandTimeout = 100; // seconds
                             command.CommandText = commandText;
                             command.ExecuteNonQuery();
                         }
@@ -282,6 +284,7 @@ namespace MachineIntelligenceTPLDataFlows
                             var jsonStringParagraphEmbeddings = JsonConvert.SerializeObject(enrichedDocument.ParagraphEmbeddings[i]);
                             command.Parameters.AddWithValue("@paragraphEmbeddings", jsonStringParagraphEmbeddings);
 
+                            command.CommandTimeout = 2000;
                             command.ExecuteNonQuery();
                         }
                     }

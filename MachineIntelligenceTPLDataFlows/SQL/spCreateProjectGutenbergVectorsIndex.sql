@@ -6,8 +6,10 @@ BEGIN
 
 set nocount on;
 
+-- Delete all the records, for re-runability
 truncate table dbo.ProjectGutenbergBooksVectorsIndex;
 
+-- At scale, you need to chunk the vectors by thousands (tens of thousands)
 with cte as
 (
     select 
