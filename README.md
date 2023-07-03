@@ -5,7 +5,7 @@ Machine Intelligence Text Analytics Enrichment implemented using Task Parallel L
 * Q&A Over Vector Database Pipeline - Searches the Vector DB with provided query
 * Total Text (OpenAI) Tokens Processed:              2,531,238  
 * Total Text (Characters) Length Processed:         10,529,043
-* Total cost for OpenAI Embeddings (6.2023 prices): $0.25 (25 cents)
+* Total cost for OpenAI Embeddings (06.2023 prices): $0.25 (25 cents)
 
 ![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
 
