@@ -17,11 +17,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Runtime.Intrinsics.Arm;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace MachineIntelligenceTPLDataFlows
 
@@ -62,7 +59,7 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.WriteLine(string.Empty);
                 Console.WriteLine("Select one of the options, by typing either 1 or 2:");
                 Console.WriteLine("1) Create or Re-Create the Vector Db in SQL (re-runs Document Enrichment pipeline)");
-                Console.WriteLine("2) Just answer the sample question (runs Q&A over existing Vector Db");
+                Console.WriteLine("2) Just answer the sample question (runs Q&A over existing Vector Db using Semantic Kernel)");
                 var insertedText = Console.ReadLine();
                 string trimmedInput = insertedText.Trim();
 
@@ -78,7 +75,7 @@ namespace MachineIntelligenceTPLDataFlows
                 }
             }
 
-            Console.WriteLine("You selected : {0}", selectedProcessingChoice);
+            Console.WriteLine("You selected: {0}", selectedProcessingChoice);
 
             ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
             IConfiguration configuration = configurationBuilder.AddUserSecrets<Program>().Build();
