@@ -62,6 +62,7 @@ namespace MachineIntelligenceTPLDataFlows
             ProcessingOptions selectedProcessingChoice = (ProcessingOptions) 0;
             bool validInput = false;
 
+            // Iterate until the proper input is selected by the user
             while (!validInput)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
