@@ -21,6 +21,7 @@ using System.Runtime.Intrinsics.Arm;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MachineIntelligenceTPLDataFlows
 
@@ -29,7 +30,55 @@ namespace MachineIntelligenceTPLDataFlows
     {
         static async Task Main(string[] args)
         {
-            Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows & Vector Embeddings";
+            Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows & OpenAI Vector Embeddings";
+
+            var aciiArt = """
+                |\     /|(  ____ \(  ____ \\__   __/(  ___  )(  ____ )
+                | )   ( || (    \/| (    \/   ) (   | (   ) || (    )|
+                | |   | || (__    | |         | |   | |   | || (____)|
+                ( (   ) )|  __)   | |         | |   | |   | ||     __)
+                 \ \_/ / | (      | |         | |   | |   | || (\ (   
+                  \   /  | (____/\| (____/\   | |   | (___) || ) \ \__
+                   \_/   (_______/(_______/   )_(   (_______)|/   \__/
+
+                 ______   _______ _________ _______  ______   _______  _______  _______ 
+                (  __  \ (  ___  )\__   __/(  ___  )(  ___ \ (  ___  )(  ____ \(  ____ \
+                | (  \  )| (   ) |   ) (   | (   ) || (   ) )| (   ) || (    \/| (    \/
+                | |   ) || (___) |   | |   | (___) || (__/ / | (___) || (_____ | (__    
+                | |   | ||  ___  |   | |   |  ___  ||  __ (  |  ___  |(_____  )|  __)   
+                | |   ) || (   ) |   | |   | (   ) || (  \ \ | (   ) |      ) || (      
+                | (__/  )| )   ( |   | |   | )   ( || )___) )| )   ( |/\____) || (____/\
+                (______/ |/     \|   )_(   |/     \||/ \___/ |/     \|\_______)(_______/
+                """;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(aciiArt);
+
+            ProcessingOptions selectedProcessingChoice = (ProcessingOptions) 0;
+            bool validInput = false;
+
+            while (!validInput)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(string.Empty);
+                Console.WriteLine("Select one of the options, by typing either 1 or 2:");
+                Console.WriteLine("1) Create or Re-Create the Vector Db in SQL (re-runs Document Enrichment pipeline)");
+                Console.WriteLine("2) Just answer the sample question (runs Q&A over existing Vector Db");
+                var insertedText = Console.ReadLine();
+                string trimmedInput = insertedText.Trim();
+
+                if (trimmedInput == "1" || trimmedInput == "2")
+                {
+                    validInput = true;
+                    selectedProcessingChoice = (ProcessingOptions) Int32.Parse(trimmedInput);
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Incorrect selection!!!!");
+                }
+            }
+
+            Console.WriteLine("You selected : {0}", selectedProcessingChoice);
 
             ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
             IConfiguration configuration = configurationBuilder.AddUserSecrets<Program>().Build();
@@ -312,7 +361,7 @@ namespace MachineIntelligenceTPLDataFlows
             var printEnrichedDocument = new ActionBlock<EnrichedDocument>(enrichedDocument =>
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\"{0}\" | Text Size: {1} | Word Count: {2} | Word Count Removed Stop Words: {3}",
+                Console.WriteLine("Completed \"{0}\" | Text Size: {1} | Word Count: {2} | Word Count Removed Stop Words: {3}",
                    enrichedDocument.ID,
                    enrichedDocument.Text.Length.ToString(),
                    enrichedDocument.WordTokens.Length.ToString(),
@@ -357,7 +406,7 @@ namespace MachineIntelligenceTPLDataFlows
             var retrieveEmbeddingsForSearch = new TransformBlock<SearchMessage, SearchMessage>(async searchMessage =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Retrieving OpenAI Embeddings for: '{0}'", searchMessage.SearchString);
+                Console.WriteLine("Retrieving OpenAI Embeddings for the phrase: '{0}'", searchMessage.SearchString);
 
                 var embeddings = new EmbeddingsOptions(searchMessage.SearchString);
                 var result = await openAIClient.GetEmbeddingsAsync("text-embedding-ada-002", embeddings);
@@ -371,7 +420,7 @@ namespace MachineIntelligenceTPLDataFlows
             var searchVectorIndex = new TransformBlock<SearchMessage, SearchMessage>(searchMessage =>
             {
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("Searching Project Gutenberg Vector Index for '{0}'", searchMessage.SearchString);
+                Console.WriteLine("Searching Project Gutenberg SQL Vector (Database) Index for '{0}'", searchMessage.SearchString);
 
                 var dataSet = new DataSet();
 
@@ -487,19 +536,23 @@ namespace MachineIntelligenceTPLDataFlows
             retrieveEmbeddings.LinkTo(persistToDatabaseAndJson, dataFlowLinkOptions);
             persistToDatabaseAndJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
 
-            // TPL: Start the producer by feeding it a list of books
-            var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
+            // Only seed the initial pipeline if selected to process
+            if (selectedProcessingChoice == ProcessingOptions.RunDataEnrichmentPipeline)
+            {
+                // TPL: Start the producer by feeding it a list of books
+                var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
 
-            // TPL: Since this is an asynchronous Task process, wait for the producer to finish putting all the messages on the queue
-            // Works when queue is limited and not a "forever" queue
-            await Task.WhenAll(enrichmentProducer);
-            // TPL: Wait for the last block in the pipeline to process all messages.
-            printEnrichedDocument.Completion.Wait();
+                // TPL: Since this is an asynchronous Task process, wait for the producer to finish putting all the messages on the queue
+                // Works when queue is limited and not a "forever" queue
+                await Task.WhenAll(enrichmentProducer);
+                // TPL: Wait for the last block in the pipeline to process all messages.
+                printEnrichedDocument.Completion.Wait();
 
-            // Create the Vectors Index
-            var accepted = await createVectorIndex.SendAsync(string.Empty);
-            createVectorIndex.Complete();
-            createVectorIndex.Completion.Wait();
+                // Create the Vectors Index
+                var accepted = await createVectorIndex.SendAsync(string.Empty);
+                createVectorIndex.Complete();
+                createVectorIndex.Completion.Wait();
+            }
 
 
             // Search the Vectors Index, then answer the question using Semantic Kernel
@@ -520,8 +573,12 @@ namespace MachineIntelligenceTPLDataFlows
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(string.Empty);
             Console.WriteLine("Job Completed In:  {0} seconds", + stopwatch.Elapsed.TotalSeconds);
-            Console.WriteLine("Total Text Tokens Processed: " + totalTokenLength.ToString("N0"));
-            Console.WriteLine("Total Text Length Processed: " + totalTextLength.ToString("N0"));
+            // Only print job metrics if job was selected to run
+            if (selectedProcessingChoice == ProcessingOptions.RunDataEnrichmentPipeline)
+            {
+                Console.WriteLine("Total Text OpenAI Tokens Processed: " + totalTokenLength.ToString("N0"));
+                Console.WriteLine("Total Text Characters Processed:    " + totalTextLength.ToString("N0"));
+            }
         }
     }
 }
