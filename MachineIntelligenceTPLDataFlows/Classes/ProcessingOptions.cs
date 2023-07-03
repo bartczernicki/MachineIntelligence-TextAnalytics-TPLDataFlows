@@ -9,7 +9,7 @@ namespace MachineIntelligenceTPLDataFlows.Classes
     enum ProcessingOptions
     {
         None = 0, 
-        RunDataEnrichmentPipeline = 1,
-        JustAnswerQuestionAndAnswer = 2
+        RunFullDataEnrichmentPipeline = 1,
+        JustPerformQuestionAndAnswer = 2
     }
 }

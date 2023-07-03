@@ -38,7 +38,7 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0-preview.5.23280.8" />
     <PackageReference Include="Microsoft.SemanticKernel" Version="0.17.230629.1-preview" />
-    <PackageReference Include="SharpToken" Version="1.0.30" />
+    <PackageReference Include="SharpToken" Version="1.2.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="8.0.0-preview.5.23280.8" />
     <PackageReference Include="Microsoft.ML" Version="3.0.0-preview.23266.6" />

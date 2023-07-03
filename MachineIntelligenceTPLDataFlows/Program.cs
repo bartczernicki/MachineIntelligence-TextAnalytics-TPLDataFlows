@@ -46,6 +46,15 @@ namespace MachineIntelligenceTPLDataFlows
                 | |   ) || (   ) |   | |   | (   ) || (  \ \ | (   ) |      ) || (      
                 | (__/  )| )   ( |   | |   | )   ( || )___) )| )   ( |/\____) || (____/\
                 (______/ |/     \|   )_(   |/     \||/ \___/ |/     \|\_______)(_______/
+
+                 _______  _______  _          _______  _______  _______  _______  _______          
+                (  ____ \(  ___  )( \        (  ____ \(  ____ \(  ___  )(  ____ )(  ____ \|\     /|
+                | (    \/| (   ) || (        | (    \/| (    \/| (   ) || (    )|| (    \/| )   ( |
+                | (_____ | |   | || |        | (_____ | (__    | (___) || (____)|| |      | (___) |
+                (_____  )| |   | || |        (_____  )|  __)   |  ___  ||     __)| |      |  ___  |
+                      ) || | /\| || |              ) || (      | (   ) || (\ (   | |      | (   ) |
+                /\____) || (_\ \ || (____/\  /\____) || (____/\| )   ( || ) \ \__| (____/\| )   ( |
+                \_______)(____\/_)(_______/  \_______)(_______/|/     \||/   \__/(_______/|/     \|                                                                   
                 """;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write(aciiArt);
@@ -58,8 +67,8 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(string.Empty);
                 Console.WriteLine("Select one of the options, by typing either 1 or 2:");
-                Console.WriteLine("1) Create or Re-Create the Vector Db in SQL (re-runs Document Enrichment pipeline)");
-                Console.WriteLine("2) Just answer the sample question (runs Q&A over existing Vector Db using Semantic Kernel)");
+                Console.WriteLine("1) Create or re-create the Vector Database in SQL (runs Document Enrichment pipeline)");
+                Console.WriteLine("2) Just answer the sample question (runs Q&A over existing Vector Database pipeline)");
                 var insertedText = Console.ReadLine();
                 string trimmedInput = insertedText.Trim();
 
@@ -463,7 +472,9 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.WriteLine("Answering Question using OpenAI for '{0}'", searchMessage.SearchString);
 
                 var semanticKernel = Kernel.Builder
-                    .WithOpenAITextCompletionService(modelId: "text-davinci-003", apiKey: openAIAPIKey)
+                    //.WithOpenAITextCompletionService(modelId: "text-davinci-003", apiKey: openAIAPIKey)
+                    // You can use the chat completion service (use GPT 3.5 Turbo)
+                    .WithOpenAIChatCompletionService(modelId: "gpt-3.5-turbo", apiKey: openAIAPIKey)
                     .Build();
 
                 string answerQuestionContext = """
@@ -482,10 +493,10 @@ namespace MachineIntelligenceTPLDataFlows
 
                 var questionPromptConfig = new PromptTemplateConfig
                 {
-                    Description = "Search & Answer", 
+                    Description = "Search & Answer",
                     Completion =
                         {
-                            MaxTokens = 1000,
+                            MaxTokens = 500,
                             Temperature = 0.7,
                             TopP = 0.6,
                         }
@@ -506,7 +517,7 @@ namespace MachineIntelligenceTPLDataFlows
                 var openAIQuestionAnswer = await semanticKernel.RunAsync(questionContext, answerFunction);
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Answer for question '{0}'. Based on vector index search and OpenAI Text Completion: '{1}'", searchMessage.SearchString, openAIQuestionAnswer.Result);
+                Console.WriteLine("For the question: '{0}'\nBased on the context found from the vector index search and Semantic Kernel OpenAI Text Completion, the answer is:\n'{1}'", searchMessage.SearchString, openAIQuestionAnswer.Result);
             });
 
             // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books
@@ -534,7 +545,7 @@ namespace MachineIntelligenceTPLDataFlows
             persistToDatabaseAndJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
 
             // Only seed the initial pipeline if selected to process
-            if (selectedProcessingChoice == ProcessingOptions.RunDataEnrichmentPipeline)
+            if (selectedProcessingChoice == ProcessingOptions.RunFullDataEnrichmentPipeline)
             {
                 // TPL: Start the producer by feeding it a list of books
                 var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
@@ -571,7 +582,7 @@ namespace MachineIntelligenceTPLDataFlows
             Console.WriteLine(string.Empty);
             Console.WriteLine("Job Completed In:  {0} seconds", + stopwatch.Elapsed.TotalSeconds);
             // Only print job metrics if job was selected to run
-            if (selectedProcessingChoice == ProcessingOptions.RunDataEnrichmentPipeline)
+            if (selectedProcessingChoice == ProcessingOptions.RunFullDataEnrichmentPipeline)
             {
                 Console.WriteLine("Total Text OpenAI Tokens Processed: " + totalTokenLength.ToString("N0"));
                 Console.WriteLine("Total Text Characters Processed:    " + totalTextLength.ToString("N0"));

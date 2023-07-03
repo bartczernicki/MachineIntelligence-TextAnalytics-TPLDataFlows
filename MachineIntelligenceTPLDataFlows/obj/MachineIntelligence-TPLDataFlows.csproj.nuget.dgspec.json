@@ -62,7 +62,7 @@
             },
             "SharpToken": {
               "target": "Package",
-              "version": "[1.0.30, )"
+              "version": "[1.2.2, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

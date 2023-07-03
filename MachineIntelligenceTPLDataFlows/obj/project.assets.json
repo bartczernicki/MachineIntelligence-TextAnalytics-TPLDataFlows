@@ -903,7 +903,7 @@
           }
         }
       },
-      "SharpToken/1.0.30": {
+      "SharpToken/1.2.2": {
         "type": "package",
         "compile": {
           "lib/net6.0/SharpToken.dll": {}
@@ -2667,10 +2667,10 @@
         "version.txt"
       ]
     },
-    "SharpToken/1.0.30": {
-      "sha512": "fGHL9zld80SaoOQFHvfMJ2LlG4f+Icw1BfQWSQ1cp1Ig5kcsFWO2J5nu+0rSGmaqyhxgWMExXf8CPBjlaOLnKg==",
+    "SharpToken/1.2.2": {
+      "sha512": "YuCZFTW2Spdz7DoJNlE8XuwxrpWf/6EXGqdaFakqrNKOApliydK3cl0F3qw+xAj9jFm7HYCTXz4VvC/iONURyQ==",
       "type": "package",
-      "path": "sharptoken/1.0.30",
+      "path": "sharptoken/1.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2678,7 +2678,7 @@
         "README.md",
         "lib/net6.0/SharpToken.dll",
         "lib/netstandard2.0/SharpToken.dll",
-        "sharptoken.1.0.30.nupkg.sha512",
+        "sharptoken.1.2.2.nupkg.sha512",
         "sharptoken.nuspec"
       ]
     },
@@ -4128,7 +4128,7 @@
       "Microsoft.Extensions.Configuration.UserSecrets >= 8.0.0-preview.5.23280.8",
       "Microsoft.ML >= 3.0.0-preview.23266.6",
       "Microsoft.SemanticKernel >= 0.17.230629.1-preview",
-      "SharpToken >= 1.0.30",
+      "SharpToken >= 1.2.2",
       "System.Data.SqlClient >= 4.8.5",
       "System.Threading.Tasks.Dataflow >= 8.0.0-preview.5.23280.8"
     ]
@@ -4139,11 +4139,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+      "projectUniqueName": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
       "projectName": "MachineIntelligence-TPLDataFlows",
-      "projectPath": "C:\\Users\\bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+      "projectPath": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
       "packagesPath": "C:\\Users\\bart\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
+      "outputPath": "C:\\Users\\bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bart\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4194,7 +4194,7 @@
           },
           "SharpToken": {
             "target": "Package",
-            "version": "[1.0.30, )"
+            "version": "[1.2.2, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
