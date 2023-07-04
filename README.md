@@ -27,7 +27,7 @@ Requirements:
 
 ![Training Job](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLVectorEmbeddingsProcessingConsole.gif)
 
-Getting Started - Step 1) Configuration of SQL Connection and OpenAI API Keys
+Getting Started - Step 1) Configuration of SQL Connection and OpenAI API Keys (example of secrets.json shown below)
 * Ensure to add .NET Secrets or JSON configuration (you will need to add the JSON code if using a file)
 * Right-click on the C# Project and select "Manage User Secrets"
 * Add the SQL Connection (SQLConnection) and OpenAI (APIKey) (if using Azure OpenAPI, use AzureOpenAPI section)  
@@ -45,9 +45,7 @@ Getting Started - Step 1) Configuration of SQL Connection and OpenAI API Keys
   }
 }
 ```
-
-![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Secrets.png)
-
+  
 Getting Started - Step 2) Processing (after adding proper SQL and OpenAI/Azure OpenAI connections):
 * Select option 1 to process the entire Data Enrichment Pipeline (build the embeddings Vector Database in SQL)
 * Select option 2 to just process the Q&A pipeline using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand at some point)
