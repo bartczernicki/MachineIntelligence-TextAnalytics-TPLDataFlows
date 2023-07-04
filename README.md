@@ -24,6 +24,13 @@ Requirements:
 
 ![Training Job](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLVectorEmbeddingsProcessingConsole.gif)
 
+Getting Started - Processing (after adding proper SQL and OpenAI/Azure OpenAI connections):
+* Start the console app
+* Select 1 to process the entire Data Enrichment Pipeline (build the embeddings Vector Database in SQL)
+* Select 2 to just process the Q&A pipeline using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand at some point)
+
+![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-ConsoleApp.png)
+
 More Information:
 * TPL Dataflows: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/dataflow-task-parallel-library
 * Project Gutenberg: https://www.gutenberg.org/
