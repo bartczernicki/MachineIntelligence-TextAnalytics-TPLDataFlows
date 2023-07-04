@@ -10,13 +10,13 @@ Machine Intelligence Text Analytics Enrichment implemented using Task Parallel L
 ![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
 
 Features:
-* The console app uses selected 30 books from the Project Gutenberg site from various authors: Oscar Wilde, Bram Stoker, Edgar Allen Poe and performs enrichment using multiple enrichment steps
+* The console app uses 30 selected books from the Project Gutenberg site from various authors: Oscar Wilde, Bram Stoker, Edgar Allen Poe and performs enrichment using multiple AI enrichment steps
 * Downloads book text, processes text analytics & embeddings, creates a vector database in SQL, demonstrates vector search and answers a sample question using semantic meaning from OpenAI embeddings
-* Stores all enrichment output in a JSON file
-* Rather than processing text analytics enrichment in single synchronous steps, it uses an data flow model to create efficient pipelines that can saturate multiple logical CPU cores
+* Stores all enrichment output for each book in a seperate JSON file
+* Rather than processing text analytics enrichment in single synchronous steps, it uses an data flow model to create efficient pipelines that can saturate multiple logical CPU cores  
 * Illustrates that SQL Server or Azure SQL can be used as a valid Vector Store, can perform vector search and provide Q&A over the database
 * Demonstrates how to create a Machine Intelligence & Text Analytics Pipeline can be combbined using TPL DataFlows
-* The console application is cross-platform .NET 8.x; it will run on macOS, Linux, Windows 10/11 x64, Windows 11 ARM
+* The console application is cross-platform .NET 8.x. It will run on macOS, Linux, Windows 10/11 x64, Windows 11 ARM
 
 Requirements:
 * Visual Studio 2022, .NET 8.x
@@ -25,7 +25,7 @@ Requirements:
 
 ![Training Job](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLVectorEmbeddingsProcessingConsole.gif)
 
-Getting Started - 1) Configuration of SQL Connection and API Keys
+Getting Started - 1) Configuration of SQL Connection and OpenAI API Keys
 * Ensure to add .NET Secrets or JSON configuration (you will need to add the JSON code if using a file)
 * Right-click on the C# Project and select "Manage User Secrets"
 * Add the SQL Connection (SQLConnection) and OpenAI (APIKey) (if using Azure OpenAPI, use AzureOpenAPI section)
