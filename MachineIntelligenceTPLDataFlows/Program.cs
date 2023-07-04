@@ -103,12 +103,17 @@ namespace MachineIntelligenceTPLDataFlows
             // Instantiate new ML.NET Context
             // Note: MlContext is thread-safe
             var mlContext = new MLContext(100);
+            // OpenAI Token Settings
+            var MAXTOKENSPERLINE = 200;
+            var MAXTOKENSPERPARAGRAPH = 620;
+            var OVERLAPTOKENSPERPARAGRAPH = 20;
 
-            // var openAIEmbeddingsGeneration = new OpenAITextEmbeddingGeneration("text-embedding-ada-002", openAIAPIKey);
 
+            // UNCOMMENT IF USING AZURE OPENAI
             // Azure OpenAI (Azure not OpenAI)
             //var openAIClient = new OpenAIClient(
-            //    new Uri("https://openaiappliedai.openai.azure.com"), new Azure.AzureKeyCredential(azureOpenAIAPIKey));
+            //    new Uri("https://YOURAZUREOPENAIENDPOINT.openai.azure.com"), new Azure.AzureKeyCredential(azureOpenAIAPIKey));
+            
             // OpenAI Client (not Azure OpenAI)
             var openAIClient = new OpenAIClient(openAIAPIKey);
 
@@ -293,8 +298,8 @@ namespace MachineIntelligenceTPLDataFlows
                 enrichedDocument.TopWordCounts = result;
 
                 // Calculate the Paragraphs based on TokenCount
-                var enrichedDocumentLines = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextLines(enrichedDocument.Text, 200);
-                enrichedDocument.Paragraphs = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextParagraphs(enrichedDocumentLines, 600);
+                var enrichedDocumentLines = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextLines(enrichedDocument.Text, MAXTOKENSPERLINE);
+                enrichedDocument.Paragraphs = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextParagraphs(enrichedDocumentLines, MAXTOKENSPERPARAGRAPH, overlapTokens: OVERLAPTOKENSPERPARAGRAPH);
 
                 return enrichedDocument;
             }, executionDataFlowOptions);

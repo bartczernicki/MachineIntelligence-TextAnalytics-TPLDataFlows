@@ -149,7 +149,7 @@ namespace MachineIntelligenceTPLDataFlows
             };
 
             // For debugging return a two books
-            // It will process the full question from the top two books
+            // It will process the sample question below from the top two books fine
             // return books.Take(2).ToList();
 
             return books;
@@ -159,7 +159,7 @@ namespace MachineIntelligenceTPLDataFlows
         {
             var searchMessages = new List<SearchMessage>
             {
-                // Oscar Wilde
+                // Oscar Wilde - An Ideal Husband
                 new SearchMessage{
                     SearchString = "Lady Markby arrives with which unexpected guest?"
                 }
