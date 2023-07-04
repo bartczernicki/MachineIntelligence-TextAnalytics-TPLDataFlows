@@ -20,25 +20,28 @@ Features:
 
 Requirements:
 * Visual Studio 2022, .NET 8.x
-* SQL Server Connection to either local SQL Server 2022 (free Devolpment SKU or higher) or Azure SQL Database
+* SQL Server Connection to either a local SQL Server 2022 (free Devolpment SKU or higher) or Azure SQL Database
+* ******Note: SQL Server 2022 / Azure SQL Database features are used for JSON processing and ordered Columnstore Indexes
 * OpenAI or Azure OpenAI API Access to both embeddings and completions
+* ******Note: When using Azure OpenAI, ensure that the proper OpenAI models are deployed to the Azure OpenAI resource
 
 ![Training Job](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLVectorEmbeddingsProcessingConsole.gif)
 
-Getting Started - 1) Configuration of SQL Connection and OpenAI API Keys
+Getting Started - Step 1) Configuration of SQL Connection and OpenAI API Keys
 * Ensure to add .NET Secrets or JSON configuration (you will need to add the JSON code if using a file)
 * Right-click on the C# Project and select "Manage User Secrets"
 * Add the SQL Connection (SQLConnection) and OpenAI (APIKey) (if using Azure OpenAPI, use AzureOpenAPI section)
 ![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Secrets.png)
 
-Getting Started - 2) Processing (after adding proper SQL and OpenAI/Azure OpenAI connections):
+Getting Started - Step 2) Processing (after adding proper SQL and OpenAI/Azure OpenAI connections):
 * Select option 1 to process the entire Data Enrichment Pipeline (build the embeddings Vector Database in SQL)
 * Select option 2 to just process the Q&A pipeline using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand at some point)
 
 ![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-ConsoleApp.png)
 
-More Information:
+Learn more about the concepts used:
 * Semenantic Kernel: https://aka.ms/semantic-kernel
 * TPL Dataflows .NET: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/dataflow-task-parallel-library
 * Project Gutenberg (over 70,000 free eBooks): https://www.gutenberg.org/
-* SharpToken (C# for encoding/decoding LLM tokens): https://github.com/dmitry-brazhenko/SharpToken  
+* SharpToken (C# for encoding/decoding LLM tokens): https://github.com/dmitry-brazhenko/SharpToken
+* Use .NET secrets in a Console Application: https://www.programmingwithwolfgang.com/use-net-secrets-in-console-application/  
