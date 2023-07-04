@@ -53,8 +53,9 @@ Getting Started - Step 2) Processing (after adding proper SQL and OpenAI/Azure O
 ![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-ConsoleApp.png)
 
 Learn more about the concepts used:
-* Semenantic Kernel: https://aka.ms/semantic-kernel
+* Semenantic Kernel: https://aka.ms/semantic-kernel  
 * TPL Dataflows .NET: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/dataflow-task-parallel-library
-* Project Gutenberg (over 70,000 free eBooks): https://www.gutenberg.org/
-* SharpToken (C# for encoding/decoding LLM tokens): https://github.com/dmitry-brazhenko/SharpToken
+* SQL Server Columnstore Indexes: https://learn.microsoft.com/en-us/sql/relational-databases/indexes/columnstore-indexes-overview  
+* Project Gutenberg (over 70,000 free eBooks): https://www.gutenberg.org/  
+* SharpToken (C# for encoding/decoding LLM tokens): https://github.com/dmitry-brazhenko/SharpToken  
 * Use .NET secrets in a Console Application: https://www.programmingwithwolfgang.com/use-net-secrets-in-console-application/  
