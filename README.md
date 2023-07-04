@@ -1,7 +1,7 @@
 # MachineIntelligence-TextAnalytics-TPLDataFlows
 
 Machine Intelligence Text Analytics Enrichment implemented using Task Parallel Library Data Flow Pipelines:
-* Document Enrichment Pipeline - Builds the entire Vector Database using OpenAI embeddings in SQL using 30 selected books (written in english)
+* Document Enrichment Pipeline - Builds the entire Vector Database using OpenAI embeddings in SQL using 30 selected books
 * Q&A Over Vector Database Pipeline - Searches the SQL Vector Database with provided question phrase using Semantic Kernel
 * Total Text (OpenAI) Tokens Processed:...............2,531,238  
 * Total Text (Characters) Length Processed:..........10,529,043
