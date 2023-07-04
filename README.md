@@ -31,5 +31,6 @@ Getting Started - Processing (after adding proper SQL and OpenAI/Azure OpenAI co
 ![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-ConsoleApp.png)
 
 More Information:
+* Semenantic Kernel: https://aka.ms/semantic-kernel  
 * TPL Dataflows: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/dataflow-task-parallel-library
 * Project Gutenberg: https://www.gutenberg.org/
