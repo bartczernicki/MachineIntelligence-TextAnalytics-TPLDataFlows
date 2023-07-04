@@ -30,7 +30,22 @@ Requirements:
 Getting Started - Step 1) Configuration of SQL Connection and OpenAI API Keys
 * Ensure to add .NET Secrets or JSON configuration (you will need to add the JSON code if using a file)
 * Right-click on the C# Project and select "Manage User Secrets"
-* Add the SQL Connection (SQLConnection) and OpenAI (APIKey) (if using Azure OpenAPI, use AzureOpenAPI section)
+* Add the SQL Connection (SQLConnection) and OpenAI (APIKey) (if using Azure OpenAPI, use AzureOpenAPI section)  
+
+```javascript
+{
+  "SQL": {
+    "SqlConnection": "Server=[NAME OF SERVER],1433;Initial Catalog=MachineIntelligenceDb;Persist Security Info=False;User ID=[USERID];Password=[PASSWORD];MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=5000;"
+  },
+  "OpenAI": {
+    "APIKey": "[YOUR OPENAPI KEY]"
+  },
+  "AzureOpenAI": {
+    "APIKey": "[YOUR AZURE OPENAPI KEY]"
+  }
+}
+```
+
 ![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Secrets.png)
 
 Getting Started - Step 2) Processing (after adding proper SQL and OpenAI/Azure OpenAI connections):
