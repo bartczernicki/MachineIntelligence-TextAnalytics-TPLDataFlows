@@ -104,7 +104,6 @@ namespace MachineIntelligenceTPLDataFlows
             // Note: MlContext is thread-safe
             var mlContext = new MLContext(100);
             // OpenAI Token Settings
-            // 
             var MAXTOKENSPERLINE = 200;
             var MAXTOKENSPERPARAGRAPH = 620; // Provide enough context to answer questions
             var OVERLAPTOKENSPERPARAGRAPH = 20; // Overlap setting, could be set higher
