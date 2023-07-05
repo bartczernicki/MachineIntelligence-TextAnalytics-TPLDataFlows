@@ -54,6 +54,13 @@ into
 from 
     openjson(@jsonOpenAIEmbeddings, '$') -- '$.data[0].embedding')
 
+/*
+Use Cosine Distance - OpenAI Recommendations
+https://help.openai.com/en/articles/6824809-embeddings-frequently-asked-questions
+OpenAI embeddings are normalized to length 1, which means that:
+- Cosine similarity can be computed slightly faster using just a dot product
+- Cosine similarity and Euclidean distance will result in the identical rankings
+*/
 drop table if exists #results;
 select top(10)
     v2.Id, 
