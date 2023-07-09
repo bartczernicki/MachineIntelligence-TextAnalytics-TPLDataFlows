@@ -63,7 +63,7 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
+      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -319,20 +319,20 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/7.0.0": {
+      "Microsoft.Extensions.Logging.Abstractions/6.0.4": {
         "type": "package",
         "compile": {
-          "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
+          "buildTransitive/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.targets": {}
         }
       },
       "Microsoft.Extensions.Primitives/8.0.0-preview.5.23280.8": {
@@ -657,14 +657,14 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.SemanticKernel/0.17.230629.1-preview": {
+      "Microsoft.SemanticKernel/0.17.230704.3-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Connectors.AI.OpenAI": "0.17.230629.1-preview",
-          "Microsoft.SemanticKernel.Core": "0.17.230629.1-preview",
-          "Microsoft.SemanticKernel.Planning.ActionPlanner": "0.17.230629.1-preview",
-          "Microsoft.SemanticKernel.Planning.SequentialPlanner": "0.17.230629.1-preview",
-          "Microsoft.SemanticKernel.Skills.Core": "0.17.230629.1-preview"
+          "Microsoft.SemanticKernel.Connectors.AI.OpenAI": "0.17.230704.3-preview",
+          "Microsoft.SemanticKernel.Core": "0.17.230704.3-preview",
+          "Microsoft.SemanticKernel.Planning.ActionPlanner": "0.17.230704.3-preview",
+          "Microsoft.SemanticKernel.Planning.SequentialPlanner": "0.17.230704.3-preview",
+          "Microsoft.SemanticKernel.Skills.Core": "0.17.230704.3-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.dll": {
@@ -677,13 +677,13 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Abstractions/0.17.230629.1-preview": {
+      "Microsoft.SemanticKernel.Abstractions/0.17.230704.3-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "7.0.0",
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
           "Microsoft.Bcl.HashCode": "1.1.0",
-          "Microsoft.Extensions.Logging.Abstractions": "7.0.0",
-          "System.Text.Json": "7.0.2"
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.4",
+          "System.Text.Json": "6.0.8"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Abstractions.dll": {
@@ -696,11 +696,11 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Connectors.AI.OpenAI/0.17.230629.1-preview": {
+      "Microsoft.SemanticKernel.Connectors.AI.OpenAI/0.17.230704.3-preview": {
         "type": "package",
         "dependencies": {
           "Azure.AI.OpenAI": "1.0.0-beta.5",
-          "Microsoft.SemanticKernel.Core": "0.17.230629.1-preview"
+          "Microsoft.SemanticKernel.Core": "0.17.230704.3-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.AI.OpenAI.dll": {
@@ -727,10 +727,10 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Core/0.17.230629.1-preview": {
+      "Microsoft.SemanticKernel.Core/0.17.230704.3-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Abstractions": "0.17.230629.1-preview"
+          "Microsoft.SemanticKernel.Abstractions": "0.17.230704.3-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Core.dll": {
@@ -743,11 +743,11 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Planning.ActionPlanner/0.17.230629.1-preview": {
+      "Microsoft.SemanticKernel.Planning.ActionPlanner/0.17.230704.3-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Abstractions": "0.17.230629.1-preview",
-          "Microsoft.SemanticKernel.Core": "0.17.230629.1-preview"
+          "Microsoft.SemanticKernel.Abstractions": "0.17.230704.3-preview",
+          "Microsoft.SemanticKernel.Core": "0.17.230704.3-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.ActionPlanner.dll": {
@@ -760,11 +760,11 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Planning.SequentialPlanner/0.17.230629.1-preview": {
+      "Microsoft.SemanticKernel.Planning.SequentialPlanner/0.17.230704.3-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Abstractions": "0.17.230629.1-preview",
-          "Microsoft.SemanticKernel.Core": "0.17.230629.1-preview"
+          "Microsoft.SemanticKernel.Abstractions": "0.17.230704.3-preview",
+          "Microsoft.SemanticKernel.Core": "0.17.230704.3-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.SequentialPlanner.dll": {
@@ -777,10 +777,10 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Skills.Core/0.17.230629.1-preview": {
+      "Microsoft.SemanticKernel.Skills.Core/0.17.230704.3-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Core": "0.17.230629.1-preview"
+          "Microsoft.SemanticKernel.Core": "0.17.230704.3-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Skills.Core.dll": {
@@ -1546,25 +1546,23 @@
         "lib/netstandard2.0/Azure.Identity.xml"
       ]
     },
-    "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
-      "sha512": "3aeMZ1N0lJoSyzqiP03hqemtb1BijhsJADdobn/4nsMJ8V1H+CrpuduUe4hlRdx+ikBQju1VGjMD1GJ3Sk05Eg==",
+    "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "sha512": "UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
       "type": "package",
-      "path": "microsoft.bcl.asyncinterfaces/7.0.0",
+      "path": "microsoft.bcl.asyncinterfaces/6.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/net461/Microsoft.Bcl.AsyncInterfaces.targets",
-        "buildTransitive/net462/_._",
-        "lib/net462/Microsoft.Bcl.AsyncInterfaces.dll",
-        "lib/net462/Microsoft.Bcl.AsyncInterfaces.xml",
+        "lib/net461/Microsoft.Bcl.AsyncInterfaces.dll",
+        "lib/net461/Microsoft.Bcl.AsyncInterfaces.xml",
         "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll",
         "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml",
-        "microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
+        "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
         "microsoft.bcl.asyncinterfaces.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -1982,10 +1980,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/7.0.0": {
-      "sha512": "kmn78+LPVMOWeITUjIlfxUPDsI0R6G0RkeAMBmQxAJ7vBJn4q2dTva7pWi65ceN5vPGjJ9q/Uae2WKgvfktJAw==",
+    "Microsoft.Extensions.Logging.Abstractions/6.0.4": {
+      "sha512": "K14wYgwOfKVELrUh5eBqlC8Wvo9vvhS3ZhIvcswV2uS/ubkTRPSQsN557EZiYUSSoZNxizG+alN4wjtdyLdcyw==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/7.0.0",
+      "path": "microsoft.extensions.logging.abstractions/6.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2020,34 +2018,16 @@
         "analyzers/dotnet/roslyn4.0/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
         "analyzers/dotnet/roslyn4.0/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
         "analyzers/dotnet/roslyn4.0/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/Microsoft.Extensions.Logging.Generators.dll",
-        "analyzers/dotnet/roslyn4.4/cs/cs/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/de/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/es/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/fr/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/it/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/ja/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/ko/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/pl/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/pt-BR/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/ru/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/tr/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/zh-Hans/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "analyzers/dotnet/roslyn4.4/cs/zh-Hant/Microsoft.Extensions.Logging.Generators.resources.dll",
-        "buildTransitive/net461/Microsoft.Extensions.Logging.Abstractions.targets",
-        "buildTransitive/net462/Microsoft.Extensions.Logging.Abstractions.targets",
-        "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets",
         "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Logging.Abstractions.targets",
+        "buildTransitive/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.targets",
         "buildTransitive/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.targets",
-        "lib/net462/Microsoft.Extensions.Logging.Abstractions.dll",
-        "lib/net462/Microsoft.Extensions.Logging.Abstractions.xml",
+        "lib/net461/Microsoft.Extensions.Logging.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.dll",
-        "lib/net7.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.6.0.4.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2374,10 +2354,10 @@
         "runtime.json"
       ]
     },
-    "Microsoft.SemanticKernel/0.17.230629.1-preview": {
-      "sha512": "4icQAXF6sAk7piGBOCNUkqSxPPpMTBig7/Q6bTBESdiiPkrGQWIIuD50OMbssnsojfOa2RBwMIdo6yFOX1x3ig==",
+    "Microsoft.SemanticKernel/0.17.230704.3-preview": {
+      "sha512": "EON6jsSkKGLIN4jhSVFy3wm4sBWA6w2uRuBAHUbNqwGSrIMfE+dPixGY87hlNlIwu1ruwAqUCzT+Sluq5yX2pQ==",
       "type": "package",
-      "path": "microsoft.semantickernel/0.17.230629.1-preview",
+      "path": "microsoft.semantickernel/0.17.230704.3-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2385,14 +2365,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.xml",
-        "microsoft.semantickernel.0.17.230629.1-preview.nupkg.sha512",
+        "microsoft.semantickernel.0.17.230704.3-preview.nupkg.sha512",
         "microsoft.semantickernel.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Abstractions/0.17.230629.1-preview": {
-      "sha512": "h/W4oRD1caJVoRVYOnd1mw63aupav0PsjFCDQvc2sGCZSBOR0ovOTJ8YQsQuNYXRbgvlzzR9NahRbMaODrczdQ==",
+    "Microsoft.SemanticKernel.Abstractions/0.17.230704.3-preview": {
+      "sha512": "RFdIdhy4WDgGJsTovxiNZd1ilifdAqzKJ+qj+k4VqI+SmFNxMl/a2AQda4tPr/mh9rkcbGPwzI4k8RSro4t5YA==",
       "type": "package",
-      "path": "microsoft.semantickernel.abstractions/0.17.230629.1-preview",
+      "path": "microsoft.semantickernel.abstractions/0.17.230704.3-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2400,14 +2380,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Abstractions.xml",
-        "microsoft.semantickernel.abstractions.0.17.230629.1-preview.nupkg.sha512",
+        "microsoft.semantickernel.abstractions.0.17.230704.3-preview.nupkg.sha512",
         "microsoft.semantickernel.abstractions.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Connectors.AI.OpenAI/0.17.230629.1-preview": {
-      "sha512": "I260T23ZWJrOpyL753tQ4g2jbBuJZH6z7gAY2Ci9FJ6veUa+/xDwMx42qOTponbMAty+OGYrUK+hQ+UZEw/H5g==",
+    "Microsoft.SemanticKernel.Connectors.AI.OpenAI/0.17.230704.3-preview": {
+      "sha512": "ba47QiErenXiXqCajdrDMIZouC7mcBJgOSFEJJCn/0iOwc0BRBNAyNdePzCe4rP0r6nFrgwiqg7DAlszT+LFBw==",
       "type": "package",
-      "path": "microsoft.semantickernel.connectors.ai.openai/0.17.230629.1-preview",
+      "path": "microsoft.semantickernel.connectors.ai.openai/0.17.230704.3-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2419,14 +2399,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.AI.OpenAI.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.AI.OpenAI.xml",
-        "microsoft.semantickernel.connectors.ai.openai.0.17.230629.1-preview.nupkg.sha512",
+        "microsoft.semantickernel.connectors.ai.openai.0.17.230704.3-preview.nupkg.sha512",
         "microsoft.semantickernel.connectors.ai.openai.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Core/0.17.230629.1-preview": {
-      "sha512": "NdtMqSW5PdmZuIz8wmVj2olv89C5izr4ENHbweOywsatiUfFGBsD+SwCx+gmnnp2RJjacChhkswuanuWOUpAig==",
+    "Microsoft.SemanticKernel.Core/0.17.230704.3-preview": {
+      "sha512": "Ny50EZF48OIQgaZ/F28n67ROiY2PiLZja2skZhJeduqRxjzl1UZRPPOJhxK82fZJQo25r1fPImpAaaKMYDyeUA==",
       "type": "package",
-      "path": "microsoft.semantickernel.core/0.17.230629.1-preview",
+      "path": "microsoft.semantickernel.core/0.17.230704.3-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2434,14 +2414,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Core.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Core.xml",
-        "microsoft.semantickernel.core.0.17.230629.1-preview.nupkg.sha512",
+        "microsoft.semantickernel.core.0.17.230704.3-preview.nupkg.sha512",
         "microsoft.semantickernel.core.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Planning.ActionPlanner/0.17.230629.1-preview": {
-      "sha512": "TMwT3lZKqomQuuqNDPYnuEr72mmwUVrzxJec9JnbrsXvaJVqOIU8h7IArYucyPwdGaLH2zPqz0AG7yfrThfXQQ==",
+    "Microsoft.SemanticKernel.Planning.ActionPlanner/0.17.230704.3-preview": {
+      "sha512": "Wi4PeFEX6cqPmfuF1MKyPNI23QBA+qP4rSuHgF2bO+Z4aKxkIAf2domYuBenzwF82YoxrBgl0Ngz5berHx/vng==",
       "type": "package",
-      "path": "microsoft.semantickernel.planning.actionplanner/0.17.230629.1-preview",
+      "path": "microsoft.semantickernel.planning.actionplanner/0.17.230704.3-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2449,14 +2429,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.ActionPlanner.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.ActionPlanner.xml",
-        "microsoft.semantickernel.planning.actionplanner.0.17.230629.1-preview.nupkg.sha512",
+        "microsoft.semantickernel.planning.actionplanner.0.17.230704.3-preview.nupkg.sha512",
         "microsoft.semantickernel.planning.actionplanner.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Planning.SequentialPlanner/0.17.230629.1-preview": {
-      "sha512": "PbbGy8z2a74/DL3faR3gh2g7a6YMtdX7RCOHDdnykWA2V8jjleccDXb13QZRq0JbUuSOfrwMjcuKyEreUrofcg==",
+    "Microsoft.SemanticKernel.Planning.SequentialPlanner/0.17.230704.3-preview": {
+      "sha512": "LdIBGIcb6iXvOIxDFoPtTmiF4Qw87d62ST/cm7gNtleJW8I4EUePq4Tx/mSUEgBUkQicdrVDFgDnFqyMwsjQqg==",
       "type": "package",
-      "path": "microsoft.semantickernel.planning.sequentialplanner/0.17.230629.1-preview",
+      "path": "microsoft.semantickernel.planning.sequentialplanner/0.17.230704.3-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2464,14 +2444,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.SequentialPlanner.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.SequentialPlanner.xml",
-        "microsoft.semantickernel.planning.sequentialplanner.0.17.230629.1-preview.nupkg.sha512",
+        "microsoft.semantickernel.planning.sequentialplanner.0.17.230704.3-preview.nupkg.sha512",
         "microsoft.semantickernel.planning.sequentialplanner.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Skills.Core/0.17.230629.1-preview": {
-      "sha512": "ZO88DsvQJiVFBWH/IbOHvqIzTTVwP4GOrnO3mBAUqk/nUzFBgovT8YOrDeKgkBSxyumFTc0w8vMlv3XbF3puFw==",
+    "Microsoft.SemanticKernel.Skills.Core/0.17.230704.3-preview": {
+      "sha512": "+9+Gwuaq/+H2Rt6HqjxI8IOg4vgIs6McEUwH9gk4xpQm+Pj3D2esSm7lDo0c90UyRlAbOne8wqAQd7ojvNKs8A==",
       "type": "package",
-      "path": "microsoft.semantickernel.skills.core/0.17.230629.1-preview",
+      "path": "microsoft.semantickernel.skills.core/0.17.230704.3-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2479,7 +2459,7 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Skills.Core.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Skills.Core.xml",
-        "microsoft.semantickernel.skills.core.0.17.230629.1-preview.nupkg.sha512",
+        "microsoft.semantickernel.skills.core.0.17.230704.3-preview.nupkg.sha512",
         "microsoft.semantickernel.skills.core.nuspec"
       ]
     },
@@ -4127,7 +4107,7 @@
       "Microsoft.Data.SqlClient >= 5.1.1",
       "Microsoft.Extensions.Configuration.UserSecrets >= 8.0.0-preview.5.23280.8",
       "Microsoft.ML >= 3.0.0-preview.23266.6",
-      "Microsoft.SemanticKernel >= 0.17.230629.1-preview",
+      "Microsoft.SemanticKernel >= 0.17.230704.3-preview",
       "SharpToken >= 1.2.2",
       "System.Data.SqlClient >= 4.8.5",
       "System.Threading.Tasks.Dataflow >= 8.0.0-preview.5.23280.8"
@@ -4190,7 +4170,7 @@
           },
           "Microsoft.SemanticKernel": {
             "target": "Package",
-            "version": "[0.17.230629.1-preview, )"
+            "version": "[0.17.230704.3-preview, )"
           },
           "SharpToken": {
             "target": "Package",

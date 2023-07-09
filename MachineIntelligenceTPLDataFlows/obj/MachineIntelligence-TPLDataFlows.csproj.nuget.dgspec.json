@@ -58,7 +58,7 @@
             },
             "Microsoft.SemanticKernel": {
               "target": "Package",
-              "version": "[0.17.230629.1-preview, )"
+              "version": "[0.17.230704.3-preview, )"
             },
             "SharpToken": {
               "target": "Package",

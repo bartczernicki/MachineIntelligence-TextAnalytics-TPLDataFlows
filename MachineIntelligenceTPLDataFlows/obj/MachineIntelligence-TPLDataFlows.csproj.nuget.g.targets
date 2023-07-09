@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)system.text.json\8.0.0-preview.5.23280.8\buildTransitive\net6.0\System.Text.Json.targets" Condition="Exists('$(NuGetPackageRoot)system.text.json\8.0.0-preview.5.23280.8\buildTransitive\net6.0\System.Text.Json.targets')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\7.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\7.0.0\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\6.0.4\buildTransitive\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\6.0.4\buildTransitive\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.ml\3.0.0-preview.23266.6\build\netstandard2.0\Microsoft.ML.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.ml\3.0.0-preview.23266.6\build\netstandard2.0\Microsoft.ML.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets\8.0.0-preview.5.23280.8\buildTransitive\net6.0\Microsoft.Extensions.Configuration.UserSecrets.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets\8.0.0-preview.5.23280.8\buildTransitive\net6.0\Microsoft.Extensions.Configuration.UserSecrets.targets')" />
   </ImportGroup>
