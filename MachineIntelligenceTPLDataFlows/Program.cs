@@ -477,12 +477,6 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Answering Question using OpenAI for '{0}'", searchMessage.SearchString);
 
-                var semanticKernel = Kernel.Builder
-                    //.WithOpenAITextCompletionService(modelId: "text-davinci-003", apiKey: openAIAPIKey)
-                    // You can use the chat completion service (use GPT 3.5 Turbo)
-                    .WithOpenAIChatCompletionService(modelId: "gpt-3.5-turbo", apiKey: openAIAPIKey)
-                    .Build();
-
                 string answerQuestionContext = """
                     Answer the following question based on the context paragraph below: 
                     ---Begin Question---
@@ -507,6 +501,13 @@ namespace MachineIntelligenceTPLDataFlows
                             TopP = 0.6,
                         }
                 };
+
+                var semanticKernel = Kernel.Builder
+                    // Older GPT-3 Davinci
+                    //.WithOpenAITextCompletionService(modelId: "text-davinci-003", apiKey: openAIAPIKey)
+                    // You can use the chat completion service (use GPT 3.5 Turbo)
+                    .WithOpenAIChatCompletionService(modelId: "gpt-3.5-turbo", apiKey: openAIAPIKey)
+                    .Build();
 
                 var myPromptTemplate = new PromptTemplate(
                     answerQuestionContext,
