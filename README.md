@@ -3,8 +3,8 @@
 ## Machine Intelligence Text Analytics Enrichment implemented using Task Parallel Library Data Flow Pipelines:
 * Document Enrichment Pipeline - Builds the entire Vector Database using OpenAI embeddings in SQL using 30 selected books
 * Q&A Over Vector Database Pipeline - Searches the SQL Vector Database with provided question phrase using Semantic Kernel
-* Total Text (OpenAI) Tokens Processed:...............2,531,238  
-* Total Text (Characters) Length Processed:..........10,529,043
+* Total Text (OpenAI) Tokens Processed:...............4,231,230  
+* Total Text (Characters) Length Processed:..........17,387,582  
 * Total cost for OpenAI Embeddings (June 2023 prices):..$0.25 (25 cents)
 
 ![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
