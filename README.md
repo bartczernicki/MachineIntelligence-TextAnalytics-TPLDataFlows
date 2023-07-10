@@ -5,7 +5,7 @@
 * Q&A Over Vector Database Pipeline - Searches the SQL Vector Database with provided question phrase using Semantic Kernel
 * Total Text (OpenAI) Tokens Processed:...............4,231,230  
 * Total Text (Characters) Length Processed:..........17,387,582  
-* Total cost for OpenAI Embeddings (June 2023 prices):..$0.42 (42 cents)
+* Total cost for OpenAI Embeddings (July 2023 prices):..$0.42 (42 cents)
 
 ![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
 
