@@ -145,7 +145,28 @@ namespace MachineIntelligenceTPLDataFlows
                 new ProjectGutenbergBook{
                     BookTitle = "Selections from Poe",
                     Author = "Edgar Allen Poe",
-                    Url = mirrorLocation + "8893/8893-0.txt"}
+                    Url = mirrorLocation + "8893/8893-0.txt"},
+                // Alexandre Dumas
+                new ProjectGutenbergBook{
+                    BookTitle = "Twenty Years After",
+                    Author = "Alexandre Dumas",
+                    Url = mirrorLocation + "1259/1259-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Count of Monte Cristo",
+                    Author = "Alexandre Dumas",
+                    Url = mirrorLocation + "1184/1184-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Three Musketeers",
+                    Author = "Alexandre Dumas",
+                    Url = mirrorLocation + "1257/1257-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Man in the Iron Mask",
+                    Author = "Alexandre Dumas",
+                    Url = mirrorLocation + "2759/2759-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Black Tulip",
+                    Author = "Alexandre Dumas",
+                    Url = mirrorLocation + "965/965-0.txt"}
             };
 
             // For debugging return a two books
