@@ -3,14 +3,14 @@
 ## Machine Intelligence Text Analytics Enrichment implemented using Task Parallel Library Data Flow Pipelines:
 * Document Enrichment Pipeline - Builds the entire Vector Database using OpenAI embeddings in SQL using 30 selected books
 * Q&A Over Vector Database Pipeline - Searches the SQL Vector Database with provided question phrase using Semantic Kernel
-* Total Text (OpenAI) Tokens Processed:...............2,531,238  
-* Total Text (Characters) Length Processed:..........10,529,043
-* Total cost for OpenAI Embeddings (June 2023 prices):..$0.25 (25 cents)
+* Total Text (OpenAI) Tokens Processed:...............4,231,230  
+* Total Text (Characters) Length Processed:..........17,387,582  
+* Total cost for OpenAI Embeddings (July 2023 prices):..$0.42 (42 cents)
 
 ![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
 
 ## Features:
-* The console app uses 30 selected books from the Project Gutenberg site from various authors: Oscar Wilde, Bram Stoker, Edgar Allen Poe and performs enrichment using multiple AI enrichment steps
+* The console app uses 35 selected books from the Project Gutenberg site from various authors: Oscar Wilde, Bram Stoker, Edgar Allen Poe, Alexandre Dumas and performs enrichment using multiple AI enrichment steps
 * Downloads book text, processes text analytics & embeddings, creates a vector database in SQL, demonstrates vector search and answers a sample question using semantic meaning from OpenAI embeddings
 * Stores all enrichment output for each book in a seperate JSON file
 * Rather than processing text analytics enrichment in single synchronous steps, it uses an data flow model to create efficient pipelines that can saturate multiple logical CPU cores  
