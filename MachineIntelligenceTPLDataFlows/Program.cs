@@ -1,5 +1,6 @@
 ﻿using Azure.AI.OpenAI;
 using MachineIntelligenceTPLDataFlows.Classes;
+using MachineIntelligenceTPLDataFlows.Services;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.ML;

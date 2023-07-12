@@ -65,6 +65,10 @@
               "target": "Package",
               "version": "[0.17.230711.7-preview, )"
             },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.0.0-alpha.5, )"
+            },
             "SharpToken": {
               "target": "Package",
               "version": "[1.2.2, )"
