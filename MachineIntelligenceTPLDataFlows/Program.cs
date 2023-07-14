@@ -104,17 +104,11 @@ namespace MachineIntelligenceTPLDataFlows
                 {
                     // with AddHttpClient we register the IHttpClientFactory
                     services.AddHttpClient();
-
+                    // Retrieve Polly retry policy and apply it
                     var retryPolicy = Policies.HttpPolicies.GetRetryPolicy();
                     services.AddHttpClient<IOpenAIServiceManagement, OpenAIServiceManagement>().AddPolicyHandler(retryPolicy);
                 });
             var host = builder.Build();
-
-            // here we 'get' IServiceManagement
-            var myService = host.Services.GetRequiredService<IOpenAIServiceManagement>();
-            myService.APIKey = openAIAPIKey;
-            // we run the method GetAllUsers
-            var lstUsers = await myService.GetEmbeddings("test");
 
             // START the timer
             Stopwatch stopwatch = new Stopwatch();
@@ -333,14 +327,14 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("OpenAI Embeddings for: '{0}'", enrichedDocument.BookTitle);
 
-                // FIX
-                //foreach (var paragraph in enrichedDocument.Paragraphs)
-                //{
-                //    var embeddings = new EmbeddingsOptions(paragraph);
-                //    var result = await openAIClient.GetEmbeddingsAsync("text-embedding-ada-002", embeddings);
-                //    var embeddingsVector = result.Value.Data[0].Embedding;
-                //    enrichedDocument.ParagraphEmbeddings.Add(embeddingsVector.ToList());
-                //}
+                foreach (var paragraph in enrichedDocument.Paragraphs)
+                {
+                    // Create the OpenAI Service
+                    var openAIService = host.Services.GetRequiredService<IOpenAIServiceManagement>();
+                    openAIService.APIKey = openAIAPIKey;
+                    var embeddings = await openAIService.GetEmbeddings(paragraph);
+                    enrichedDocument.ParagraphEmbeddings.Add(embeddings);
+                }
 
                 return enrichedDocument;
 
@@ -444,11 +438,12 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Retrieving OpenAI Embeddings for the phrase: '{0}'", searchMessage.SearchString);
 
-                // FIX
-                //var embeddings = new EmbeddingsOptions(searchMessage.SearchString);
-                //var result = await openAIClient.GetEmbeddingsAsync("text-embedding-ada-002", embeddings);
-                //var embeddingsVector = result.Value.Data[0].Embedding;
-                //searchMessage.EmbeddingsJsonString = System.Text.Json.JsonSerializer.Serialize(embeddingsVector);
+
+                // Create the OpenAI Service
+                var openAIService = host.Services.GetRequiredService<IOpenAIServiceManagement>();
+                openAIService.APIKey = openAIAPIKey;
+                var embeddings = await openAIService.GetEmbeddings(searchMessage.SearchString);
+                searchMessage.EmbeddingsJsonString = System.Text.Json.JsonSerializer.Serialize(embeddings);
 
                 return searchMessage;
             });

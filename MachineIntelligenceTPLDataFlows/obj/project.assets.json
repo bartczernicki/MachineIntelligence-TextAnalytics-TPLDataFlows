@@ -1248,10 +1248,10 @@
           }
         }
       },
-      "Polly/8.0.0-alpha.5": {
+      "Polly/8.0.0-alpha.6": {
         "type": "package",
         "dependencies": {
-          "Polly.Core": "8.0.0-alpha.5"
+          "Polly.Core": "8.0.0-alpha.6"
         },
         "compile": {
           "lib/net7.0/Polly.dll": {
@@ -1264,7 +1264,7 @@
           }
         }
       },
-      "Polly.Core/8.0.0-alpha.5": {
+      "Polly.Core/8.0.0-alpha.6": {
         "type": "package",
         "compile": {
           "lib/net7.0/Polly.Core.dll": {
@@ -3575,10 +3575,10 @@
         "packageIcon.png"
       ]
     },
-    "Polly/8.0.0-alpha.5": {
-      "sha512": "K7aMs/ED2SEccrkuDqqwyASkJVFd1/wvHoifxkzdf09lXaE4R5byiUXCHGD4QB7pCGAufjNfR54+h6spQaXcow==",
+    "Polly/8.0.0-alpha.6": {
+      "sha512": "1s6WNxRTgnCNd5F95ceoqkCaE1OI6lz3CrDAWIOyT3flfOFfoTRXbKMw+7Wsx5EMKDlnrFjiGY53DI5U1Y03zQ==",
       "type": "package",
-      "path": "polly/8.0.0-alpha.5",
+      "path": "polly/8.0.0-alpha.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3594,14 +3594,14 @@
         "lib/netstandard2.0/Polly.pdb",
         "package-icon.png",
         "package-readme.md",
-        "polly.8.0.0-alpha.5.nupkg.sha512",
+        "polly.8.0.0-alpha.6.nupkg.sha512",
         "polly.nuspec"
       ]
     },
-    "Polly.Core/8.0.0-alpha.5": {
-      "sha512": "R6nOJe7HTcc0i+L8Q3bPodmPwA8XhNSyPLiB3f5MwgmE0CK6qZTNi20zLYeehqDI2N/Cs3F/w+MM8Txu+oiprg==",
+    "Polly.Core/8.0.0-alpha.6": {
+      "sha512": "3/1JE10vykGcZQs5cLw8YaXBW8GMyOZ+5KIccOgXITtpwqjXDWhi4oRgel1S22/78BgzJErrE3E/gChFhoBFQw==",
       "type": "package",
-      "path": "polly.core/8.0.0-alpha.5",
+      "path": "polly.core/8.0.0-alpha.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3622,7 +3622,7 @@
         "lib/netstandard2.0/Polly.Core.xml",
         "package-icon.png",
         "package-readme.md",
-        "polly.core.8.0.0-alpha.5.nupkg.sha512",
+        "polly.core.8.0.0-alpha.6.nupkg.sha512",
         "polly.core.nuspec"
       ]
     },
@@ -5205,7 +5205,7 @@
       "Microsoft.Extensions.Http.Polly >= 8.0.0-preview.6.23329.11",
       "Microsoft.ML >= 3.0.0-preview.23266.6",
       "Microsoft.SemanticKernel >= 0.17.230711.7-preview",
-      "Polly >= 8.0.0-alpha.5",
+      "Polly >= 8.0.0-alpha.6",
       "SharpToken >= 1.2.2",
       "System.Data.SqlClient >= 4.8.5",
       "System.Threading.Tasks.Dataflow >= 8.0.0-preview.6.23329.7"
@@ -5286,7 +5286,7 @@
           },
           "Polly": {
             "target": "Package",
-            "version": "[8.0.0-alpha.5, )"
+            "version": "[8.0.0-alpha.6, )"
           },
           "SharpToken": {
             "target": "Package",

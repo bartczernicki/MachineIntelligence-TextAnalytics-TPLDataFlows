@@ -1,11 +1,7 @@
 ﻿using Polly;
 using Polly.Extensions.Http;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MachineIntelligenceTPLDataFlows.Policies
 {
@@ -15,8 +11,8 @@ namespace MachineIntelligenceTPLDataFlows.Policies
         {
             var retryPolicy = HttpPolicyExtensions
             .HandleTransientHttpError() // HttpRequestException, 5XX and 408
-            .OrResult(response => response.StatusCode == System.Net.HttpStatusCode.TooManyRequests) // 429
-            .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+            .OrResult(response => response.StatusCode == System.Net.HttpStatusCode.TooManyRequests) //  Handle too many requests 429
+            .WaitAndRetryAsync(4, retryAttempt => TimeSpan.FromSeconds(Math.Pow(3, retryAttempt)));
 
             return retryPolicy;
         }

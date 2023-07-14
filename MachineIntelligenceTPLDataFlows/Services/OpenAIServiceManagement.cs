@@ -14,10 +14,11 @@ namespace MachineIntelligenceTPLDataFlows.Services
     public class OpenAIServiceManagement : IOpenAIServiceManagement
     {
         private readonly IHttpClientFactory _clientFactory;
+        private readonly HttpClient _httpClient;
 
-        public OpenAIServiceManagement(IHttpClientFactory clientFactory)
+        public OpenAIServiceManagement(HttpClient client)
         {
-            _clientFactory = clientFactory;
+            _httpClient = client;
         }
 
         private string _apiKey;
@@ -27,11 +28,11 @@ namespace MachineIntelligenceTPLDataFlows.Services
             set => _apiKey = value;
         }
 
-        public async Task<string> GetEmbeddings(string textToEncode)
+        public async Task<List<float>> GetEmbeddings(string textToEncode)
         {
-            string embeddingsString = string.Empty;
+            var embeddings = new List<float>(1536);
 
-            var httpClient = _clientFactory.CreateClient();
+            var httpClient = _httpClient;
             var requestBody = new { input = textToEncode, model = "text-embedding-ada-002" };
             var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); //ACCEPT header
@@ -43,11 +44,11 @@ namespace MachineIntelligenceTPLDataFlows.Services
             {
                 var responseJsonString = await responseService.Content.ReadAsStringAsync();
                 var openAIEmbeddings = JsonConvert.DeserializeObject<OpenAIEmbeddings>(responseJsonString);
-                var embeddingsVectorList = openAIEmbeddings.data[0].embedding;
-                embeddingsString = System.Text.Json.JsonSerializer.Serialize(embeddingsVectorList);
+                embeddings = openAIEmbeddings.data[0].embedding.ToList();
+                //embeddingsString = System.Text.Json.JsonSerializer.Serialize(embeddingsVectorList);
             }
 
-            return embeddingsString;
+            return embeddings;
         }
     }
 }

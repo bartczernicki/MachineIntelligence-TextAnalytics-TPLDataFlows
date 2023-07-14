@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nFi/zgbRpGe0WCbalB1+hXUd1l4OR33MKqtZpqrkGw02DBUD0vCToHNt3hiuC5en+EaVS4AgLJ6NewcQGWwUkw==",
+  "dgSpecHash": "lZdpbY8gu+eHemvre8fV5ig+eAX0vvpDSNxYe7RcXFvVov6TJgzleVLYXlYx+jm/kxg9couax7ABWnxPaxP89A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
   "expectedPackageFiles": [
@@ -63,8 +63,8 @@
     "C:\\Users\\Bart\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Bart\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Bart\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\Bart\\.nuget\\packages\\polly\\8.0.0-alpha.5\\polly.8.0.0-alpha.5.nupkg.sha512",
-    "C:\\Users\\Bart\\.nuget\\packages\\polly.core\\8.0.0-alpha.5\\polly.core.8.0.0-alpha.5.nupkg.sha512",
+    "C:\\Users\\Bart\\.nuget\\packages\\polly\\8.0.0-alpha.6\\polly.8.0.0-alpha.6.nupkg.sha512",
+    "C:\\Users\\Bart\\.nuget\\packages\\polly.core\\8.0.0-alpha.6\\polly.core.8.0.0-alpha.6.nupkg.sha512",
     "C:\\Users\\Bart\\.nuget\\packages\\polly.extensions.http\\3.0.0\\polly.extensions.http.3.0.0.nupkg.sha512",
     "C:\\Users\\Bart\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\Bart\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
