@@ -1,8 +1,9 @@
-﻿using Azure.AI.OpenAI;
-using MachineIntelligenceTPLDataFlows.Classes;
+﻿using MachineIntelligenceTPLDataFlows.Classes;
 using MachineIntelligenceTPLDataFlows.Services;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
@@ -10,6 +11,9 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Orchestration;
 using Microsoft.SemanticKernel.SemanticFunctions;
 using Newtonsoft.Json;
+using Polly;
+using Polly.Extensions.Http;
+using Polly.Registry;
 using SharpToken;
 using System;
 using System.Collections.Generic;
@@ -94,6 +98,24 @@ namespace MachineIntelligenceTPLDataFlows
             var openAIAPIKey = configuration.GetSection("OpenAI")["APIKey"];
             var azureOpenAIAPIKey = configuration.GetSection("AzureOpenAI")["APIKey"];
 
+            var builder = new HostBuilder();
+            builder
+                .ConfigureServices((hostContext, services) =>
+                {
+                    // with AddHttpClient we register the IHttpClientFactory
+                    services.AddHttpClient();
+
+                    var retryPolicy = Policies.HttpPolicies.GetRetryPolicy();
+                    services.AddHttpClient<IOpenAIServiceManagement, OpenAIServiceManagement>().AddPolicyHandler(retryPolicy);
+                });
+            var host = builder.Build();
+
+            // here we 'get' IServiceManagement
+            var myService = host.Services.GetRequiredService<IOpenAIServiceManagement>();
+            myService.APIKey = openAIAPIKey;
+            // we run the method GetAllUsers
+            var lstUsers = await myService.GetEmbeddings("test");
+
             // START the timer
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -116,7 +138,7 @@ namespace MachineIntelligenceTPLDataFlows
             //    new Uri("https://YOURAZUREOPENAIENDPOINT.openai.azure.com"), new Azure.AzureKeyCredential(azureOpenAIAPIKey));
             
             // OpenAI Client (not Azure OpenAI)
-            var openAIClient = new OpenAIClient(openAIAPIKey);
+            // var openAIClient = new OpenAIClient(openAIAPIKey);
 
             // GET Current Environment Folder
             // Note: This will have the JSON documents from the checked-in code and overwrite each time run
@@ -311,13 +333,14 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("OpenAI Embeddings for: '{0}'", enrichedDocument.BookTitle);
 
-                foreach (var paragraph in enrichedDocument.Paragraphs)
-                {
-                    var embeddings = new EmbeddingsOptions(paragraph);
-                    var result = await openAIClient.GetEmbeddingsAsync("text-embedding-ada-002", embeddings);
-                    var embeddingsVector = result.Value.Data[0].Embedding;
-                    enrichedDocument.ParagraphEmbeddings.Add(embeddingsVector.ToList());
-                }
+                // FIX
+                //foreach (var paragraph in enrichedDocument.Paragraphs)
+                //{
+                //    var embeddings = new EmbeddingsOptions(paragraph);
+                //    var result = await openAIClient.GetEmbeddingsAsync("text-embedding-ada-002", embeddings);
+                //    var embeddingsVector = result.Value.Data[0].Embedding;
+                //    enrichedDocument.ParagraphEmbeddings.Add(embeddingsVector.ToList());
+                //}
 
                 return enrichedDocument;
 
@@ -421,10 +444,11 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Retrieving OpenAI Embeddings for the phrase: '{0}'", searchMessage.SearchString);
 
-                var embeddings = new EmbeddingsOptions(searchMessage.SearchString);
-                var result = await openAIClient.GetEmbeddingsAsync("text-embedding-ada-002", embeddings);
-                var embeddingsVector = result.Value.Data[0].Embedding;
-                searchMessage.EmbeddingsJsonString = System.Text.Json.JsonSerializer.Serialize(embeddingsVector);
+                // FIX
+                //var embeddings = new EmbeddingsOptions(searchMessage.SearchString);
+                //var result = await openAIClient.GetEmbeddingsAsync("text-embedding-ada-002", embeddings);
+                //var embeddingsVector = result.Value.Data[0].Embedding;
+                //searchMessage.EmbeddingsJsonString = System.Text.Json.JsonSerializer.Serialize(embeddingsVector);
 
                 return searchMessage;
             });
