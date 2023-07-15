@@ -252,7 +252,8 @@ namespace MachineIntelligenceTPLDataFlows.Services
             {
                 // Oscar Wilde - An Ideal Husband
                 new SearchMessage{
-                    SearchString = "Lady Markby arrives with which unexpected guest?"
+                    SearchString = "Lady Markby arrives with which unexpected guest?",
+                    BookTitle = "An Ideal Husband"
                 }
             };
 

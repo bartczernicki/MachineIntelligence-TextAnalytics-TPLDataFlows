@@ -465,6 +465,7 @@ namespace MachineIntelligenceTPLDataFlows
                         command.CommandText = "spSearchProjectGutenbergVectors";
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@jsonOpenAIEmbeddings", searchMessage.EmbeddingsJsonString);
+                        command.Parameters.AddWithValue("@bookTitle", searchMessage.BookTitle);
 
                         var sqlAdapter = new SqlDataAdapter(command);
                         sqlAdapter.Fill(dataSet);
