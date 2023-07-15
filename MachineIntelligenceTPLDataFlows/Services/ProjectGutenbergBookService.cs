@@ -167,12 +167,81 @@ namespace MachineIntelligenceTPLDataFlows.Services
                 new ProjectGutenbergBook{
                     BookTitle = "The Black Tulip",
                     Author = "Alexandre Dumas",
-                    Url = mirrorLocation + "965/965-0.txt"}
+                    Url = mirrorLocation + "965/965-0.txt"},
+
+                // Charles Dickens
+                new ProjectGutenbergBook{
+                    BookTitle = "A Tale of Two Cities",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "98/98-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "Great Expectations",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "1400/1400-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "Oliver Twist",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "730/730-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "David Copperfield",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "766/766-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "Hard Times",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "786/786-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "Bleak House",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "1023/1023-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Pickwick Papers",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "580/580-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Old Curiosity Shop",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "700/700-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "American Notes",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "675/675-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "Life And Adventures Of Martin Chuzzlewit",
+                    Author = "Charles Dickens",
+                    Url = mirrorLocation + "968/968-0.txt"},
+
+                // Mark Twain
+                new ProjectGutenbergBook{
+                    BookTitle = "Adventures of Huckleberry Finn",
+                    Author = "Mark Twain",
+                    Url = mirrorLocation + "76/76-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Man that Corrupted Hadleyburg",
+                    Author = "Mark Twain",
+                    Url = mirrorLocation + "1213/1213.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Prince and The Pauper",
+                    Author = "Mark Twain",
+                    Url = mirrorLocation + "1837/1837-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "The Innocents Abroad",
+                    Author = "Mark Twain",
+                    Url = mirrorLocation + "3176/3176-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "Roughing It",
+                    Author = "Mark Twain",
+                    Url = mirrorLocation + "3177/3177-0.txt"}
             };
+
+            //var ensureNoDuplicateTitles = books.Select(x => x.BookTitle).Distinct().ToList();
+            //var ensureNoDuplicateUrls = books.Select(x => x.Url).Distinct().ToList();
 
             // For debugging return a two books
             // It will process the sample question below from the top two books fine
+            // Otherwise it returns 50 full novels/books
             // return books.Take(2).ToList();
+
 
             return books;
         }

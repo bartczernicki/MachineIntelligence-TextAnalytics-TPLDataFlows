@@ -509,7 +509,7 @@ namespace MachineIntelligenceTPLDataFlows
 
                 var questionContext = new ContextVariables();
                 questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
-                questionContext.Set("PARAGRAPH", searchMessage.TopParagraphSearchResults[0].Paragraph);
+                questionContext.Set("PARAGRAPH", searchMessage.TopParagraphSearchResults[1].Paragraph);
 
                 var questionPromptConfig = new PromptTemplateConfig
                 {
