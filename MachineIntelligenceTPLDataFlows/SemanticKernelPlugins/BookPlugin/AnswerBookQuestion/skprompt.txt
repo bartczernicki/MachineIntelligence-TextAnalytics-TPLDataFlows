@@ -1,0 +1,7 @@
+Answer the following question based on the context paragraph below: 
+---Begin Question---
+{{$SEARCHSTRING}}
+---End Question---
+---Begin Paragraph---
+{{$PARAGRAPH}}
+---End Paragraph---

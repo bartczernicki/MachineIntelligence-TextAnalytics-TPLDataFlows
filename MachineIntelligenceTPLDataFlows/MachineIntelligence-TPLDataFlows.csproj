@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EnrichedDocuments\" />
+    <Folder Include="SemanticKernelPlugins\BookPlugin\AnswerBookQuestion\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="EnrichedDocuments\BramStoker-Dracula.json">
@@ -138,6 +139,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="EnrichedDocuments\OscarWilde-ThePictureofDorianGray.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SemanticKernelPlugins\BookPlugin\AnswerBookQuestion\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SemanticKernelPlugins\BookPlugin\AnswerBookQuestion\skprompt.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="SQL\spCreateProjectGutenbergVectorsIndex.sql">

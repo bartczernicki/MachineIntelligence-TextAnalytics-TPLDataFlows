@@ -498,54 +498,58 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Answering Question using OpenAI for '{0}'", searchMessage.SearchString);
 
-                string answerQuestionContext = """
-                    Answer the following question based on the context paragraph below: 
-                    ---Begin Question---
-                    {{$SEARCHSTRING}}
-                    ---End Question---
-                    ---Begin Paragraph---
-                    {{$PARAGRAPH}}
-                    ---End Paragraph---
-                    """;
+                var semanticKernel = Kernel.Builder
+                    // You can use the chat completion service (use GPT 3.5 Turbo)
+                    .WithOpenAIChatCompletionService(modelId: "gpt-3.5-turbo", apiKey: openAIAPIKey)
+                    .Build();
+
+                var pluginsDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "SemanticKernelPlugins");
+                var bookPlugin = semanticKernel.ImportSemanticSkillFromDirectory(pluginsDirectory, "BookPlugin");
 
                 var questionContext = new ContextVariables();
                 questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
                 questionContext.Set("PARAGRAPH", searchMessage.TopParagraphSearchResults[1].Paragraph);
 
-                var questionPromptConfig = new PromptTemplateConfig
-                {
-                    Description = "Search & Answer",
-                    Completion =
-                        {
-                            MaxTokens = 500,
-                            Temperature = 0.7,
-                            TopP = 0.6,
-                        }
-                };
+                var answerBookQuestion = await semanticKernel.RunAsync(questionContext, bookPlugin["AnswerBookQuestion"]);
 
-                var semanticKernel = Kernel.Builder
-                    // Older GPT-3 Davinci
-                    //.WithOpenAITextCompletionService(modelId: "text-davinci-003", apiKey: openAIAPIKey)
-                    // You can use the chat completion service (use GPT 3.5 Turbo)
-                    .WithOpenAIChatCompletionService(modelId: "gpt-3.5-turbo", apiKey: openAIAPIKey)
-                    .Build();
+                //// Manual method of registering SK functions
+                //string answerQuestionContext = """
+                //    Answer the following question based on the context paragraph below: 
+                //    ---Begin Question---
+                //    {{$SEARCHSTRING}}
+                //    ---End Question---
+                //    ---Begin Paragraph---
+                //    {{$PARAGRAPH}}
+                //    ---End Paragraph---
+                //    """;
 
-                var myPromptTemplate = new PromptTemplate(
-                    answerQuestionContext,
-                    questionPromptConfig,
-                    semanticKernel
-                );
+                //var questionPromptConfig = new PromptTemplateConfig
+                //{
+                //    Description = "Search & Answer",
+                //    Completion =
+                //        {
+                //            MaxTokens = 500,
+                //            Temperature = 0.7,
+                //            TopP = 0.6,
+                //        }
+                //};
 
-                var myFunctionConfig = new SemanticFunctionConfig(questionPromptConfig, myPromptTemplate);
-                var answerFunction = semanticKernel.RegisterSemanticFunction(
-                    "VectorSearchAndAnswer",
-                    "AnswerFromQuestion",
-                    myFunctionConfig);
+                //var myPromptTemplate = new PromptTemplate(
+                //    answerQuestionContext,
+                //    questionPromptConfig,
+                //    semanticKernel
+                //);
 
-                var openAIQuestionAnswer = await semanticKernel.RunAsync(questionContext, answerFunction);
+                //var myFunctionConfig = new SemanticFunctionConfig(questionPromptConfig, myPromptTemplate);
+                //var answerFunction = semanticKernel.RegisterSemanticFunction(
+                //    "VectorSearchAndAnswer",
+                //    "AnswerFromQuestion",
+                //    myFunctionConfig);
+
+                //var openAIQuestionAnswer = await semanticKernel.RunAsync(questionContext, answerFunction);
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("For the question: '{0}'\nBased on the context found from the vector index search and Semantic Kernel OpenAI Text Completion, the answer is:\n'{1}'", searchMessage.SearchString, openAIQuestionAnswer.Result);
+                Console.WriteLine("For the question: '{0}'\nBased on the context found from the vector index search and Semantic Kernel OpenAI Text Completion, the answer is:\n'{1}'", searchMessage.SearchString, answerBookQuestion.Result);
             });
 
             // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books
