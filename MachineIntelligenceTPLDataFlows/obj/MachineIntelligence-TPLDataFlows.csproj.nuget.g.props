@@ -14,9 +14,9 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Content Include="$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.17.230711.7-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\encoder.json" Condition="Exists('$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.17.230711.7-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\encoder.json')">
+    <Content Include="$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.17.230718.1-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\encoder.json" Condition="Exists('$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.17.230718.1-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\encoder.json')">
       <NuGetPackageId>Microsoft.SemanticKernel.Connectors.AI.OpenAI</NuGetPackageId>
-      <NuGetPackageVersion>0.17.230711.7-preview</NuGetPackageVersion>
+      <NuGetPackageVersion>0.17.230718.1-preview</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
       <Pack>false</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -25,9 +25,9 @@
       <Private>True</Private>
       <Link>Tokenizers\Settings\encoder.json</Link>
     </Content>
-    <Content Include="$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.17.230711.7-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\vocab.bpe" Condition="Exists('$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.17.230711.7-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\vocab.bpe')">
+    <Content Include="$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.17.230718.1-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\vocab.bpe" Condition="Exists('$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.17.230718.1-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\vocab.bpe')">
       <NuGetPackageId>Microsoft.SemanticKernel.Connectors.AI.OpenAI</NuGetPackageId>
-      <NuGetPackageVersion>0.17.230711.7-preview</NuGetPackageVersion>
+      <NuGetPackageVersion>0.17.230718.1-preview</NuGetPackageVersion>
       <NuGetItemType>Content</NuGetItemType>
       <Pack>false</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
