@@ -250,10 +250,15 @@ namespace MachineIntelligenceTPLDataFlows.Services
         {
             var searchMessages = new List<SearchMessage>
             {
+                // Edgar Allen Poe - The Raven
+                new SearchMessage{
+                    SearchString = "What did the Raven say?",
+                    BookTitle = string.Empty // Search the entire index
+                },
                 // Oscar Wilde - An Ideal Husband
                 new SearchMessage{
                     SearchString = "Lady Markby arrives with which unexpected guest?",
-                    BookTitle = "An Ideal Husband"
+                    BookTitle = "An Ideal Husband" // Filter the index on only the selected book title
                 }
             };
 

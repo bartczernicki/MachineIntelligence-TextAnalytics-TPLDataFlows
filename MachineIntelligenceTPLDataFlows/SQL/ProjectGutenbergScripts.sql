@@ -79,8 +79,11 @@ inner join
     dbo.ProjectGutenbergBooksVectorsIndex v2 on v1.vector_value_id = v2.vector_value_id
 inner join
 	dbo.ProjectGutenbergBooks b1 on b1.Id = v2.Id
-where
-    b1.BookTitle = @bookTitle
+WHERE (
+        (LEN(@bookTitle) > 0 AND b1.BookTitle = b1.BookTitle) 
+        OR 
+        (LEN(@bookTitle) = 0 AND b1.BookTitle IS NOT NULL)
+	  )
 group by
     v2.Id, b1.ParagraphEmbeddingsCosineSimilarityDenominator
 order by
