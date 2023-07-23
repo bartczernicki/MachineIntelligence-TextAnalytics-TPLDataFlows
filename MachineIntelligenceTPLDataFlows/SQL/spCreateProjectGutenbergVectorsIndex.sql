@@ -8,6 +8,7 @@ set nocount on;
 
 -- Delete all the records, for re-runability
 truncate table dbo.ProjectGutenbergBooksVectorsIndex;
+-- truncate table dbo.ProjectGutenbergBooksVectorsCosineDistanceNumerators;
 
 -- At scale, you need to chunk the vectors by thousands (tens of thousands)
 with cte as
@@ -31,6 +32,17 @@ from
     cte;
 
 END
+
+-- Build Cosine Distnace Numerators
+--insert into dbo.ProjectGutenbergBooksVectorsCosineDistanceNumerators
+--select
+--    Id, 
+--    sqrt(sum([vector_value] * [vector_value])) as CosineDistanceDenominator
+--from 
+--    dbo.ProjectGutenbergBooksVectorsIndex
+--group by Id
+--order by Id
+
 GO
 exec spCreateProjectGutengergVectorsIndex;
 

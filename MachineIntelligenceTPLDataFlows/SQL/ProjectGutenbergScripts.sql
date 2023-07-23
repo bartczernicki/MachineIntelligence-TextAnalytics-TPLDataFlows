@@ -8,14 +8,14 @@ CREATE TABLE [dbo].[ProjectGutenbergBooks](
 	BookTitle [varchar](100) NOT NULL,
 	[Url] [varchar](200) NOT NULL,
 	Paragraph [varchar](6000) NOT NULL,
-	ParagraphEmbeddings varchar(max) NOT NULL
+	ParagraphEmbeddings varchar(max) NOT NULL,
+    ParagraphEmbeddingsCosineSimilarityDenominator [float] NOT NULL
  CONSTRAINT pkProjectGutenbergBooks PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 )
 GO
-
 /*
 select * from ProjectGutenbergBooks;
 */
@@ -31,10 +31,20 @@ CREATE TABLE [dbo].ProjectGutenbergBooksVectorsIndex(
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 )
 GO
-
 /*
 select * from dbo.ProjectGutenbergBooksVectorsIndex;
 */
+
+--drop table if exists dbo.ProjectGutenbergBooksVectorsCosineDistanceNumerators;
+--CREATE TABLE [dbo].ProjectGutenbergBooksVectorsCosineDistanceNumerators(
+--	[Id] [int] NOT NULL,
+--	CosineDistanceDenominator [float] NOT NULL
+-- CONSTRAINT pkProjectGutenbergBooksVectorsCosineDistanceNumerators PRIMARY KEY CLUSTERED 
+--(
+--	[Id] ASC
+--)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+--)
+--GO
 
 drop procedure if exists spSearchProjectGutenbergVectors;
 GO
@@ -63,7 +73,7 @@ OpenAI embeddings are normalized to length 1, which means that:
 - Cosine similarity and Euclidean distance will result in the identical rankings
 */
 drop table if exists #results;
-select top(10)
+select top(20)
     v2.Id, 
     sum(v1.[vector_value] * v2.[vector_value]) / 
         (

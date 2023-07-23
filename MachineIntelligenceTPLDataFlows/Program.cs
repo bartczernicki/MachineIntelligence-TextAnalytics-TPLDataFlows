@@ -34,6 +34,11 @@ namespace MachineIntelligenceTPLDataFlows
         {
             Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows & OpenAI Vector Embeddings";
 
+            //var test = new List<float> { -0.030092733f, -0.0223881f };
+            //var multipliedLists = (from a in test select (a * a)).ToList();
+            //var paragraphEmbeddingsCosineSimilarityDenominator = Math.Sqrt(multipliedLists.Sum());
+
+
             var aciiArt = """
                 |\     /|(  ____ \(  ____ \\__   __/(  ___  )(  ____ )
                 | )   ( || (    \/| (    \/   ) (   | (   ) || (    )|
@@ -225,7 +230,7 @@ namespace MachineIntelligenceTPLDataFlows
 
                 enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
 
-                // Remove the beginning part of the Project Gutenberg i`nfo
+                // Remove the beginning part of the Project Gutenberg info
                 var indexOfBookBeginning = enrichedDocument.Text.IndexOf("GUTENBERG EBOOK") + "GUTENBERG EBOOK ".Length + enrichedDocument.BookTitle.Length;
                 if (indexOfBookBeginning > 0)
                 {
@@ -355,14 +360,17 @@ namespace MachineIntelligenceTPLDataFlows
                     {
                         using (SqlCommand command = new SqlCommand(string.Empty, connection))
                         {
-                            command.CommandText = "INSERT INTO ProjectGutenbergBooks(Author, BookTitle, Url, Paragraph, ParagraphEmbeddings) VALUES(@author, @bookTitle, @url, @paragraph, @paragraphEmbeddings)";
+                            command.CommandText = "INSERT INTO ProjectGutenbergBooks(Author, BookTitle, Url, Paragraph, ParagraphEmbeddings, ParagraphEmbeddingsCosineSimilarityDenominator) VALUES(@author, @bookTitle, @url, @paragraph, @paragraphEmbeddings, @paragraphEmbeddingsCosineSimilarityDenominator)";
                             command.Parameters.AddWithValue("@author", enrichedDocument.Author);
                             command.Parameters.AddWithValue("@bookTitle", enrichedDocument.BookTitle);
                             command.Parameters.AddWithValue("@url", enrichedDocument.Url);
                             command.Parameters.AddWithValue("@paragraph", enrichedDocument.Paragraphs[i]);
-                            var jsonStringParagraphEmbeddings = JsonConvert.SerializeObject(enrichedDocument.ParagraphEmbeddings[i]);
+                            var paragraphEmbeddings = enrichedDocument.ParagraphEmbeddings[i];
+                            var jsonStringParagraphEmbeddings = JsonConvert.SerializeObject(paragraphEmbeddings);
                             command.Parameters.AddWithValue("@paragraphEmbeddings", jsonStringParagraphEmbeddings);
-
+                            var multipliedLists = from a in paragraphEmbeddings select (a*a);
+                            var paragraphEmbeddingsCosineSimilarityDenominator = Math.Sqrt(multipliedLists.Sum());
+                            command.Parameters.AddWithValue("@paragraphEmbeddingsCosineSimilarityDenominator", paragraphEmbeddingsCosineSimilarityDenominator);
                             command.CommandTimeout = 2000;
                             command.ExecuteNonQuery();
                         }
