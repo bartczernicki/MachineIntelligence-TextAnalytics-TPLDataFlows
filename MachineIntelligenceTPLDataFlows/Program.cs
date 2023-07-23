@@ -34,11 +34,6 @@ namespace MachineIntelligenceTPLDataFlows
         {
             Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows & OpenAI Vector Embeddings";
 
-            //var test = new List<float> { -0.030092733f, -0.0223881f };
-            //var multipliedLists = (from a in test select (a * a)).ToList();
-            //var paragraphEmbeddingsCosineSimilarityDenominator = Math.Sqrt(multipliedLists.Sum());
-
-
             var aciiArt = """
                 |\     /|(  ____ \(  ____ \\__   __/(  ___  )(  ____ )
                 | )   ( || (    \/| (    \/   ) (   | (   ) || (    )|
@@ -127,8 +122,8 @@ namespace MachineIntelligenceTPLDataFlows
             var mlContext = new MLContext(100);
             // OpenAI Token Settings
             var MAXTOKENSPERLINE = 200;
-            var MAXTOKENSPERPARAGRAPH = 620; // Provide enough context to answer questions
-            var OVERLAPTOKENSPERPARAGRAPH = 20; // Overlap setting, could be set higher
+            var MAXTOKENSPERPARAGRAPH = 840; // Provide enough context to answer questions
+            var OVERLAPTOKENSPERPARAGRAPH = 40; // Overlap setting, could be set higher
 
 
             // UNCOMMENT IF USING AZURE OPENAI

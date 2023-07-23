@@ -264,8 +264,8 @@ namespace MachineIntelligenceTPLDataFlows.Services
                 },
                 // Oscar Wilde - An Ideal Husband
                 new SearchMessage{
-                    SearchString = "Lady Markby arrives with which unexpected guest?",
-                    BookTitle = "An Ideal Husband", // Sometimes you know more information (the book the answer is located in)
+                    SearchString = "Who does Lord Goring propose to for marriage?",
+                    BookTitle = "An Ideal Husband", // Sometimes you know (or need) more information (for example, the specific book)
                     SemanticKernelPluginName = "AnswerBookQuestion"
                     // Filter the index on only the selected book title to greatly improve performance
                 }
