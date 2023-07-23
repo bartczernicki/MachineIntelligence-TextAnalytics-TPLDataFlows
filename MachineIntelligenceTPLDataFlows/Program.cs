@@ -518,7 +518,7 @@ namespace MachineIntelligenceTPLDataFlows
                 questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
                 questionContext.Set("PARAGRAPH", searchMessage.TopParagraphSearchResults[1].Paragraph);
 
-                var answerBookQuestion = await semanticKernel.RunAsync(questionContext, bookPlugin["AnswerBookQuestion"]);
+                var answerBookQuestion = await semanticKernel.RunAsync(questionContext, bookPlugin[searchMessage.SemanticKernelPluginName]);
 
                 //// Manual method of registering SK functions
                 //string answerQuestionContext = """
@@ -557,7 +557,7 @@ namespace MachineIntelligenceTPLDataFlows
                 //var openAIQuestionAnswer = await semanticKernel.RunAsync(questionContext, answerFunction);
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("For the question: '{0}'\nBased on the context found from the vector index search and Semantic Kernel OpenAI Text Completion, the answer is:\n'{1}'", searchMessage.SearchString, answerBookQuestion.Result);
+                Console.WriteLine("For the question: '{0}'\nBased on the paragraph found from the vector index search using the '{2}' Semantic Kernel plugin with OpenAI, the answer is:\n'{1}'", searchMessage.SearchString, answerBookQuestion.Result, searchMessage.SemanticKernelPluginName);
             });
 
             // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books

@@ -12,5 +12,6 @@ namespace MachineIntelligenceTPLDataFlows.Classes
         public string BookTitle { get; set; }
         public string EmbeddingsJsonString { get; set; }
         public List<ParagraphResults> TopParagraphSearchResults { get; set; }
+        public string SemanticKernelPluginName { get; set; }
     }
 }

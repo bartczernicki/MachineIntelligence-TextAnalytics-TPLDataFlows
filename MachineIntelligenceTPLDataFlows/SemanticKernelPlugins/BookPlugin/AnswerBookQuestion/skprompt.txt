@@ -1,4 +1,4 @@
-Answer the following question based on the context paragraph below: 
+You are provided a fragment of from a larger novel, which may have the information needed. Answer the following question: 
 ---Begin Question---
 {{$SEARCHSTRING}}
 ---End Question---

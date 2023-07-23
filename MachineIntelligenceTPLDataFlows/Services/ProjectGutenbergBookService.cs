@@ -253,17 +253,20 @@ namespace MachineIntelligenceTPLDataFlows.Services
                 // Edgar Allen Poe - The Raven
                 new SearchMessage{
                     SearchString = "What did the Raven say?",
-                    BookTitle = string.Empty // Search the entire vector index
+                    BookTitle = string.Empty, // Search the entire vector index
+                    SemanticKernelPluginName = "AnswerBookQuestion"
                 },
                 // Mark Twain - Adventures of Huckleberry Finn
                 new SearchMessage{
-                    SearchString = "What is the name of Huck Finn's father?",
-                    BookTitle = string.Empty // Search the entire vector index
+                    SearchString = "What is Huck Finn's father nickname or how is he referred to?",
+                    BookTitle = string.Empty, // Search the entire vector index
+                    SemanticKernelPluginName = "AnswerBookQuestion"
                 },
                 // Oscar Wilde - An Ideal Husband
                 new SearchMessage{
                     SearchString = "Lady Markby arrives with which unexpected guest?",
-                    BookTitle = "An Ideal Husband" // Sometimes you know more information (the book the answer is located in)
+                    BookTitle = "An Ideal Husband", // Sometimes you know more information (the book the answer is located in)
+                    SemanticKernelPluginName = "AnswerBookQuestion"
                     // Filter the index on only the selected book title to greatly improve performance
                 }
             };
