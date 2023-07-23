@@ -1579,7 +1579,9 @@ select top(25)
         (
             sqrt(sum(v1.[vector_value] * v1.[vector_value])) 
             * 
-            sqrt(sum(v2.[vector_value] * v2.[vector_value]))
+            --sqrt(sum(v2.[vector_value] * v2.[vector_value]))
+			--pre-computing 1536 dimension vectors saves about 500ms on non-filtered queries
+			b1.ParagraphEmbeddingsCosineSimilarityDenominator
         ) as cosine_distance
 into
     #results
@@ -1592,7 +1594,7 @@ inner join
 where
 	b1.Author = 'Edgar Allen Poe'
 group by
-    v2.Id
+    v2.Id, b1.ParagraphEmbeddingsCosineSimilarityDenominator
 order by
     cosine_distance desc;
 

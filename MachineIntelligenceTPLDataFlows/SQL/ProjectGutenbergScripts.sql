@@ -35,17 +35,6 @@ GO
 select * from dbo.ProjectGutenbergBooksVectorsIndex;
 */
 
---drop table if exists dbo.ProjectGutenbergBooksVectorsCosineDistanceNumerators;
---CREATE TABLE [dbo].ProjectGutenbergBooksVectorsCosineDistanceNumerators(
---	[Id] [int] NOT NULL,
---	CosineDistanceDenominator [float] NOT NULL
--- CONSTRAINT pkProjectGutenbergBooksVectorsCosineDistanceNumerators PRIMARY KEY CLUSTERED 
---(
---	[Id] ASC
---)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
---)
---GO
-
 drop procedure if exists spSearchProjectGutenbergVectors;
 GO
 create procedure spSearchProjectGutenbergVectors
@@ -79,7 +68,8 @@ select top(20)
         (
             sqrt(sum(v1.[vector_value] * v1.[vector_value])) 
             * 
-            sqrt(sum(v2.[vector_value] * v2.[vector_value]))
+			--pre-computing 1536 dimension vectors saves about 500ms on non-filtered queries
+			b1.ParagraphEmbeddingsCosineSimilarityDenominator
         ) as cosine_distance
 into
     #results
@@ -92,7 +82,7 @@ inner join
 where
     b1.BookTitle = @bookTitle
 group by
-    v2.Id
+    v2.Id, b1.ParagraphEmbeddingsCosineSimilarityDenominator
 order by
     cosine_distance desc;
 
