@@ -32,7 +32,7 @@ namespace MachineIntelligenceTPLDataFlows
     {
         static async Task Main(string[] args)
         {
-            Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows & OpenAI Vector Embeddings";
+            Console.Title = "Machine Intelligence (Text Analytics) with TPL Data Flows & OpenAI SQL Vector Embeddings";
 
             var aciiArt = """
                 |\     /|(  ____ \(  ____ \\__   __/(  ___  )(  ____ )
@@ -74,11 +74,12 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.WriteLine(string.Empty);
                 Console.WriteLine("Select one of the options, by typing either 1 or 2:");
                 Console.WriteLine("1) Create or re-create the Vector Database in SQL (runs Document Enrichment pipeline)");
-                Console.WriteLine("2) Just answer the sample question (runs Q&A over existing Vector Database pipeline)");
+                Console.WriteLine("2) Only answer the sample questions (runs Q&A over existing Vector Database pipeline)");
+                Console.WriteLine("3) Only answer the sample questions with reasoning (runs Q&A over existing Vector Database pipeline)");
                 var insertedText = Console.ReadLine();
                 string trimmedInput = insertedText.Trim();
 
-                if (trimmedInput == "1" || trimmedInput == "2")
+                if (trimmedInput == "1" || trimmedInput == "2" || trimmedInput == "3")
                 {
                     validInput = true;
                     selectedProcessingChoice = (ProcessingOptions) Int32.Parse(trimmedInput);
@@ -512,6 +513,7 @@ namespace MachineIntelligenceTPLDataFlows
                 var questionContext = new ContextVariables();
                 questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
                 questionContext.Set("PARAGRAPH", searchMessage.TopParagraphSearchResults[1].Paragraph);
+                questionContext.Set("REASONING", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer)? string.Empty : "Provide detailed reasoning how you arrived at the answer.");
 
                 var answerBookQuestion = await semanticKernel.RunAsync(questionContext, bookPlugin[searchMessage.SemanticKernelPluginName]);
 

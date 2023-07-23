@@ -10,6 +10,7 @@ namespace MachineIntelligenceTPLDataFlows.Classes
     {
         None = 0, 
         RunFullDataEnrichmentPipeline = 1,
-        JustPerformQuestionAndAnswer = 2
+        OnlyPerformQuestionAndAnswer = 2,
+        OnlyPerformQuestionAndAnswerWithReasoning = 3
     }
 }
