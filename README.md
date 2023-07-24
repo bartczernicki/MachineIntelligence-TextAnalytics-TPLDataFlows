@@ -47,9 +47,9 @@
 ```
   
 ## Getting Started - Step 2) Processing (after adding proper SQL and OpenAI/Azure OpenAI connections):
-* Select option 1 to process the entire Data Enrichment Pipeline (build the embeddings Vector Database in SQL)
-* Select option 2 to only process the Q&A pipeline using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand)
-* Select option 3 to only process the Q&A pipeline with reasoning using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand)
+* Select option 1 to process the entire Data Enrichment Pipeline (build the embeddings Vector Database in SQL)  
+* Select option 2 to only process the Q&A pipeline using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand)  
+* Select option 3 to only process the Q&A pipeline with reasoning using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand). This option is similar to option #2 except it provides details on how the AI agent achieved the results.
 
 ![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-ConsoleApp.png)
 
