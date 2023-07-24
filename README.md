@@ -50,11 +50,12 @@
 * Select option 1 to process the entire Data Enrichment Pipeline (build the embeddings Vector Database in SQL)
 * Select option 2 to only process the Q&A pipeline using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand)
 * Select option 3 to only process the Q&A pipeline with reasoning using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand)
-* 
+
 ![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-ConsoleApp.png)
 
-## Learn more about the concepts used:
-* Semenantic Kernel: https://aka.ms/semantic-kernel  
+## Learn more about the concepts used in this repository:
+* Semenantic Kernel: https://aka.ms/semantic-kernel
+* OpenAI Embeddings: https://platform.openai.com/docs/guides/embeddings  
 * TPL Dataflows .NET: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/dataflow-task-parallel-library
 * SQL Server Columnstore Indexes: https://learn.microsoft.com/en-us/sql/relational-databases/indexes/columnstore-indexes-overview  
 * Project Gutenberg (over 70,000 free eBooks): https://www.gutenberg.org/  
