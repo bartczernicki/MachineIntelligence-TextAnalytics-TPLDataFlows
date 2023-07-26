@@ -125,13 +125,13 @@ namespace MachineIntelligenceTPLDataFlows
             var MAXTOKENSPERLINE = 200;
             var MAXTOKENSPERPARAGRAPH = 840; // Provide enough context to answer questions
             var OVERLAPTOKENSPERPARAGRAPH = 40; // Overlap setting, could be set higher
-
+            var MODELID = "gpt-3.5-turbo"; // "gpt-3.5-turbo" or "gpt-4" if you have access in OpenAI
 
             // UNCOMMENT IF USING AZURE OPENAI
             // Azure OpenAI (Azure not OpenAI)
             //var openAIClient = new OpenAIClient(
             //    new Uri("https://YOURAZUREOPENAIENDPOINT.openai.azure.com"), new Azure.AzureKeyCredential(azureOpenAIAPIKey));
-            
+
             // OpenAI Client (not Azure OpenAI)
             // var openAIClient = new OpenAIClient(openAIAPIKey);
 
@@ -503,8 +503,8 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.WriteLine("Answering Question using OpenAI for '{0}'", searchMessage.SearchString);
 
                 var semanticKernel = Kernel.Builder
-                    // You can use the chat completion service (use GPT 3.5 Turbo)
-                    .WithOpenAIChatCompletionService(modelId: "gpt-3.5-turbo", apiKey: openAIAPIKey)
+                    // You can use the chat completion service (use GPT 3.5 Turbo or GPT-4)
+                    .WithOpenAIChatCompletionService(modelId: MODELID, apiKey: openAIAPIKey)
                     .Build();
 
                 var pluginsDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "SemanticKernelPlugins");
@@ -513,7 +513,7 @@ namespace MachineIntelligenceTPLDataFlows
                 var questionContext = new ContextVariables();
                 questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
                 questionContext.Set("PARAGRAPH", searchMessage.TopParagraphSearchResults[1].Paragraph);
-                questionContext.Set("REASONING", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer)? string.Empty : "Provide detailed reasoning how you arrived at the answer.");
+                questionContext.Set("REASONING", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer)? string.Empty : "Provide detailed reasoning how you arrived at the answer. Provide a score from 1 to 10 on how confident you are on this answer.");
 
                 var answerBookQuestion = await semanticKernel.RunAsync(questionContext, bookPlugin[searchMessage.SemanticKernelPluginName]);
 
