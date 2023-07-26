@@ -5,7 +5,7 @@
 * Q&A Over Vector Database Pipeline - Searches the SQL Vector Database with provided question phrase using Semantic Kernel
 * Total Text (OpenAI) Tokens Processed:...............8,189,964  
 * Total Text (Characters) Length Processed:..........33,355,101  
-* Total cost for OpenAI Embeddings (July 2023 prices):..$0.74 (74 cents)
+* Total cost for processing and building Vector Database using OpenAI Embeddings (July 2023 prices):..$0.96 (96 cents; this depends on how the chunking of text is configured)
 
 ![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
 
@@ -47,14 +47,15 @@
 ```
   
 ## Getting Started - Step 2) Processing (after adding proper SQL and OpenAI/Azure OpenAI connections):
-* Select option 1 to process the entire Data Enrichment Pipeline (build the embeddings Vector Database in SQL)
-* Select option 2 to only process the Q&A pipeline using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand)
-* Select option 3 to only process the Q&A pipeline with reasoning using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand)
-* 
+* Select option 1 to process the entire Data Enrichment Pipeline (build the embeddings Vector Database in SQL)  
+* Select option 2 to only process the Q&A pipeline using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand)  
+* Select option 3 to only process the Q&A pipeline with reasoning using Semantic Kernel over the Vector Database (Note: Option #1 must have been run beforehand). This option is similar to option #2 except it provides details on how the AI agent achieved the results.
+
 ![Getting Started - Console App](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-ConsoleApp.png)
 
-## Learn more about the concepts used:
-* Semenantic Kernel: https://aka.ms/semantic-kernel  
+## Learn more about the concepts used in this repository:
+* Semenantic Kernel: https://aka.ms/semantic-kernel
+* OpenAI Embeddings: https://platform.openai.com/docs/guides/embeddings  
 * TPL Dataflows .NET: https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/dataflow-task-parallel-library
 * SQL Server Columnstore Indexes: https://learn.microsoft.com/en-us/sql/relational-databases/indexes/columnstore-indexes-overview  
 * Project Gutenberg (over 70,000 free eBooks): https://www.gutenberg.org/  
