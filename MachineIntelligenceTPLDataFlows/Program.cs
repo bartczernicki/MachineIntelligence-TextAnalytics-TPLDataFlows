@@ -555,6 +555,7 @@ namespace MachineIntelligenceTPLDataFlows
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("For the question: '{0}'\nBased on the paragraph found from the vector index search using the '{2}' Semantic Kernel plugin with OpenAI, the answer is:\n'{1}'", searchMessage.SearchString, answerBookQuestion.Result, searchMessage.SemanticKernelPluginName);
+                Console.WriteLine(string.Empty);
             });
 
             // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books

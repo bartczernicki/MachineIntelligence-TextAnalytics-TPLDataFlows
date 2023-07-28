@@ -3,9 +3,9 @@
   "description": "Search & Answer",
   "type": "completion",
   "completion": {
-    "max_tokens": 600,
-    "temperature": 0.8,
-    "top_p": 0.5,
+    "max_tokens": 700,
+    "temperature": 0.7,
+    "top_p": 0.7,
     "presence_penalty": 0.5,
     "frequency_penalty": 0.0
   }

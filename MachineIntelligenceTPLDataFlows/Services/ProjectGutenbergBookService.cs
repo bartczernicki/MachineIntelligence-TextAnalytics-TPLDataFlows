@@ -258,8 +258,8 @@ namespace MachineIntelligenceTPLDataFlows.Services
                 },
                 // Mark Twain - Adventures of Huckleberry Finn
                 new SearchMessage{
-                    SearchString = "What is Huck Finn's father nickname or how is he referred to?",
-                    BookTitle = string.Empty, // Search the entire vector index
+                    SearchString = "Who does the \"dauphin\" claim he is?",
+                    BookTitle = "Adventures of Huckleberry Finn", // Search the entire vector index
                     SemanticKernelPluginName = "AnswerBookQuestion"
                 },
                 // Oscar Wilde - An Ideal Husband
