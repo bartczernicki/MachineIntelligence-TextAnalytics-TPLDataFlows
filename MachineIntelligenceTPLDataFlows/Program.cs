@@ -354,19 +354,34 @@ namespace MachineIntelligenceTPLDataFlows
 
                     for (int i = 0; i != enrichedDocument.Paragraphs.Count; i++)
                     {
+
+                        // Insert into ProjectGutenbergBooks
+                        var identityId = 0;
                         using (SqlCommand command = new SqlCommand(string.Empty, connection))
                         {
-                            command.CommandText = "INSERT INTO ProjectGutenbergBooks(Author, BookTitle, Url, Paragraph, ParagraphEmbeddings, ParagraphEmbeddingsCosineSimilarityDenominator) VALUES(@author, @bookTitle, @url, @paragraph, @paragraphEmbeddings, @paragraphEmbeddingsCosineSimilarityDenominator)";
+                            command.CommandText = "INSERT INTO ProjectGutenbergBooks(Author, BookTitle, ParagraphEmbeddings, ParagraphEmbeddingsCosineSimilarityDenominator) VALUES(@author, @bookTitle, @paragraphEmbeddings, @paragraphEmbeddingsCosineSimilarityDenominator); SELECT SCOPE_IDENTITY()";
                             command.Parameters.AddWithValue("@author", enrichedDocument.Author);
                             command.Parameters.AddWithValue("@bookTitle", enrichedDocument.BookTitle);
-                            command.Parameters.AddWithValue("@url", enrichedDocument.Url);
-                            command.Parameters.AddWithValue("@paragraph", enrichedDocument.Paragraphs[i]);
+                            //command.Parameters.AddWithValue("@url", enrichedDocument.Url);
+                            //command.Parameters.AddWithValue("@paragraph", enrichedDocument.Paragraphs[i]);
                             var paragraphEmbeddings = enrichedDocument.ParagraphEmbeddings[i];
                             var jsonStringParagraphEmbeddings = JsonConvert.SerializeObject(paragraphEmbeddings);
                             command.Parameters.AddWithValue("@paragraphEmbeddings", jsonStringParagraphEmbeddings);
                             var multipliedLists = from a in paragraphEmbeddings select (a*a);
                             var paragraphEmbeddingsCosineSimilarityDenominator = Math.Sqrt(multipliedLists.Sum());
                             command.Parameters.AddWithValue("@paragraphEmbeddingsCosineSimilarityDenominator", paragraphEmbeddingsCosineSimilarityDenominator);
+                            command.CommandTimeout = 2000;
+
+                            identityId = Convert.ToInt32(command.ExecuteScalar());
+                        }
+
+                        // Insert into ProjectGutenbergBookDetails
+                        using (SqlCommand command = new SqlCommand(string.Empty, connection))
+                        {
+                            command.CommandText = "INSERT INTO ProjectGutenbergBookDetails(Id, Url, Paragraph) VALUES(@Id, @url, @paragraph)";
+                            command.Parameters.AddWithValue("@Id", identityId);
+                            command.Parameters.AddWithValue("@url", enrichedDocument.Url);
+                            command.Parameters.AddWithValue("@paragraph", enrichedDocument.Paragraphs[i]);
                             command.CommandTimeout = 2000;
                             command.ExecuteNonQuery();
                         }

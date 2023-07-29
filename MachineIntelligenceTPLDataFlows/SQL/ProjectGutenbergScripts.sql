@@ -6,8 +6,6 @@ CREATE TABLE [dbo].[ProjectGutenbergBooks](
 	[Id] [int] NOT NULL identity(1,1),
 	Author [varchar](100) NOT NULL,
 	BookTitle [varchar](100) NOT NULL,
-	[Url] [varchar](200) NOT NULL,
-	Paragraph [varchar](6000) NOT NULL,
 	ParagraphEmbeddings varchar(max) NOT NULL,
     ParagraphEmbeddingsCosineSimilarityDenominator [float] NOT NULL
  CONSTRAINT pkProjectGutenbergBooks PRIMARY KEY CLUSTERED 
@@ -19,6 +17,18 @@ GO
 /*
 select * from ProjectGutenbergBooks;
 */
+
+drop table if exists dbo.ProjectGutenbergBookDetails;
+CREATE TABLE [dbo].[ProjectGutenbergBookDetails](
+	[Id] [int] NOT NULL,
+	[Url] [varchar](200) NOT NULL,
+	Paragraph [varchar](6000) NOT NULL
+ CONSTRAINT pkProjectGutenbergBookDetails PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+)
+GO
 
 drop table if exists dbo.ProjectGutenbergBooksVectorsIndex;
 CREATE TABLE [dbo].ProjectGutenbergBooksVectorsIndex(
@@ -93,13 +103,15 @@ select
     a.Id,
     a.BookTitle,
 	a.Author,
-	a.Paragraph,
+	d.Paragraph,
     --a.Url,
     r.cosine_distance as CosineDistance
 from 
     #results r
 inner join 
     dbo.ProjectGutenbergBooks a on r.Id = a.Id
+inner join 
+    dbo.ProjectGutenbergBookDetails d on r.Id = d.Id
 order by
     cosine_distance desc
 END
