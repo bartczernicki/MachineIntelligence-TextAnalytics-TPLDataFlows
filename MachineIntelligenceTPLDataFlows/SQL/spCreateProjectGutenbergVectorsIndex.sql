@@ -33,15 +33,10 @@ from
 
 END
 
--- Build Cosine Distnace Numerators
---insert into dbo.ProjectGutenbergBooksVectorsCosineDistanceNumerators
---select
---    Id, 
---    sqrt(sum([vector_value] * [vector_value])) as CosineDistanceDenominator
---from 
---    dbo.ProjectGutenbergBooksVectorsIndex
---group by Id
---order by Id
+---- OPTIONAL INDEX
+--DROP INDEX IF EXISTS ProjectGutenberg_SQLOPS_ProjectGutenbergBooksVectorsIndex_2_1 ON dbo.[ProjectGutenbergBooksVectorsIndex];
+--GO
+--CREATE INDEX ProjectGutenberg_SQLOPS_ProjectGutenbergBooksVectorsIndex_2_1 ON dbo.[ProjectGutenbergBooksVectorsIndex]  ([vector_value_id]) INCLUDE ([vector_value]);
 
 GO
 exec spCreateProjectGutengergVectorsIndex;

@@ -1602,13 +1602,15 @@ select
     a.Id,
     a.BookTitle,
 	a.Author,
-	a.Paragraph,
-    a.Url,
+	d.Paragraph,
+    d.Url,
     r.cosine_distance
 from 
     #results r
 inner join 
     dbo.ProjectGutenbergBooks a on r.Id = a.Id
+inner join 
+    dbo.ProjectGutenbergBookDetails d on d.Id = r.Id
 order by
     cosine_distance desc;
 go

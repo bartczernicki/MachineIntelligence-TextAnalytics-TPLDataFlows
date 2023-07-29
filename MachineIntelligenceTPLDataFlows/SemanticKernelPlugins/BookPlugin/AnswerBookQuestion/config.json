@@ -4,7 +4,7 @@
   "type": "completion",
   "completion": {
     "max_tokens": 700,
-    "temperature": 0.6,
+    "temperature": 0.5,
     "top_p": 0.7,
     "presence_penalty": 0.5,
     "frequency_penalty": 0.0
