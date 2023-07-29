@@ -37,10 +37,15 @@ END
 --DROP INDEX IF EXISTS ProjectGutenberg_SQLOPS_ProjectGutenbergBooksVectorsIndex_2_1 ON dbo.[ProjectGutenbergBooksVectorsIndex];
 --GO
 --CREATE INDEX ProjectGutenberg_SQLOPS_ProjectGutenbergBooksVectorsIndex_2_1 ON dbo.[ProjectGutenbergBooksVectorsIndex]  ([vector_value_id]) INCLUDE ([vector_value]);
-
 GO
 exec spCreateProjectGutengergVectorsIndex;
-
+GO
+drop index if exists ixcProjectGutenbergBooksVectorsIndex on dbo.ProjectGutenbergBooksVectorsIndex 
+GO
+create clustered columnstore index ixcProjectGutenbergBooksVectorsIndex
+on dbo.ProjectGutenbergBooksVectorsIndex
+order (id, vector_value_id);
+GO
 /*
 select * from dbo.ProjectGutenbergBooksVectorsIndex
 */
