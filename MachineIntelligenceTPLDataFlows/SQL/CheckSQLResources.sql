@@ -55,3 +55,14 @@ ON SQLOPS_MsgIdxGrp.index_handle = SQLOPS_MsgIdxDetails.index_handle
 INNER JOIN sys.objects as SQLOPS_SysObj
 ON SQLOPS_MsgIdxDetails.object_id = SQLOPS_SysObj.object_id
 ORDER BY 4 desc
+
+
+-- Size of DB to store 1 million documents
+select (864/11000.0)*1000000/1024 as GB
+
+-- Optimization with AVX-512 instructions
+--DBCC TRACEON (15097)
+--DBCC TRACESTATUS (15097);
+--GO
+-- https://learn.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql?view=sql-server-ver16#tf15097
+

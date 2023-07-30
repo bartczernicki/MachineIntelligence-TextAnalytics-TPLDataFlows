@@ -45,6 +45,7 @@ GO
 create clustered columnstore index ixcProjectGutenbergBooksVectorsIndex
 on dbo.ProjectGutenbergBooksVectorsIndex
 order (id, vector_value_id);
+-- https://techcommunity.microsoft.com/t5/sql-server-blog/columnstore-index-differences-between-clustered-nonclustered/ba-p/384767 
 GO
 /*
 select * from dbo.ProjectGutenbergBooksVectorsIndex
