@@ -1,0 +1,11 @@
+{
+	"name": ".NET OpenAI Machine Intelligence",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/dotnet/sdk:8.0",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+    "containerEnv": {
+        "SQLDBPASSWORD": ""
+    }
+}
