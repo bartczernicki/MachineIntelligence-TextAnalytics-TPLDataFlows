@@ -1329,7 +1329,7 @@
           }
         }
       },
-      "SharpToken/1.2.2": {
+      "SharpToken/1.2.6": {
         "type": "package",
         "compile": {
           "lib/net6.0/SharpToken.dll": {}
@@ -3702,10 +3702,10 @@
         "version.txt"
       ]
     },
-    "SharpToken/1.2.2": {
-      "sha512": "YuCZFTW2Spdz7DoJNlE8XuwxrpWf/6EXGqdaFakqrNKOApliydK3cl0F3qw+xAj9jFm7HYCTXz4VvC/iONURyQ==",
+    "SharpToken/1.2.6": {
+      "sha512": "s2QGtnL0o8dYO4aLfUBRnNqH8I0Fu7janjdfhVIhYUcpaNgaFItAA6mVFRGUxPcQCFKb45fg6Ou8fxlyIedfMA==",
       "type": "package",
-      "path": "sharptoken/1.2.2",
+      "path": "sharptoken/1.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3713,7 +3713,7 @@
         "README.md",
         "lib/net6.0/SharpToken.dll",
         "lib/netstandard2.0/SharpToken.dll",
-        "sharptoken.1.2.2.nupkg.sha512",
+        "sharptoken.1.2.6.nupkg.sha512",
         "sharptoken.nuspec"
       ]
     },
@@ -5206,7 +5206,7 @@
       "Microsoft.ML >= 3.0.0-preview.23266.6",
       "Microsoft.SemanticKernel >= 0.18.230725.3-preview",
       "Polly >= 8.0.0-alpha.7",
-      "SharpToken >= 1.2.2",
+      "SharpToken >= 1.2.6",
       "System.Data.SqlClient >= 4.8.5",
       "System.Threading.Tasks.Dataflow >= 8.0.0-preview.6.23329.7"
     ]
@@ -5293,7 +5293,7 @@
           },
           "SharpToken": {
             "target": "Package",
-            "version": "[1.2.2, )"
+            "version": "[1.2.6, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
