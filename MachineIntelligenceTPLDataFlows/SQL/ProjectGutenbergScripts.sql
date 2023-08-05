@@ -65,22 +65,16 @@ from
     openjson(@jsonOpenAIEmbeddings, '$') -- '$.data[0].embedding')
 
 /*
-Use Cosine Distance - OpenAI Recommendations
-https://help.openai.com/en/articles/6824809-embeddings-frequently-asked-questions
+Option 1) Use Cosine Distance - OpenAI Recommendations
 OpenAI embeddings are normalized to length 1, which means that:
-- Cosine similarity can be computed slightly faster using just a dot product
-- Cosine similarity and Euclidean distance will result in the identical rankings
+- Cosine similarity can be computed slightly slower using just a dot product
+- Cosine similarity and Dot Product will result in the identical rankings
+Option 2) Use Dot Product
 */
 drop table if exists #results;
 select top(20)
     v2.Id, 
-    sum(v1.[vector_value] * v2.[vector_value]) / 
-        (
-            sqrt(sum(v1.[vector_value] * v1.[vector_value])) 
-            * 
-			--pre-computing 1536 dimension vectors saves about 500ms on non-filtered queries
-			b1.ParagraphEmbeddingsCosineSimilarityDenominator
-        ) as cosine_distance
+    sum(v1.[vector_value] * v2.[vector_value]) as dot_product
 into
     #results
 from 
@@ -95,9 +89,9 @@ WHERE (
         (LEN(@bookTitle) = 0 AND b1.BookTitle IS NOT NULL)
 	  )
 group by
-    v2.Id, b1.ParagraphEmbeddingsCosineSimilarityDenominator
+    v2.Id
 order by
-    cosine_distance desc;
+    dot_product desc;
 
 select 
     a.Id,
@@ -105,7 +99,7 @@ select
 	a.Author,
 	d.Paragraph,
     --a.Url,
-    r.cosine_distance as CosineDistance
+    r.dot_product as SimilarityScore
 from 
     #results r
 inner join 
@@ -113,7 +107,7 @@ inner join
 inner join 
     dbo.ProjectGutenbergBookDetails d on r.Id = d.Id
 order by
-    cosine_distance desc
+    dot_product desc
 END
 GO
 

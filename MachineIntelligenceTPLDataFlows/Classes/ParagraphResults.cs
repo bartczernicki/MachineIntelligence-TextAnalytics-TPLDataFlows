@@ -12,6 +12,6 @@ namespace MachineIntelligenceTPLDataFlows.Classes
         public string BookTitle { get; set; }
         public string Author { get; set; }
         public string Paragraph { get; set; }
-        public double CosineDistance { get; set; }
+        public double SimilarityScore { get; set; } // Cosine Distance, Dot Product etc.
     }
 }

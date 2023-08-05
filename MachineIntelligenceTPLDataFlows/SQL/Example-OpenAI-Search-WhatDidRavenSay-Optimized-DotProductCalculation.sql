@@ -1576,26 +1576,22 @@ from
 drop table if exists #results;
 select top(25)
     v2.Id, 
-    sum(v1.[vector_value] * v2.[vector_value]) / 
-        (
-            sqrt(sum(v1.[vector_value] * v1.[vector_value])) 
-            * 
-            sqrt(sum(v2.[vector_value] * v2.[vector_value]))
-        ) as cosine_distance
+    sum(v1.[vector_value] * v2.[vector_value]) as dot_product
 into
     #results
 from 
     #t v1
 inner join 
     dbo.ProjectGutenbergBooksVectorsIndex v2 on v1.vector_value_id = v2.vector_value_id
-inner join
-	dbo.ProjectGutenbergBooks b1 on b1.Id = v2.Id
+--inner join
+--	dbo.ProjectGutenbergBooks b1 on b1.Id = v2.Id
 --where
 --	b1.Author = 'Edgar Allen Poe'
 group by
     v2.Id
 order by
-    cosine_distance desc;
+    dot_product desc;
+
 
 select 
     a.Id,
@@ -1603,7 +1599,7 @@ select
 	a.Author,
 	d.Paragraph,
     d.Url,
-    r.cosine_distance
+    r.dot_product
 from 
     #results r
 inner join 
@@ -1611,5 +1607,5 @@ inner join
 inner join 
     dbo.ProjectGutenbergBookDetails d on d.Id = r.Id
 order by
-    cosine_distance desc;
+    dot_product desc;
 go

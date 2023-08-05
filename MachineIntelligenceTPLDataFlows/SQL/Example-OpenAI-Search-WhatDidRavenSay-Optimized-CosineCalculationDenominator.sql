@@ -1,3 +1,4 @@
+-- Clear all cache from SQL memory, this will show performance as a firt-time run
 DBCC FREESYSTEMCACHE ('ALL')
 DBCC FREEPROCCACHE
 DBCC DROPCLEANBUFFERS
@@ -6,7 +7,7 @@ SET STATISTICS TIME ON
 SET STATISTICS IO ON
 go
 
--- What Did the Raven Say
+-- Embeddings - "What Did the Raven Say?"
 declare @jsonExample1 nvarchar(max) = N'{
     "object": "list",
     "data": [

@@ -499,7 +499,7 @@ namespace MachineIntelligenceTPLDataFlows
                         Id = dataRow.Field<int>("Id"),
                         BookTitle = dataRow.Field<string>("BookTitle"),
                         Author = dataRow.Field<string>("Author"),
-                        CosineDistance = dataRow.Field<double>("CosineDistance"),
+                        SimilarityScore = dataRow.Field<double>("SimilarityScore"),
                         Paragraph = dataRow.Field<string>("Paragraph")
                     }).ToList();
 
@@ -508,7 +508,7 @@ namespace MachineIntelligenceTPLDataFlows
                 return searchMessage;
 
                 //Console.ForegroundColor = ConsoleColor.Magenta;
-                //Console.WriteLine("Top paragraph for search question: {0}. Cosine Distance {1} - {2}", searchMessage.SearchString, searchMessage.TopParagraphSearchResults[0].CosineDistance,
+                //Console.WriteLine("Top paragraph for search question: {0}. Similarity Score {1} - {2}", searchMessage.SearchString, searchMessage.TopParagraphSearchResults[0].SimilarityScore,
                 //    searchMessage.TopParagraphSearchResults[0].Paragraph);
             });
 
