@@ -99,6 +99,13 @@ select
     a.BookTitle,
 	a.Author,
 	d.Paragraph,
+	--CONCAT(
+	--	LAG(Paragraph, 1) OVER (ORDER BY d.Id), 
+	--	' ', 
+	--	d.Paragraph, 
+	--	' ', 
+	--	LEAD(Paragraph, 1) OVER (ORDER BY d.Id)
+ --   ) as Paragraph,
     --a.Url,
     r.dot_product as SimilarityScore
 from 
