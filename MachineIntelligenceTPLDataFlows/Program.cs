@@ -531,7 +531,8 @@ namespace MachineIntelligenceTPLDataFlows
                 var questionContext = new ContextVariables();
                 questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
                 questionContext.Set("PARAGRAPH", searchMessage.TopParagraphSearchResults[1].Paragraph);
-                questionContext.Set("REASONING", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer)? string.Empty : "Provide detailed reasoning how you arrived at the answer. Provide a score from 1 to 10 on how confident you are on this answer.");
+                questionContext.Set("ISREASONINGINCLUDED", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer)? string.Empty : "Provide detailed reasoning how you arrived at the answer. Provide a CONFIDENCE SCORE from 1 to 10 on how confident you are on this answer.");
+                questionContext.Set("RESPONSEFORMAT", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer) ? string.Empty : "Label the response in the following format.\nANSWER:\n, REASONING:\n CONFIDENCE SCORE:.");
 
                 var answerBookQuestion = await semanticKernel.RunAsync(questionContext, bookPlugin[searchMessage.SemanticKernelPluginName]);
 

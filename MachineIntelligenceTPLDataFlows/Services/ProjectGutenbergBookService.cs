@@ -22,10 +22,10 @@ namespace MachineIntelligenceTPLDataFlows.Services
             var books = new List<ProjectGutenbergBook>
             {
                 // Oscar Wilde
-                //new ProjectGutenbergBook{
-                //    BookTitle = "An Ideal Husband",
-                //    Author = "Oscar Wilde",
-                //    Url = mirrorLocation + "885/885-0.txt"},
+                new ProjectGutenbergBook{
+                    BookTitle = "An Ideal Husband",
+                    Author = "Oscar Wilde",
+                    Url = mirrorLocation + "885/885-0.txt"},
                 new ProjectGutenbergBook{
                     BookTitle = "The Importance of Being Earnest: A Trivial Comedy for Serious People",
                     Author = "Oscar Wilde",
