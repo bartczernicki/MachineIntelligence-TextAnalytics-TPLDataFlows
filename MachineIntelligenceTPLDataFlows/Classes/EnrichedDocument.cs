@@ -21,7 +21,8 @@ namespace MachineIntelligenceTPLDataFlows.Classes
         public int TextLength { get; set; }
         public int TokenLength { get; set; }
         public string Text { get; set; }
-        public List<string> Paragraphs { get; set; } = new List<string>(100);
+        public List<string> Paragraphs { get; set; } = new List<string>(200);
+        public List<string> ParagraphsWithNoTokensOverlap { get; set; } = new List<string>(200);
         public List<List<float>> ParagraphEmbeddings { get; set; } = new List<List<float>>(100);
         public string NormalizedText { get; set; }
         public string[] WordTokens { get; set; }

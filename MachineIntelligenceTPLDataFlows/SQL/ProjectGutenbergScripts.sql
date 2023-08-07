@@ -22,7 +22,8 @@ drop table if exists dbo.ProjectGutenbergBookDetails;
 CREATE TABLE [dbo].[ProjectGutenbergBookDetails](
 	[Id] [int] NOT NULL,
 	[Url] [varchar](200) NOT NULL,
-	Paragraph [varchar](6000) NOT NULL
+	Paragraph [varchar](6000) NOT NULL,
+    ParagraphIndexPaddingStart int NOT NULL
  CONSTRAINT pkProjectGutenbergBookDetails PRIMARY KEY CLUSTERED 
 (
 	[id] ASC

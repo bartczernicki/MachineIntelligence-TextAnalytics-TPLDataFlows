@@ -317,7 +317,9 @@ namespace MachineIntelligenceTPLDataFlows
 
                 // Calculate the Paragraphs based on TokenCount
                 var enrichedDocumentLines = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextLines(enrichedDocument.Text, MAXTOKENSPERLINE);
+                enrichedDocument.ParagraphsWithNoTokensOverlap = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextParagraphs(enrichedDocumentLines, MAXTOKENSPERPARAGRAPH - OVERLAPTOKENSPERPARAGRAPH, overlapTokens: 0);
                 enrichedDocument.Paragraphs = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextParagraphs(enrichedDocumentLines, MAXTOKENSPERPARAGRAPH, overlapTokens: OVERLAPTOKENSPERPARAGRAPH);
+
 
                 return enrichedDocument;
             }, executionDataFlowOptions);
@@ -378,10 +380,11 @@ namespace MachineIntelligenceTPLDataFlows
                         // Insert into ProjectGutenbergBookDetails
                         using (SqlCommand command = new SqlCommand(string.Empty, connection))
                         {
-                            command.CommandText = "INSERT INTO ProjectGutenbergBookDetails(Id, Url, Paragraph) VALUES(@Id, @url, @paragraph)";
+                            command.CommandText = "INSERT INTO ProjectGutenbergBookDetails(Id, Url, Paragraph, ParagraphIndexPaddingStart) VALUES(@Id, @url, @paragraph, @paragraphIndexPaddingStart)";
                             command.Parameters.AddWithValue("@Id", identityId);
                             command.Parameters.AddWithValue("@url", enrichedDocument.Url);
                             command.Parameters.AddWithValue("@paragraph", enrichedDocument.Paragraphs[i]);
+                            command.Parameters.AddWithValue("@paragraphIndexPaddingStart", enrichedDocument.ParagraphsWithNoTokensOverlap[i].Length);
                             command.CommandTimeout = 2000;
                             command.ExecuteNonQuery();
                         }
