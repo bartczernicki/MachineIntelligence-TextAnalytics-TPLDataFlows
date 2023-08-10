@@ -119,13 +119,15 @@ namespace MachineIntelligenceTPLDataFlows
 
             // CONFIG 
             // Instantiate new ML.NET Context
-            // Note: MlContext is thread-safe
+            // Note: MlContext is thread-safe, set once as it is an expensive constructor
             var mlContext = new MLContext(100);
             // OpenAI Token Settings
             var MAXTOKENSPERLINE = 200;
             var MAXTOKENSPERPARAGRAPH = 840; // Provide enough context to answer questions
             var OVERLAPTOKENSPERPARAGRAPH = 40; // Overlap setting, could be set higher
-            var MODELID = "gpt-3.5-turbo"; // "gpt-3.5-turbo" or "gpt-4" if you have access in OpenAI
+            var MODELID = "gpt-3.5-turbo"; // "gpt-3.5-turbo" or "gpt-4" if you have access to OpenAI
+            // Get the encoding for text-embedding-ada-002, set once as it is an expensive constructor
+            var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
 
             // UNCOMMENT IF USING AZURE OPENAI
             // Azure OpenAI (Azure not OpenAI)
@@ -267,8 +269,6 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Chunking text for: '{0}'", enrichedDocument.BookTitle);
 
-                // Get the encoding for text-embedding-ada-002
-                var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
                 // Return the optimal text encodings, this is if tokens can be split perfect (no overlap)
                 var encodedTokens = cl100kBaseEncoding.Encode(enrichedDocument.Text);
 
