@@ -155,11 +155,11 @@
           }
         }
       },
-      "Microsoft.Extensions.Configuration/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Configuration/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Primitives": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Primitives": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.dll": {
@@ -175,10 +175,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Abstractions/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Configuration.Abstractions/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Primitives": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
@@ -194,10 +194,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Binder/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Configuration.Binder/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll": {
@@ -213,11 +213,11 @@
           "buildTransitive/netstandard2.0/Microsoft.Extensions.Configuration.Binder.targets": {}
         }
       },
-      "Microsoft.Extensions.Configuration.CommandLine/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Configuration.CommandLine/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.CommandLine.dll": {
@@ -233,11 +233,11 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Configuration.EnvironmentVariables/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Configuration.EnvironmentVariables/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {
@@ -253,14 +253,14 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Configuration.FileExtensions/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Configuration.FileExtensions/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.FileProviders.Physical": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Primitives": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.FileProviders.Physical": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Primitives": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.FileExtensions.dll": {
@@ -276,14 +276,14 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Json/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Configuration.Json/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.FileExtensions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-preview.7.23375.6",
-          "System.Text.Json": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.FileExtensions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-rc.1.23419.4",
+          "System.Text.Json": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.Json.dll": {
@@ -299,13 +299,13 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Configuration.UserSecrets/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Configuration.UserSecrets/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Json": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.FileProviders.Physical": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Json": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.FileProviders.Physical": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.UserSecrets.dll": {
@@ -322,10 +322,10 @@
           "buildTransitive/net6.0/Microsoft.Extensions.Configuration.UserSecrets.targets": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.DependencyInjection/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll": {
@@ -341,7 +341,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0-rc.1.23419.4": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
@@ -357,10 +357,52 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.FileProviders.Abstractions/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Diagnostics/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0-rc.1.23419.4"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.Abstractions/8.0.0-rc.1.23419.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options": "8.0.0-rc.1.23419.4",
+          "System.Diagnostics.DiagnosticSource": "8.0.0-rc.1.23419.4"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/8.0.0-rc.1.23419.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
@@ -376,12 +418,12 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.FileProviders.Physical/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.FileProviders.Physical/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.FileSystemGlobbing": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Primitives": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.FileSystemGlobbing": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Primitives": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.FileProviders.Physical.dll": {
@@ -397,7 +439,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.FileSystemGlobbing/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.FileSystemGlobbing/8.0.0-rc.1.23419.4": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.FileSystemGlobbing.dll": {
@@ -413,30 +455,31 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Hosting/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Hosting/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Binder": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.CommandLine": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.EnvironmentVariables": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.FileExtensions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Json": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.UserSecrets": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.DependencyInjection": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.FileProviders.Physical": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Hosting.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Configuration": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Console": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Debug": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.EventLog": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.EventSource": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Options": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.CommandLine": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.FileExtensions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Json": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.UserSecrets": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.DependencyInjection": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Diagnostics": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.FileProviders.Physical": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Hosting.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Configuration": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Console": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Debug": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.EventLog": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.EventSource": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Hosting.dll": {
@@ -452,13 +495,14 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Hosting.Abstractions/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Hosting.Abstractions/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
@@ -474,14 +518,15 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Http/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Http/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Options": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Diagnostics": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Http.dll": {
@@ -497,10 +542,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Http.Polly/8.0.0-preview.7.23375.9": {
+      "Microsoft.Extensions.Http.Polly/8.0.0-rc.1.23421.29": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Http": "8.0.0-preview.7.23375.6",
+          "Microsoft.Extensions.Http": "8.0.0-rc.1.23419.4",
           "Polly": "7.2.4",
           "Polly.Extensions.Http": "3.0.0"
         },
@@ -515,12 +560,12 @@
           }
         }
       },
-      "Microsoft.Extensions.Logging/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Logging/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Options": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.DependencyInjection": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.dll": {
@@ -536,10 +581,10 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Logging.Abstractions/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
@@ -555,17 +600,17 @@
           "buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
         }
       },
-      "Microsoft.Extensions.Logging.Configuration/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Logging.Configuration/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Binder": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Options": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.Configuration.dll": {
@@ -581,15 +626,15 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Console/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Logging.Console/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Configuration": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Options": "8.0.0-preview.7.23375.6",
-          "System.Text.Json": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Configuration": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options": "8.0.0-rc.1.23419.4",
+          "System.Text.Json": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.Console.dll": {
@@ -605,12 +650,12 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.Debug/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Logging.Debug/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.Debug.dll": {
@@ -626,14 +671,14 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.EventLog/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Logging.EventLog/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Options": "8.0.0-preview.7.23375.6",
-          "System.Diagnostics.EventLog": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options": "8.0.0-rc.1.23419.4",
+          "System.Diagnostics.EventLog": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.EventLog.dll": {
@@ -649,15 +694,15 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Logging.EventSource/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Logging.EventSource/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Options": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Primitives": "8.0.0-preview.7.23375.6",
-          "System.Text.Json": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Primitives": "8.0.0-rc.1.23419.4",
+          "System.Text.Json": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Logging.EventSource.dll": {
@@ -673,11 +718,11 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Options/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Options/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Primitives": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Primitives": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Options.dll": {
@@ -693,14 +738,14 @@
           "buildTransitive/net6.0/Microsoft.Extensions.Options.targets": {}
         }
       },
-      "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Configuration.Binder": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Options": "8.0.0-preview.7.23375.6",
-          "Microsoft.Extensions.Primitives": "8.0.0-preview.7.23375.6"
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Options": "8.0.0-rc.1.23419.4",
+          "Microsoft.Extensions.Primitives": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
@@ -716,7 +761,7 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Primitives/8.0.0-preview.7.23375.6": {
+      "Microsoft.Extensions.Primitives/8.0.0-rc.1.23419.4": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
@@ -1038,17 +1083,17 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.SemanticKernel/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Connectors.AI.OpenAI": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Core": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Planning.ActionPlanner": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Planning.SequentialPlanner": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Planning.StepwisePlanner": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Reliability.Basic": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Skills.Core": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine": "0.24.230911.2-preview"
+          "Microsoft.SemanticKernel.Connectors.AI.OpenAI": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Core": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Planning.ActionPlanner": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Planning.SequentialPlanner": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Planning.StepwisePlanner": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Reliability.Basic": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Skills.Core": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine": "0.24.230912.2-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.dll": {
@@ -1061,7 +1106,7 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Abstractions/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel.Abstractions/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
@@ -1080,11 +1125,11 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Connectors.AI.OpenAI/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel.Connectors.AI.OpenAI/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
           "Azure.AI.OpenAI": "1.0.0-beta.7",
-          "Microsoft.SemanticKernel.Core": "0.24.230911.2-preview"
+          "Microsoft.SemanticKernel.Core": "0.24.230912.2-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.AI.OpenAI.dll": {
@@ -1111,10 +1156,10 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Core/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel.Core/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Abstractions": "0.24.230911.2-preview",
+          "Microsoft.SemanticKernel.Abstractions": "0.24.230912.2-preview",
           "System.Diagnostics.DiagnosticSource": "6.0.0"
         },
         "compile": {
@@ -1128,11 +1173,11 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Planning.ActionPlanner/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel.Planning.ActionPlanner/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Abstractions": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Core": "0.24.230911.2-preview"
+          "Microsoft.SemanticKernel.Abstractions": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Core": "0.24.230912.2-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.ActionPlanner.dll": {
@@ -1145,11 +1190,11 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Planning.SequentialPlanner/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel.Planning.SequentialPlanner/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Abstractions": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Core": "0.24.230911.2-preview"
+          "Microsoft.SemanticKernel.Abstractions": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Core": "0.24.230912.2-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.SequentialPlanner.dll": {
@@ -1162,12 +1207,12 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Planning.StepwisePlanner/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel.Planning.StepwisePlanner/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Abstractions": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Core": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine": "0.24.230911.2-preview"
+          "Microsoft.SemanticKernel.Abstractions": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Core": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine": "0.24.230912.2-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.StepwisePlanner.dll": {
@@ -1180,11 +1225,11 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Reliability.Basic/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel.Reliability.Basic/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Abstractions": "0.24.230911.2-preview",
-          "Microsoft.SemanticKernel.Core": "0.24.230911.2-preview"
+          "Microsoft.SemanticKernel.Abstractions": "0.24.230912.2-preview",
+          "Microsoft.SemanticKernel.Core": "0.24.230912.2-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Reliability.Basic.dll": {
@@ -1197,10 +1242,10 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.Skills.Core/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel.Skills.Core/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Core": "0.24.230911.2-preview"
+          "Microsoft.SemanticKernel.Core": "0.24.230912.2-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.Skills.Core.dll": {
@@ -1213,10 +1258,10 @@
           }
         }
       },
-      "Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine/0.24.230911.2-preview": {
+      "Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine/0.24.230912.2-preview": {
         "type": "package",
         "dependencies": {
-          "Microsoft.SemanticKernel.Abstractions": "0.24.230911.2-preview"
+          "Microsoft.SemanticKernel.Abstractions": "0.24.230912.2-preview"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine.dll": {
@@ -1384,7 +1429,7 @@
           }
         }
       },
-      "SharpToken/1.2.10": {
+      "SharpToken/1.2.12": {
         "type": "package",
         "compile": {
           "lib/net6.0/SharpToken.dll": {}
@@ -1465,26 +1510,23 @@
           }
         }
       },
-      "System.Diagnostics.DiagnosticSource/6.0.1": {
+      "System.Diagnostics.DiagnosticSource/8.0.0-rc.1.23419.4": {
         "type": "package",
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
-        },
         "compile": {
-          "lib/net6.0/System.Diagnostics.DiagnosticSource.dll": {
+          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/System.Diagnostics.DiagnosticSource.dll": {
+          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
+          "buildTransitive/net6.0/_._": {}
         }
       },
-      "System.Diagnostics.EventLog/8.0.0-preview.7.23375.6": {
+      "System.Diagnostics.EventLog/8.0.0-rc.1.23419.4": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.Diagnostics.EventLog.dll": {
@@ -1720,7 +1762,7 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
+          "lib/net6.0/_._": {
             "related": ".xml"
           }
         },
@@ -1880,7 +1922,7 @@
           }
         }
       },
-      "System.Text.Encodings.Web/8.0.0-preview.7.23375.6": {
+      "System.Text.Encodings.Web/8.0.0-rc.1.23419.4": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.Text.Encodings.Web.dll": {
@@ -1902,10 +1944,10 @@
           }
         }
       },
-      "System.Text.Json/8.0.0-preview.7.23375.6": {
+      "System.Text.Json/8.0.0-rc.1.23419.4": {
         "type": "package",
         "dependencies": {
-          "System.Text.Encodings.Web": "8.0.0-preview.7.23375.6"
+          "System.Text.Encodings.Web": "8.0.0-rc.1.23419.4"
         },
         "compile": {
           "lib/net8.0/System.Text.Json.dll": {
@@ -1947,7 +1989,7 @@
           }
         }
       },
-      "System.Threading.Tasks.Dataflow/8.0.0-preview.7.23375.6": {
+      "System.Threading.Tasks.Dataflow/8.0.0-rc.1.23419.4": {
         "type": "package",
         "compile": {
           "lib/net8.0/System.Threading.Tasks.Dataflow.dll": {
@@ -2246,10 +2288,10 @@
         "runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll"
       ]
     },
-    "Microsoft.Extensions.Configuration/8.0.0-preview.7.23375.6": {
-      "sha512": "IBOUkqIQb2VOaLzB6ljWaAqAyW8N1f2cZH34Em1lTfitGYUP18QjedzbW+/v9Gb8YqNTQ6rhL7rBsBi3mZyc1A==",
+    "Microsoft.Extensions.Configuration/8.0.0-rc.1.23419.4": {
+      "sha512": "NoIBM0qnZrl5o3em/5Qx4T3HcDruKdDVvm4PsG/wiuWawtwHRqaqkFjPS66lPnu1Kgzv+D1JJd+r4C5wPxXErw==",
       "type": "package",
-      "path": "microsoft.extensions.configuration/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.configuration/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2271,15 +2313,15 @@
         "lib/net8.0/Microsoft.Extensions.Configuration.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
-        "microsoft.extensions.configuration.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.configuration.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.configuration.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.Abstractions/8.0.0-preview.7.23375.6": {
-      "sha512": "Rus703Njk1CAT0LTG51P7B4Up6jARRGbIPpDfeBbM4KrffVn76LjMo610xwJ3SRLOe1vEOrnlJPKG41ubrrQLw==",
+    "Microsoft.Extensions.Configuration.Abstractions/8.0.0-rc.1.23419.4": {
+      "sha512": "tY5wKwXNZ6cBeyHxvxyLy57TxUaA6H82/vW8vTTmikG9bkfRzfyS0EEDloiPzL4ln8P+3aZxeAestjPC6942Kg==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.abstractions/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.configuration.abstractions/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2301,15 +2343,15 @@
         "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "microsoft.extensions.configuration.abstractions.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.configuration.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.Binder/8.0.0-preview.7.23375.6": {
-      "sha512": "8YjROL/QyuNg3++VJ/jCewanY16dW9uCWT3Coick0gPEnyO8yguGxqQ3Dr6cXb0leYMxT0WFJp9Fm3CyOkmAxA==",
+    "Microsoft.Extensions.Configuration.Binder/8.0.0-rc.1.23419.4": {
+      "sha512": "npSDU7QSVdMjIFasVVBygHTaSd3H6rJD9zBXb6tcmAO8D7chkCJ2MarAYVKDICT5I9Hfawxv7FitJFAgNVIn3w==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.binder/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.configuration.binder/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2342,15 +2384,15 @@
         "lib/net8.0/Microsoft.Extensions.Configuration.Binder.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml",
-        "microsoft.extensions.configuration.binder.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.configuration.binder.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.configuration.binder.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.CommandLine/8.0.0-preview.7.23375.6": {
-      "sha512": "b806MXwiLatiZIDv9SisCrYf/ZLo81mNfla0eSBqbuwA8MTBE/BNygeu3kRcm47z9t+/74Q2ovj+OIWn3qF1lw==",
+    "Microsoft.Extensions.Configuration.CommandLine/8.0.0-rc.1.23419.4": {
+      "sha512": "7EZAAJxdgtbmrJ7/O7qNr9cae7UQRP36Eby8zFZw/5KxDrGCraAh5iaMUTSZQanOQgvi7a6Bkc9CY/ybszCc7Q==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.commandline/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.configuration.commandline/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2372,15 +2414,15 @@
         "lib/net8.0/Microsoft.Extensions.Configuration.CommandLine.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.CommandLine.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.CommandLine.xml",
-        "microsoft.extensions.configuration.commandline.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.configuration.commandline.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.configuration.commandline.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.EnvironmentVariables/8.0.0-preview.7.23375.6": {
-      "sha512": "2JjFWc/DYgcn31Hyr9x+NfGPofSTpyIz/XdNrzMWTwir9J/Com8b6x4WyKZ8Eu6Om+lOpBjCDvnOkqPCtFoWXw==",
+    "Microsoft.Extensions.Configuration.EnvironmentVariables/8.0.0-rc.1.23419.4": {
+      "sha512": "B91gFsJMXAJJyeSd7bSA1TEuR730+PN/2w6uFK7OEE+9T9wAjq5RYfkZqBbmG9pQFfig9t0wsR0mT6Qku5CvHA==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.environmentvariables/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.configuration.environmentvariables/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2402,15 +2444,15 @@
         "lib/net8.0/Microsoft.Extensions.Configuration.EnvironmentVariables.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.EnvironmentVariables.xml",
-        "microsoft.extensions.configuration.environmentvariables.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.configuration.environmentvariables.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.configuration.environmentvariables.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.FileExtensions/8.0.0-preview.7.23375.6": {
-      "sha512": "bOysJh+1kLNCpKpJYm28jNVbydpdh7ORLGEkNd9HGV1aEmXve60T65leVsXAUCgByPZObElKsnhnL67jVWBORQ==",
+    "Microsoft.Extensions.Configuration.FileExtensions/8.0.0-rc.1.23419.4": {
+      "sha512": "iYaN5hpzacJBmpod90Nlj0NSjNRzOiyctALo5PHFsFQz1p/M9ON+1q5ksbNsLf1+A8klxETo7NeGZd1gGYoJNA==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.fileextensions/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.configuration.fileextensions/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2432,15 +2474,15 @@
         "lib/net8.0/Microsoft.Extensions.Configuration.FileExtensions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.FileExtensions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.FileExtensions.xml",
-        "microsoft.extensions.configuration.fileextensions.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.configuration.fileextensions.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.configuration.fileextensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.Json/8.0.0-preview.7.23375.6": {
-      "sha512": "5QUIOCfDDXiJyp2u1u0e4ri8F8Lw9K3ZdIriMOhGFGhg6nxyZDDdD07ddcmSHtxlj2SNI29SQ/33uUWfaE8fsg==",
+    "Microsoft.Extensions.Configuration.Json/8.0.0-rc.1.23419.4": {
+      "sha512": "Ar58GHIQuWQgi7LG3bRheAjA8gRCZCvONm3AUMbeQN0tsljv5eimXvSVzaObz/qVOceXR2LKBLzlbo94aGmQPA==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.json/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.configuration.json/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2464,15 +2506,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Json.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Configuration.Json.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Configuration.Json.xml",
-        "microsoft.extensions.configuration.json.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.configuration.json.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.configuration.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.UserSecrets/8.0.0-preview.7.23375.6": {
-      "sha512": "XmEZHfrdYDkfg6YboYRuUCl1zu7YjZbwfrBQaKy/0a4Nc2NsomPj4UHDwrINkDiwtB+tenxeBkOUfPa8q1Xwbg==",
+    "Microsoft.Extensions.Configuration.UserSecrets/8.0.0-rc.1.23419.4": {
+      "sha512": "nakciMVBLK+J3xl5Z+PZBfxdWgFUNzSc1VR0g8HBrF5Pjg1S9Dq3SnvNR+cF5YjE8dDWLlr+pQiY/lM/PTNsEQ==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.usersecrets/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.configuration.usersecrets/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2498,15 +2540,15 @@
         "lib/net8.0/Microsoft.Extensions.Configuration.UserSecrets.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.UserSecrets.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.UserSecrets.xml",
-        "microsoft.extensions.configuration.usersecrets.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.configuration.usersecrets.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.configuration.usersecrets.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection/8.0.0-preview.7.23375.6": {
-      "sha512": "JPb/AAm3iBlf5xdMGmtoHd5tej8aewfO7A6+0a45n8Ku5WzB8dUcbbdfXTf9mFCso2RZXGO2zLXIiw3oJHiScA==",
+    "Microsoft.Extensions.DependencyInjection/8.0.0-rc.1.23419.4": {
+      "sha512": "q1M8U8Qhf0siOpZ0PRB7jZR8Um+Pnm4HgCL81hYDtIunWJmlqEGKjGWg/gl140K9imZUqLkePSVVQGlP7/Xo+A==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.dependencyinjection/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2529,15 +2571,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.xml",
-        "microsoft.extensions.dependencyinjection.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0-preview.7.23375.6": {
-      "sha512": "G/aqoJ2wL87bbKsx4phqKrO9vG2tKuFXvBUJKBh2yVk44xkJ1tsYUpZRyttMoEneZvPRpdxq0ujBZ7n7NRhdSQ==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0-rc.1.23419.4": {
+      "sha512": "SAv6AcbXKzvBq4kQAU5S9sW3ZOV7j4qLjqT+Iw6CLgqsSCgoJhmVvadtr8PUWaRfj4uVT9CX5V3zIojehtMq8w==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2560,15 +2602,73 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.FileProviders.Abstractions/8.0.0-preview.7.23375.6": {
-      "sha512": "mwbOaoJevU7FSpXdXc3i9EV5BtJsRx204HBUcHN1TvNEskOZcND27EaI4obEsLisTm/ujx9wPVT/tfZxT5zDDg==",
+    "Microsoft.Extensions.Diagnostics/8.0.0-rc.1.23419.4": {
+      "sha512": "RqerNpeQoixriNPi2RPxJWu9V6ljz3u/M9lCzwLsYtNqLKUzO3K838C8NU2uDFg0SviJyuMV1JG0RG+c9Hdglw==",
       "type": "package",
-      "path": "microsoft.extensions.fileproviders.abstractions/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.diagnostics/8.0.0-rc.1.23419.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Diagnostics.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Diagnostics.targets",
+        "lib/net462/Microsoft.Extensions.Diagnostics.dll",
+        "lib/net462/Microsoft.Extensions.Diagnostics.xml",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.dll",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.xml",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.dll",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.xml",
+        "lib/net8.0/Microsoft.Extensions.Diagnostics.dll",
+        "lib/net8.0/Microsoft.Extensions.Diagnostics.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.xml",
+        "microsoft.extensions.diagnostics.8.0.0-rc.1.23419.4.nupkg.sha512",
+        "microsoft.extensions.diagnostics.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Diagnostics.Abstractions/8.0.0-rc.1.23419.4": {
+      "sha512": "ukvKfK+sgwReTEsbP3hCuXUWOCaqH7HCXGTXfqAyl6IvSJVZHWpTZAFHELcNbSz4hdAzG/8QY/4JxU5xNQOzlA==",
+      "type": "package",
+      "path": "microsoft.extensions.diagnostics.abstractions/8.0.0-rc.1.23419.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Diagnostics.Abstractions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Diagnostics.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/net7.0/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Diagnostics.Abstractions.xml",
+        "microsoft.extensions.diagnostics.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
+        "microsoft.extensions.diagnostics.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.FileProviders.Abstractions/8.0.0-rc.1.23419.4": {
+      "sha512": "yFiU9oAF+abTk1gjMLrPRmzhz+ZJc0Q4S7NvK9EtzS0Sm1J8DcbzsRUi6r8eufvtmbGzk5KNPcpOo8ffAD9p0A==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.abstractions/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2587,15 +2687,15 @@
         "lib/net8.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
-        "microsoft.extensions.fileproviders.abstractions.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.fileproviders.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.fileproviders.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.FileProviders.Physical/8.0.0-preview.7.23375.6": {
-      "sha512": "yeQKItAqoHvCdgE5IIVBiWPnJIWQ7B5dOhmfZ6or+kmDJcdNOWQT45PTzizIBQ2dKT2cB6BaAIK+6jAmMyUU5w==",
+    "Microsoft.Extensions.FileProviders.Physical/8.0.0-rc.1.23419.4": {
+      "sha512": "z1ZzRTbiQ5L/fNhzTvziNBHPXRAsduSL+TUxV0aLhULchD7n7xzgVb6BL0NS8+VHL1LKdwkukD6lfGRFXrYQnA==",
       "type": "package",
-      "path": "microsoft.extensions.fileproviders.physical/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.fileproviders.physical/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2616,15 +2716,15 @@
         "lib/net8.0/Microsoft.Extensions.FileProviders.Physical.xml",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Physical.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Physical.xml",
-        "microsoft.extensions.fileproviders.physical.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.fileproviders.physical.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.fileproviders.physical.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.FileSystemGlobbing/8.0.0-preview.7.23375.6": {
-      "sha512": "DTnRifpgJYjjxGgpTBsfJDK82Cq5algQHOQnd4f7R7R4bMeYcdjyaqd3NAKXn4RU47CfNqB9/dIZS8OlHVgckQ==",
+    "Microsoft.Extensions.FileSystemGlobbing/8.0.0-rc.1.23419.4": {
+      "sha512": "xlgxd2WH5CPc+vEVKoYr+0hA7+++FNdwrxfPnnF7jIULfAOOZgS3E66rfBhjIT6ewEa1rLIFiiXevP4ejm8nnQ==",
       "type": "package",
-      "path": "microsoft.extensions.filesystemglobbing/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.filesystemglobbing/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2645,15 +2745,15 @@
         "lib/net8.0/Microsoft.Extensions.FileSystemGlobbing.xml",
         "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.xml",
-        "microsoft.extensions.filesystemglobbing.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.filesystemglobbing.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.filesystemglobbing.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Hosting/8.0.0-preview.7.23375.6": {
-      "sha512": "LSTQyfwxfr+zTagnvE8bubvOSJWAF7EnoouAWNlhpZCltrQVJOe6/I3zNAd7sXQlV4dkLfFtz9W+mZN12RmVBg==",
+    "Microsoft.Extensions.Hosting/8.0.0-rc.1.23419.4": {
+      "sha512": "dpu8uPlnBePUHJHZImBhErDh5nySMCsz/86YEGQfgyiolJxRP7fxq2wsGduzYIj6BNKbPF5Waby6F7sMsbIPRQ==",
       "type": "package",
-      "path": "microsoft.extensions.hosting/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.hosting/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2676,15 +2776,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.Hosting.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Hosting.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Hosting.xml",
-        "microsoft.extensions.hosting.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.hosting.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.hosting.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Hosting.Abstractions/8.0.0-preview.7.23375.6": {
-      "sha512": "dsfIbhzLEUy/rjWYayg0ciTdGrxubjS6sQGo5bKMJj4KYpTochbHKR6U9aEym4T56mSrmDOuahtAyyfCczWXSQ==",
+    "Microsoft.Extensions.Hosting.Abstractions/8.0.0-rc.1.23419.4": {
+      "sha512": "LUnBLb61QGng4AnnaBadF8Pwaadkr8jAR3ElhqmIJDnIzChAnCFv9/ha8nx3OQGYhkJcVcqF0gWNsWV9gNzp8g==",
       "type": "package",
-      "path": "microsoft.extensions.hosting.abstractions/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.hosting.abstractions/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2707,15 +2807,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Hosting.Abstractions.xml",
-        "microsoft.extensions.hosting.abstractions.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.hosting.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.hosting.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Http/8.0.0-preview.7.23375.6": {
-      "sha512": "Pw7qX9Bd5N35r7KG85pk/u9gzxNIZGR6pt/R8ZYNfo3rHzgDOpuDf2YTxvyLSTjrJxiWmwzmo3MJ3MohL/QDzw==",
+    "Microsoft.Extensions.Http/8.0.0-rc.1.23419.4": {
+      "sha512": "uUCk1A8XUVUEGoTATMxih15uZoF8QzBB+MZwUfB3Lj4QAQZFxWG/VbUMrUyCKpvvvncOyXgT1xq0SAyLmzUPIw==",
       "type": "package",
-      "path": "microsoft.extensions.http/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.http/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2736,15 +2836,15 @@
         "lib/net8.0/Microsoft.Extensions.Http.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Http.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Http.xml",
-        "microsoft.extensions.http.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.http.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.http.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Http.Polly/8.0.0-preview.7.23375.9": {
-      "sha512": "G6DtraaqUSz5N3OgDPqcXn3L24oqhiLGTivjlKzd9Ww41ID63ETyTZeE/1RtwXj870LRtaxkbNmu9U8Q1+eogQ==",
+    "Microsoft.Extensions.Http.Polly/8.0.0-rc.1.23421.29": {
+      "sha512": "2jiyFexw2bd0CvIw0zJslPiTlSaac5mZCJVeC5hacKjSZNyY73/51G/VQnvGS01grrmqBDSSF+fIzntycVtv5w==",
       "type": "package",
-      "path": "microsoft.extensions.http.polly/8.0.0-preview.7.23375.9",
+      "path": "microsoft.extensions.http.polly/8.0.0-rc.1.23421.29",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2752,14 +2852,14 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.xml",
-        "microsoft.extensions.http.polly.8.0.0-preview.7.23375.9.nupkg.sha512",
+        "microsoft.extensions.http.polly.8.0.0-rc.1.23421.29.nupkg.sha512",
         "microsoft.extensions.http.polly.nuspec"
       ]
     },
-    "Microsoft.Extensions.Logging/8.0.0-preview.7.23375.6": {
-      "sha512": "ws2pN7g9DwISqLvPuzqYGBK3gWW0wHxMvtqfrJlPlzx6DwnXVbrQG+1RyHLL1jnvsB2Hc+psphnBys3NIN07IQ==",
+    "Microsoft.Extensions.Logging/8.0.0-rc.1.23419.4": {
+      "sha512": "n39LJSx0Mpl89hhT0DWTyPyGv/z60/Ygp0b4ZE1zNy9R8O42PrsK+XFdiaKtCnpOPezX2Jq07dFyZzpCqmIvzw==",
       "type": "package",
-      "path": "microsoft.extensions.logging/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.logging/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2782,15 +2882,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Logging.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Logging.xml",
-        "microsoft.extensions.logging.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.logging.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.logging.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/8.0.0-preview.7.23375.6": {
-      "sha512": "D6T5b2ylZawH6qnm6Z0gO5rc2uG2auCOUcJ16iaTlHZeCloDpIc0rv0QfcYLA4w3p3EznfxzAD3+U7vR4AG5/A==",
+    "Microsoft.Extensions.Logging.Abstractions/8.0.0-rc.1.23419.4": {
+      "sha512": "jphvzZmIDCEwl5PkxegeiO0y+zeMRg92QtY0weVFy8tH9ySgb2EwX85B78H0FYTFixFApRlmsh/pEdEs+VKbZA==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.logging.abstractions/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2854,15 +2954,15 @@
         "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Configuration/8.0.0-preview.7.23375.6": {
-      "sha512": "C3Idf8JV7lkYMl4bz2LV+AnjN3I3S7Il+t0Ym3ak7GlPUa9CvvCM8LzQOT/JAfdyrDDBd+kx+q1P5HSSdrSX/Q==",
+    "Microsoft.Extensions.Logging.Configuration/8.0.0-rc.1.23419.4": {
+      "sha512": "oH+bw1sz2aK4EfcOshAJecd7cxNYmVhS+nz4UdFUEBm/DEEs5u9x0+pgIpWiNVH85p4Xf9quJY6OJiH9lDMtnA==",
       "type": "package",
-      "path": "microsoft.extensions.logging.configuration/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.logging.configuration/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2883,15 +2983,15 @@
         "lib/net8.0/Microsoft.Extensions.Logging.Configuration.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Configuration.xml",
-        "microsoft.extensions.logging.configuration.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.logging.configuration.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.logging.configuration.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Console/8.0.0-preview.7.23375.6": {
-      "sha512": "1d9yZs7MaT6hM5poMcRCKsKy1Ve6UmyJ31YtdStfM3vdYworFz1bWG6xdSpQVLRVfm/a/yJhiyp+DACZ0wuXKA==",
+    "Microsoft.Extensions.Logging.Console/8.0.0-rc.1.23419.4": {
+      "sha512": "Igf8bVBKMECRe8Zzju3x8FokuiHcKq82KNSx/sPyEBGXGykJqZZps1R7aIOKU0rkqlt1C4rHYfvCurBgud3u5w==",
       "type": "package",
-      "path": "microsoft.extensions.logging.console/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.logging.console/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2912,15 +3012,15 @@
         "lib/net8.0/Microsoft.Extensions.Logging.Console.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Console.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Console.xml",
-        "microsoft.extensions.logging.console.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.logging.console.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.logging.console.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.Debug/8.0.0-preview.7.23375.6": {
-      "sha512": "qXGHUehhC0GyuxwDvJOYTqPBJIypIsaIcRLgq+YOV2juqX+BRMJ1GnE6kgtuRujMokTv4rgvDxu65L6PoSfDOA==",
+    "Microsoft.Extensions.Logging.Debug/8.0.0-rc.1.23419.4": {
+      "sha512": "8bJsbRfyimnE4jukyg1AjiATfxuHx8QVECRfjGMulLEvQyOLQkyQxNwDfNKf7yxfyY7NHmfgw6z4tNnX+IGwWQ==",
       "type": "package",
-      "path": "microsoft.extensions.logging.debug/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.logging.debug/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2941,15 +3041,15 @@
         "lib/net8.0/Microsoft.Extensions.Logging.Debug.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.xml",
-        "microsoft.extensions.logging.debug.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.logging.debug.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.logging.debug.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.EventLog/8.0.0-preview.7.23375.6": {
-      "sha512": "xM0kYFCn27Z5nJ5N0pa3gVlTxFDGgzP3nRi9MsNHZHjqLFWNsYPzVcMrUJX5SK372VKzRLB0kH0gyfyqN/1q7Q==",
+    "Microsoft.Extensions.Logging.EventLog/8.0.0-rc.1.23419.4": {
+      "sha512": "4o2+1AFRlUxSdE2tSL5LOKgvA6/tzLF/Nv6xYm8BcPEfsEHweCMR0xIozPAg254Zq4VpyBj3LNnxjJXfySniWw==",
       "type": "package",
-      "path": "microsoft.extensions.logging.eventlog/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.logging.eventlog/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2970,15 +3070,15 @@
         "lib/net8.0/Microsoft.Extensions.Logging.EventLog.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.EventLog.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.EventLog.xml",
-        "microsoft.extensions.logging.eventlog.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.logging.eventlog.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.logging.eventlog.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Logging.EventSource/8.0.0-preview.7.23375.6": {
-      "sha512": "9HKcTSSDh1tZiJBMk+3HMLi87h1JsMc2GDe3h4R54CRWzK5FzJ+HgjWifJ+oHDPDUjsRxCqmqSyV9Rxm+wzwOw==",
+    "Microsoft.Extensions.Logging.EventSource/8.0.0-rc.1.23419.4": {
+      "sha512": "hFQiL2vvRuooRXMsZuO5lnCuG0rNYb0jUv6SHpVzMDGtCXU8R5EU1HgnmNMMY3pd1RtSWTLycKmThn5s0hFQew==",
       "type": "package",
-      "path": "microsoft.extensions.logging.eventsource/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.logging.eventsource/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2999,15 +3099,15 @@
         "lib/net8.0/Microsoft.Extensions.Logging.EventSource.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.EventSource.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.EventSource.xml",
-        "microsoft.extensions.logging.eventsource.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.logging.eventsource.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.logging.eventsource.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Options/8.0.0-preview.7.23375.6": {
-      "sha512": "+/mJSwG2vbsD+ZgGJc4Z74XVHh+fzeX+ynrsjZ07fXMbsLk9mDYYfUIJKADqw1+V68TRnVWpMf1UhU9J6n4FIg==",
+    "Microsoft.Extensions.Options/8.0.0-rc.1.23419.4": {
+      "sha512": "fsKycFyh/aX7Vs9o/gOH+XBWRh5VB4iwV6xHZdvN9kDvJfBhCm2IQ/E+xaWa5KtX7tXOx0hclZ8ihK97ab3mPQ==",
       "type": "package",
-      "path": "microsoft.extensions.options/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.options/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3045,15 +3145,15 @@
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
         "lib/netstandard2.1/Microsoft.Extensions.Options.dll",
         "lib/netstandard2.1/Microsoft.Extensions.Options.xml",
-        "microsoft.extensions.options.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.options.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.options.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0-preview.7.23375.6": {
-      "sha512": "XcCcd9nkNbJE9mSijfICQI1BFle67CxVcORG/N1YZ5FZOVlxkBqshvvDNvcPsKqaMmHsiwWJycr0VjrS7MJaOQ==",
+    "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0-rc.1.23419.4": {
+      "sha512": "7y1Ob1fZniZnTGeuurHjGAXmW0+reI4MUOZxR3Dyvu9htNSkGsrsICY2f0bIev1D+pQrFwNg/+yUOpvc46/jkg==",
       "type": "package",
-      "path": "microsoft.extensions.options.configurationextensions/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.options.configurationextensions/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3074,15 +3174,15 @@
         "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
-        "microsoft.extensions.options.configurationextensions.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.options.configurationextensions.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.options.configurationextensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Primitives/8.0.0-preview.7.23375.6": {
-      "sha512": "rQ4XEkWVYr85aKQoweKklmf9NJ0MZgnD3zuL+Nn+fSwOyuYU9Kw9VbfLlJ+BYwggbDf7JVn2hvDUH/BBVwh6Vw==",
+    "Microsoft.Extensions.Primitives/8.0.0-rc.1.23419.4": {
+      "sha512": "zyoB4zblhvpylS9VOmKyBuGH+RjKDsfi0cTB2KRPPDD6tFinpP+vGr3dictaNYLhGUg6jaBmq+2H/WZMCnvGDQ==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/8.0.0-preview.7.23375.6",
+      "path": "microsoft.extensions.primitives/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3103,7 +3203,7 @@
         "lib/net8.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "microsoft.extensions.primitives.8.0.0-rc.1.23419.4.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -3401,10 +3501,10 @@
         "runtime.json"
       ]
     },
-    "Microsoft.SemanticKernel/0.24.230911.2-preview": {
-      "sha512": "iYneqaTK3e8bytoSHA0Cd+gEP6Ji2DTk32Aw8wnXL9KoMftYUV6w0Nkk5DV124Wuq1XWUIi+VzuKb6quMdGt5A==",
+    "Microsoft.SemanticKernel/0.24.230912.2-preview": {
+      "sha512": "7kGH4ixahRJ7rjFCIi3USppD4u44IPf4mVTDSsyuhmz4mKmuj/Iy+zBSHdUDRKXteqP3fZs+SBNr4ymOAM+tGg==",
       "type": "package",
-      "path": "microsoft.semantickernel/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3412,14 +3512,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.xml",
-        "microsoft.semantickernel.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Abstractions/0.24.230911.2-preview": {
-      "sha512": "TYjTrRIRsbKMcLIgl4XUDR8SAWD6FwMpiasG78UHoD0YehKknCb9tN3NiVihF+RZGoW2KAFIAYeLCKtU9Xru1A==",
+    "Microsoft.SemanticKernel.Abstractions/0.24.230912.2-preview": {
+      "sha512": "/fYLkF+3uVeyoO5EVganLVYpomeG9uH1x+n5XJSp9PfZYqXDIuHBmzeM5lJe7AP9hq0i+lBrctI5hSlnutnDrw==",
       "type": "package",
-      "path": "microsoft.semantickernel.abstractions/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel.abstractions/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3427,14 +3527,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Abstractions.xml",
-        "microsoft.semantickernel.abstractions.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.abstractions.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.abstractions.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Connectors.AI.OpenAI/0.24.230911.2-preview": {
-      "sha512": "Gz4taesN9lSRUleF+fGQuJuyl3t4eE7MNW0b3dQ7RTayUmcIcjEvUdC7Y3dbxWVaN6j3+8w9277o7COYdUr7nA==",
+    "Microsoft.SemanticKernel.Connectors.AI.OpenAI/0.24.230912.2-preview": {
+      "sha512": "wV9S5EtOIKxP+GC2SKzZ6Jl/6k9rlPTW1RIcBb8uqnVfvZY7j8OkTlKv8Q29RuyqLgpRbZVX0d7gsjbT270/wg==",
       "type": "package",
-      "path": "microsoft.semantickernel.connectors.ai.openai/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel.connectors.ai.openai/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3446,14 +3546,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.AI.OpenAI.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Connectors.AI.OpenAI.xml",
-        "microsoft.semantickernel.connectors.ai.openai.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.connectors.ai.openai.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.connectors.ai.openai.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Core/0.24.230911.2-preview": {
-      "sha512": "OoJb1AGftHQ9y7mm2XatHmcxb8WVe/wIEdmRz01kVxcwH0x3z3g9+AOVpvQIneYGqmjphClKe9a7YHu4GtuaYw==",
+    "Microsoft.SemanticKernel.Core/0.24.230912.2-preview": {
+      "sha512": "u8Qdk6x+dWh5VUTxd91oM63Cz6GDyKOiy+HDi3f4XNOpX/pw5G0r+HfFTAaOhbORpGk7T6OHec+m0pwm4KcClA==",
       "type": "package",
-      "path": "microsoft.semantickernel.core/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel.core/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3461,14 +3561,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Core.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Core.xml",
-        "microsoft.semantickernel.core.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.core.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.core.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Planning.ActionPlanner/0.24.230911.2-preview": {
-      "sha512": "F65I3q+X+UrOsWUD9vJMYuxtAhrpS2zwTPkZsSfCWDYBzJcNkoKvE2RqbuEVCjrVVpFuAfmeYerCNBEl7/ArAw==",
+    "Microsoft.SemanticKernel.Planning.ActionPlanner/0.24.230912.2-preview": {
+      "sha512": "aQRjlipYYW41dizcLVXA5eJzNTxl1gDH1qriVsKuUsjCLZvgZyR4/ZkL5PZ1vnfdEEXhHK05MahFpcgoZDzGaA==",
       "type": "package",
-      "path": "microsoft.semantickernel.planning.actionplanner/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel.planning.actionplanner/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3476,14 +3576,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.ActionPlanner.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.ActionPlanner.xml",
-        "microsoft.semantickernel.planning.actionplanner.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.planning.actionplanner.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.planning.actionplanner.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Planning.SequentialPlanner/0.24.230911.2-preview": {
-      "sha512": "raUdQ8DQpkz7SetB3lYz6Joi1oCmd01pj+rBf7J3DJcXqZIi838mBVBMaeQ2oH6B8WQ5y3kTmvvLoHP1dJqHBQ==",
+    "Microsoft.SemanticKernel.Planning.SequentialPlanner/0.24.230912.2-preview": {
+      "sha512": "6h61pviQUXm3se182Rf9641oAEHeY3Eu3LuPk7/6aRfxSZhWMjffNA7VM8rqftDKq3o7ErCOWQym2bB6a+oJvw==",
       "type": "package",
-      "path": "microsoft.semantickernel.planning.sequentialplanner/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel.planning.sequentialplanner/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3491,14 +3591,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.SequentialPlanner.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.SequentialPlanner.xml",
-        "microsoft.semantickernel.planning.sequentialplanner.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.planning.sequentialplanner.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.planning.sequentialplanner.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Planning.StepwisePlanner/0.24.230911.2-preview": {
-      "sha512": "4d+A2G8/RhIMyP7qOpp5p0R23ViP8KnLQ3J8OSt6eae64FD3MOGebpANx8lNr45IYrXeVid7VnvcMJGD7hJWOQ==",
+    "Microsoft.SemanticKernel.Planning.StepwisePlanner/0.24.230912.2-preview": {
+      "sha512": "2/rsm1jc6t8m1jH4X1SOk7T10boow3ZhhwYJRpgC8triQ/DOOSBQpWaAtZ6pEcqjKPZpl6PYEEJj5yuuLouqag==",
       "type": "package",
-      "path": "microsoft.semantickernel.planning.stepwiseplanner/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel.planning.stepwiseplanner/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3506,14 +3606,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.StepwisePlanner.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Planning.StepwisePlanner.xml",
-        "microsoft.semantickernel.planning.stepwiseplanner.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.planning.stepwiseplanner.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.planning.stepwiseplanner.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Reliability.Basic/0.24.230911.2-preview": {
-      "sha512": "oH9vYqPFgOLkgFOjK2jzXhNRVriARayVlxXCamDItos6dn8vZMB4obGJOXf/A3wnw6WRZhiim64H4UmBmlI8Ow==",
+    "Microsoft.SemanticKernel.Reliability.Basic/0.24.230912.2-preview": {
+      "sha512": "aGJLeXPzCX+93jyTEoQMJ7f3kSuq7EYvJhQZj1g0MIRpr5EC9ImhiZBM25b2R/0FQG5e50vF100MfnTaXyHh3g==",
       "type": "package",
-      "path": "microsoft.semantickernel.reliability.basic/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel.reliability.basic/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3521,14 +3621,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Reliability.Basic.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Reliability.Basic.xml",
-        "microsoft.semantickernel.reliability.basic.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.reliability.basic.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.reliability.basic.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.Skills.Core/0.24.230911.2-preview": {
-      "sha512": "0ttCSQh6AQwTGp/kRzGLuyaiTd3GIsjzclU6qJMSi89+QDmIep50obNubyIYRStk518SfNImXSwq7GdRmJ5olQ==",
+    "Microsoft.SemanticKernel.Skills.Core/0.24.230912.2-preview": {
+      "sha512": "wq6WQgahPf5o3/8S8FEa0P2n8NzKcikEfvkxvuWgL3zz//L8rsCLyWSxQTWr6p5oQvlMhSjCqf91iDPru+QHlQ==",
       "type": "package",
-      "path": "microsoft.semantickernel.skills.core/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel.skills.core/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3536,14 +3636,14 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Skills.Core.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.Skills.Core.xml",
-        "microsoft.semantickernel.skills.core.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.skills.core.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.skills.core.nuspec"
       ]
     },
-    "Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine/0.24.230911.2-preview": {
-      "sha512": "osNslwI/nPFUfACEw0tSlv9Dvbto1LgnEu1p4p+mxk3NKZmPHpAHFgC4XWXIywFy2BmytfuwsqoaVOrjC0coXg==",
+    "Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine/0.24.230912.2-preview": {
+      "sha512": "DyeMOXiH6WNAj7zF+g+Fa8M2x+NoPFyvivvkoU9uo3AW3W3eKghpgu84bCItTtAF56c/PqFz5eLNzQFhJvKsbg==",
       "type": "package",
-      "path": "microsoft.semantickernel.templateengine.prompttemplateengine/0.24.230911.2-preview",
+      "path": "microsoft.semantickernel.templateengine.prompttemplateengine/0.24.230912.2-preview",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3551,7 +3651,7 @@
         "icon.png",
         "lib/netstandard2.0/Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine.dll",
         "lib/netstandard2.0/Microsoft.SemanticKernel.TemplateEngine.PromptTemplateEngine.xml",
-        "microsoft.semantickernel.templateengine.prompttemplateengine.0.24.230911.2-preview.nupkg.sha512",
+        "microsoft.semantickernel.templateengine.prompttemplateengine.0.24.230912.2-preview.nupkg.sha512",
         "microsoft.semantickernel.templateengine.prompttemplateengine.nuspec"
       ]
     },
@@ -3800,10 +3900,10 @@
         "version.txt"
       ]
     },
-    "SharpToken/1.2.10": {
-      "sha512": "NgZ3b1pC6Jw8cG4H8VcBy9s3/aZJYEHRS50OeRbRNAgph91qJp8NtP+u4U5HmeDURDYcf2w36aTjb6VhLOeLzg==",
+    "SharpToken/1.2.12": {
+      "sha512": "mey7zD61BDrbtEc/3VGTt25CNOef4yW35Nn772yxANs/4UNooxj2o5S7p/Uc0mmOH6peQGMdCgCH1GQfvJdyNw==",
       "type": "package",
-      "path": "sharptoken/1.2.10",
+      "path": "sharptoken/1.2.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3811,7 +3911,7 @@
         "README.md",
         "lib/net6.0/SharpToken.dll",
         "lib/netstandard2.0/SharpToken.dll",
-        "sharptoken.1.2.10.nupkg.sha512",
+        "sharptoken.1.2.12.nupkg.sha512",
         "sharptoken.nuspec"
       ]
     },
@@ -3970,35 +4070,39 @@
         "version.txt"
       ]
     },
-    "System.Diagnostics.DiagnosticSource/6.0.1": {
-      "sha512": "KiLYDu2k2J82Q9BJpWiuQqCkFjRBWVq4jDzKKWawVi9KWzyD0XG3cmfX0vqTQlL14Wi9EufJrbL0+KCLTbqWiQ==",
+    "System.Diagnostics.DiagnosticSource/8.0.0-rc.1.23419.4": {
+      "sha512": "hdyhGAFW9nXz+UfN8XxW4iTzyef03BsIXc6AqLNbDcqw63343di6XFGFSYJ8Rh+yHlZazrGTt6keQ2GDh9avmg==",
       "type": "package",
-      "path": "system.diagnostics.diagnosticsource/6.0.1",
+      "path": "system.diagnostics.diagnosticsource/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Diagnostics.DiagnosticSource.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.Diagnostics.DiagnosticSource.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Diagnostics.DiagnosticSource.dll",
-        "lib/net461/System.Diagnostics.DiagnosticSource.xml",
-        "lib/net5.0/System.Diagnostics.DiagnosticSource.dll",
-        "lib/net5.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net462/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net462/System.Diagnostics.DiagnosticSource.xml",
         "lib/net6.0/System.Diagnostics.DiagnosticSource.dll",
         "lib/net6.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net7.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net7.0/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net8.0/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net8.0/System.Diagnostics.DiagnosticSource.xml",
         "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll",
         "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.xml",
-        "system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.8.0.0-rc.1.23419.4.nupkg.sha512",
         "system.diagnostics.diagnosticsource.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Diagnostics.EventLog/8.0.0-preview.7.23375.6": {
-      "sha512": "3DyaX+S2GGZ+oIjt/liAN+RgCZkFRr1AArIZgJ/As+SdvNB/zNWFMgeCXnT7LuulJMK9KGbhu4wEIECwhVaEbg==",
+    "System.Diagnostics.EventLog/8.0.0-rc.1.23419.4": {
+      "sha512": "3o0qExLJUt8QFmyn3zQv1WovGlX1JpmBEtKWhtcrX75WH57xg3Y4GWQQT4BACDdpXpllvVB9Io0RswYeONOV3Q==",
       "type": "package",
-      "path": "system.diagnostics.eventlog/8.0.0-preview.7.23375.6",
+      "path": "system.diagnostics.eventlog/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4028,7 +4132,7 @@
         "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll",
         "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll",
         "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.xml",
-        "system.diagnostics.eventlog.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "system.diagnostics.eventlog.8.0.0-rc.1.23419.4.nupkg.sha512",
         "system.diagnostics.eventlog.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -5000,10 +5104,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Text.Encodings.Web/8.0.0-preview.7.23375.6": {
-      "sha512": "vCdCGFDzYkDfcnNd5ck7ngX9IUhXoMkfUlLWWw0BWBs/6LOF596LtkoG15pGxLS4s/HuTHsyrQ6USZSZa8blNA==",
+    "System.Text.Encodings.Web/8.0.0-rc.1.23419.4": {
+      "sha512": "p7x+hBP1/7bC+KXeFARIUP00MHbm796rWB8iqO8Ag2ML6SB13qbs3240nvdHwA3vLpVEOMCFhrbJoJf81QDMiw==",
       "type": "package",
-      "path": "system.text.encodings.web/8.0.0-preview.7.23375.6",
+      "path": "system.text.encodings.web/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5030,15 +5134,15 @@
         "runtimes/browser/lib/net7.0/System.Text.Encodings.Web.xml",
         "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll",
         "runtimes/browser/lib/net8.0/System.Text.Encodings.Web.xml",
-        "system.text.encodings.web.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "system.text.encodings.web.8.0.0-rc.1.23419.4.nupkg.sha512",
         "system.text.encodings.web.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Text.Json/8.0.0-preview.7.23375.6": {
-      "sha512": "xsCKwwq+cK/VwE61P1vr9yZh0p5LEQ+hG1MGKzpheA1gJgSKIQ6ArNp9nIYwoDX5WR+ichovXq117O0wHAZNLA==",
+    "System.Text.Json/8.0.0-rc.1.23419.4": {
+      "sha512": "sXFoiHIhz/E5iQin+3oAyBvDww8eYjO0c1vZAico4X6Bbwezjl0Z32lmm4zXgUQ0ol/fl27OSEqWIw+ykWYWHg==",
       "type": "package",
-      "path": "system.text.json/8.0.0-preview.7.23375.6",
+      "path": "system.text.json/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5103,7 +5207,7 @@
         "lib/net8.0/System.Text.Json.xml",
         "lib/netstandard2.0/System.Text.Json.dll",
         "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "system.text.json.8.0.0-rc.1.23419.4.nupkg.sha512",
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -5200,10 +5304,10 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "System.Threading.Tasks.Dataflow/8.0.0-preview.7.23375.6": {
-      "sha512": "yGxWiAGrqG7g9IZavhL2bwprewPkRLdEbPTz8BLhBMimFmR21lsrbGX7CBEGkArlZSJyzWz65PTsDt08BVdCGA==",
+    "System.Threading.Tasks.Dataflow/8.0.0-rc.1.23419.4": {
+      "sha512": "LFRgO70XHiWMm2owiUDeeAfgWrIn3L4j0K3Uqw5wrLDSkMQas9ygd8p+EddpuABMpMNkAj8LxiTrFITUDU4I4Q==",
       "type": "package",
-      "path": "system.threading.tasks.dataflow/8.0.0-preview.7.23375.6",
+      "path": "system.threading.tasks.dataflow/8.0.0-rc.1.23419.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5226,7 +5330,7 @@
         "lib/netstandard2.0/System.Threading.Tasks.Dataflow.xml",
         "lib/netstandard2.1/System.Threading.Tasks.Dataflow.dll",
         "lib/netstandard2.1/System.Threading.Tasks.Dataflow.xml",
-        "system.threading.tasks.dataflow.8.0.0-preview.7.23375.6.nupkg.sha512",
+        "system.threading.tasks.dataflow.8.0.0-rc.1.23419.4.nupkg.sha512",
         "system.threading.tasks.dataflow.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -5295,16 +5399,16 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.Data.SqlClient >= 5.1.1",
-      "Microsoft.Extensions.Configuration.UserSecrets >= 8.0.0-preview.7.23375.6",
-      "Microsoft.Extensions.Hosting >= 8.0.0-preview.7.23375.6",
-      "Microsoft.Extensions.Http >= 8.0.0-preview.7.23375.6",
-      "Microsoft.Extensions.Http.Polly >= 8.0.0-preview.7.23375.9",
+      "Microsoft.Extensions.Configuration.UserSecrets >= 8.0.0-rc.1.23419.4",
+      "Microsoft.Extensions.Hosting >= 8.0.0-rc.1.23419.4",
+      "Microsoft.Extensions.Http >= 8.0.0-rc.1.23419.4",
+      "Microsoft.Extensions.Http.Polly >= 8.0.0-rc.1.23421.29",
       "Microsoft.ML >= 3.0.0-preview.23266.6",
-      "Microsoft.SemanticKernel >= 0.24.230911.2-preview",
+      "Microsoft.SemanticKernel >= 0.24.230912.2-preview",
       "Polly >= 8.0.0-beta.2",
-      "SharpToken >= 1.2.10",
+      "SharpToken >= 1.2.12",
       "System.Data.SqlClient >= 4.8.5",
-      "System.Threading.Tasks.Dataflow >= 8.0.0-preview.7.23375.6"
+      "System.Threading.Tasks.Dataflow >= 8.0.0-rc.1.23419.4"
     ]
   },
   "packageFolders": {
@@ -5346,9 +5450,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "default"
       }
     },
     "frameworks": {
@@ -5361,19 +5462,19 @@
           },
           "Microsoft.Extensions.Configuration.UserSecrets": {
             "target": "Package",
-            "version": "[8.0.0-preview.7.23375.6, )"
+            "version": "[8.0.0-rc.1.23419.4, )"
           },
           "Microsoft.Extensions.Hosting": {
             "target": "Package",
-            "version": "[8.0.0-preview.7.23375.6, )"
+            "version": "[8.0.0-rc.1.23419.4, )"
           },
           "Microsoft.Extensions.Http": {
             "target": "Package",
-            "version": "[8.0.0-preview.7.23375.6, )"
+            "version": "[8.0.0-rc.1.23419.4, )"
           },
           "Microsoft.Extensions.Http.Polly": {
             "target": "Package",
-            "version": "[8.0.0-preview.7.23375.9, )"
+            "version": "[8.0.0-rc.1.23421.29, )"
           },
           "Microsoft.ML": {
             "target": "Package",
@@ -5381,7 +5482,7 @@
           },
           "Microsoft.SemanticKernel": {
             "target": "Package",
-            "version": "[0.24.230911.2-preview, )"
+            "version": "[0.24.230912.2-preview, )"
           },
           "Polly": {
             "target": "Package",
@@ -5389,7 +5490,7 @@
           },
           "SharpToken": {
             "target": "Package",
-            "version": "[1.2.10, )"
+            "version": "[1.2.12, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",
@@ -5397,7 +5498,7 @@
           },
           "System.Threading.Tasks.Dataflow": {
             "target": "Package",
-            "version": "[8.0.0-preview.7.23375.6, )"
+            "version": "[8.0.0-rc.1.23419.4, )"
           }
         },
         "imports": [
@@ -5416,7 +5517,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.7.23376.3\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-rc.1.23463.5/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

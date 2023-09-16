@@ -8,6 +8,7 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.AI.ChatCompletion;
 using Microsoft.SemanticKernel.Orchestration;
 using Microsoft.SemanticKernel.SemanticFunctions;
 using Newtonsoft.Json;
@@ -534,6 +535,11 @@ namespace MachineIntelligenceTPLDataFlows
                 questionContext.Set("ISREASONINGINCLUDED", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer)? string.Empty : "Provide detailed reasoning how you arrived at the answer. Provide a CONFIDENCE SCORE from 1 to 10 on how confident you are on this answer.");
                 questionContext.Set("RESPONSEFORMAT", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer) ? string.Empty : "Label the response in the following format.\nANSWER:\n, REASONING:\n CONFIDENCE SCORE:.");
 
+
+                //IChatCompletion skChatCompletion = semanticKernel.GetService<IChatCompletion>();
+                //ChatHistory chat = skChatCompletion.CreateNewChat("You are an AI assistant that helps answer questions.");
+
+
                 var answerBookQuestion = await semanticKernel.RunAsync(questionContext, bookPlugin[searchMessage.SemanticKernelPluginName]);
 
                 //// Manual method of registering SK functions
@@ -632,8 +638,9 @@ namespace MachineIntelligenceTPLDataFlows
             // TPL: Wait for the last block in the pipeline to process all messages.
             answerQuestionWithOpenAI.Completion.Wait();
 
-
             stopwatch.Stop();
+
+
             // Print out duration of work
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(string.Empty);

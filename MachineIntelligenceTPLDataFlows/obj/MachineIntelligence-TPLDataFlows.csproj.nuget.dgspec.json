@@ -39,9 +39,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "default"
         }
       },
       "frameworks": {
@@ -54,19 +51,19 @@
             },
             "Microsoft.Extensions.Configuration.UserSecrets": {
               "target": "Package",
-              "version": "[8.0.0-preview.7.23375.6, )"
+              "version": "[8.0.0-rc.1.23419.4, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[8.0.0-preview.7.23375.6, )"
+              "version": "[8.0.0-rc.1.23419.4, )"
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",
-              "version": "[8.0.0-preview.7.23375.6, )"
+              "version": "[8.0.0-rc.1.23419.4, )"
             },
             "Microsoft.Extensions.Http.Polly": {
               "target": "Package",
-              "version": "[8.0.0-preview.7.23375.9, )"
+              "version": "[8.0.0-rc.1.23421.29, )"
             },
             "Microsoft.ML": {
               "target": "Package",
@@ -74,7 +71,7 @@
             },
             "Microsoft.SemanticKernel": {
               "target": "Package",
-              "version": "[0.24.230911.2-preview, )"
+              "version": "[0.24.230912.2-preview, )"
             },
             "Polly": {
               "target": "Package",
@@ -82,7 +79,7 @@
             },
             "SharpToken": {
               "target": "Package",
-              "version": "[1.2.10, )"
+              "version": "[1.2.12, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -90,7 +87,7 @@
             },
             "System.Threading.Tasks.Dataflow": {
               "target": "Package",
-              "version": "[8.0.0-preview.7.23375.6, )"
+              "version": "[8.0.0-rc.1.23419.4, )"
             }
           },
           "imports": [
@@ -109,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.7.23376.3\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-rc.1.23463.5/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
