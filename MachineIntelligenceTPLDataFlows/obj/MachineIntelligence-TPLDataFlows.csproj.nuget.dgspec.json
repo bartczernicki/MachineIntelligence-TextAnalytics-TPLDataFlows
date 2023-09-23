@@ -71,7 +71,7 @@
             },
             "Microsoft.SemanticKernel": {
               "target": "Package",
-              "version": "[0.24.230912.2-preview, )"
+              "version": "[0.24.230918.1-preview, )"
             },
             "Polly": {
               "target": "Package",

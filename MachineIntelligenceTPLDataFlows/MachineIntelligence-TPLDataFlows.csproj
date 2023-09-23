@@ -39,7 +39,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-rc.1.23419.4" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0-rc.1.23419.4" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="8.0.0-rc.1.23421.29" />
-    <PackageReference Include="Microsoft.SemanticKernel" Version="0.24.230912.2-preview" />
+    <PackageReference Include="Microsoft.SemanticKernel" Version="0.24.230918.1-preview" />
     <PackageReference Include="Polly" Version="8.0.0-beta.2" />
     <PackageReference Include="SharpToken" Version="1.2.12" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />

@@ -13,30 +13,6 @@
     <SourceRoot Include="C:\Users\Bart\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Content Include="$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.24.230912.2-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\encoder.json" Condition="Exists('$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.24.230912.2-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\encoder.json')">
-      <NuGetPackageId>Microsoft.SemanticKernel.Connectors.AI.OpenAI</NuGetPackageId>
-      <NuGetPackageVersion>0.24.230912.2-preview</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>Tokenizers\Settings\encoder.json</TargetPath>
-      <DestinationSubDirectory>Tokenizers\Settings\</DestinationSubDirectory>
-      <Private>True</Private>
-      <Link>Tokenizers\Settings\encoder.json</Link>
-    </Content>
-    <Content Include="$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.24.230912.2-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\vocab.bpe" Condition="Exists('$(NuGetPackageRoot)microsoft.semantickernel.connectors.ai.openai\0.24.230912.2-preview\contentFiles\any\netstandard2.0\Tokenizers\Settings\vocab.bpe')">
-      <NuGetPackageId>Microsoft.SemanticKernel.Connectors.AI.OpenAI</NuGetPackageId>
-      <NuGetPackageVersion>0.24.230912.2-preview</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <Pack>false</Pack>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>Tokenizers\Settings\vocab.bpe</TargetPath>
-      <DestinationSubDirectory>Tokenizers\Settings\</DestinationSubDirectory>
-      <Private>True</Private>
-      <Link>Tokenizers\Settings\vocab.bpe</Link>
-    </Content>
-  </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.ml\3.0.0-preview.23266.6\build\netstandard2.0\Microsoft.ML.props" Condition="Exists('$(NuGetPackageRoot)microsoft.ml\3.0.0-preview.23266.6\build\netstandard2.0\Microsoft.ML.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets\8.0.0-rc.1.23419.4\buildTransitive\net6.0\Microsoft.Extensions.Configuration.UserSecrets.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets\8.0.0-rc.1.23419.4\buildTransitive\net6.0\Microsoft.Extensions.Configuration.UserSecrets.props')" />
