@@ -42,7 +42,7 @@
     <PackageReference Include="Microsoft.SemanticKernel" Version="0.24.230918.1-preview" />
     <PackageReference Include="Polly" Version="8.0.0-beta.2" />
     <PackageReference Include="SharpToken" Version="1.2.12" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     <PackageReference Include="System.Threading.Tasks.Dataflow" Version="8.0.0-rc.1.23419.4" />
     <PackageReference Include="Microsoft.ML" Version="3.0.0-preview.23266.6" />
   </ItemGroup>
