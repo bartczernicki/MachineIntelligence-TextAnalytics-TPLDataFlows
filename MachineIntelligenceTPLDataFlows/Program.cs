@@ -10,7 +10,6 @@ using Microsoft.ML.Transforms.Text;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.AI.ChatCompletion;
 using Microsoft.SemanticKernel.Orchestration;
-using Microsoft.SemanticKernel.SemanticFunctions;
 using Newtonsoft.Json;
 using Polly;
 using Polly.Extensions.Http;
@@ -578,8 +577,10 @@ namespace MachineIntelligenceTPLDataFlows
 
                 //var openAIQuestionAnswer = await semanticKernel.RunAsync(questionContext, answerFunction);
 
+                var answer = answerBookQuestion.FunctionResults.FirstOrDefault().ToString();
+
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("For the question: '{0}'\nBased on the paragraph found from the vector index search using the '{2}' Semantic Kernel plugin with OpenAI, the answer is:\n'{1}'", searchMessage.SearchString, answerBookQuestion.Result, searchMessage.SemanticKernelPluginName);
+                Console.WriteLine("For the question: '{0}'\nBased on the paragraph found from the vector index search using the '{2}' Semantic Kernel plugin with OpenAI, the answer is:\n'{1}'", searchMessage.SearchString, answer, searchMessage.SemanticKernelPluginName);
                 Console.WriteLine(string.Empty);
             });
 

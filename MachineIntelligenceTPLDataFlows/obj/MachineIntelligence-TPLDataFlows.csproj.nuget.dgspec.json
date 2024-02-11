@@ -39,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -47,47 +52,47 @@
           "dependencies": {
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[5.1.1, )"
+              "version": "[5.1.5, )"
             },
             "Microsoft.Extensions.Configuration.UserSecrets": {
               "target": "Package",
-              "version": "[8.0.0-rc.1.23419.4, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[8.0.0-rc.1.23419.4, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",
-              "version": "[8.0.0-rc.1.23419.4, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Http.Polly": {
               "target": "Package",
-              "version": "[8.0.0-rc.1.23421.29, )"
+              "version": "[8.0.1, )"
             },
             "Microsoft.ML": {
               "target": "Package",
-              "version": "[3.0.0-preview.23266.6, )"
+              "version": "[3.0.1, )"
             },
             "Microsoft.SemanticKernel": {
               "target": "Package",
-              "version": "[0.24.230918.1-preview, )"
+              "version": "[1.0.0-beta8, )"
             },
             "Polly": {
               "target": "Package",
-              "version": "[8.0.0-beta.2, )"
+              "version": "[8.3.0, )"
             },
             "SharpToken": {
               "target": "Package",
-              "version": "[1.2.12, )"
+              "version": "[1.2.15, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.8.5, )"
+              "version": "[4.8.6, )"
             },
             "System.Threading.Tasks.Dataflow": {
               "target": "Package",
-              "version": "[8.0.0-rc.1.23419.4, )"
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -106,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-rc.1.23463.5/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200-preview.23624.5/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
