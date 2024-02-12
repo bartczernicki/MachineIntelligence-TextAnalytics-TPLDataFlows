@@ -8,7 +8,6 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
 using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.AI.ChatCompletion;
 using Microsoft.SemanticKernel.Orchestration;
 using Newtonsoft.Json;
 using Polly;
@@ -21,7 +20,6 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
@@ -105,9 +103,13 @@ namespace MachineIntelligenceTPLDataFlows
                 {
                     // with AddHttpClient we register the IHttpClientFactory
                     services.AddHttpClient();
+
                     // Retrieve Polly retry policy and apply it
                     var retryPolicy = Policies.HttpPolicies.GetRetryPolicy();
+
+                    // Apply the Polly policy to both the OpenAI and the Project Gutenberg services
                     services.AddHttpClient<IOpenAIServiceManagement, OpenAIServiceManagement>().AddPolicyHandler(retryPolicy);
+                    services.AddHttpClient<IProjectGutenbergBooksService, ProjectGutenbergBookService>().AddPolicyHandler(retryPolicy);
                 });
             var host = builder.Build();
 
@@ -226,11 +228,8 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Downloading: '{0}'", enrichedDocument.BookTitle);
 
-                var result = await new HttpClient().GetAsync(enrichedDocument.Url);
-                if (result.IsSuccessStatusCode)
-                {
-                    enrichedDocument.Text = await result.Content.ReadAsStringAsync();
-                } // TODO: Handle error cases
+                var projectGutenberService = host.Services.GetRequiredService<IProjectGutenbergBooksService>();
+                enrichedDocument.Text = await projectGutenberService.GetBookText(enrichedDocument.Url);
 
                 // Remove the beginning part of the Project Gutenberg info
                 var indexOfBookBeginning = enrichedDocument.Text.IndexOf("GUTENBERG EBOOK") + "GUTENBERG EBOOK ".Length + enrichedDocument.BookTitle.Length;
@@ -608,15 +607,17 @@ namespace MachineIntelligenceTPLDataFlows
             enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
             downloadBookText.LinkTo(chunkedLinesEnrichment, dataFlowLinkOptions);
             chunkedLinesEnrichment.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
-            machineLearningEnrichment.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
-            //retrieveEmbeddings.LinkTo(persistToDatabaseAndJson, dataFlowLinkOptions);
-            //persistToDatabaseAndJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
+            machineLearningEnrichment.LinkTo(retrieveEmbeddings, dataFlowLinkOptions);
+            retrieveEmbeddings.LinkTo(persistToDatabaseAndJson, dataFlowLinkOptions);
+            persistToDatabaseAndJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
+
+            var projectGutenberService = host.Services.GetRequiredService<IProjectGutenbergBooksService>();
 
             // Only seed the initial pipeline if selected to process
             if (selectedProcessingChoice == ProcessingOptions.RunFullDataEnrichmentPipeline)
             {
                 // TPL: Start the producer by feeding it a list of books
-                var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, ProjectGutenbergBookService.GetBooks());
+                var enrichmentProducer = ProduceGutenbergBooks(enrichmentPipeline, projectGutenberService.GetBooksList());
 
                 // TPL: Since this is an asynchronous Task process, wait for the producer to finish putting all the messages on the queue
                 // Works when queue is limited and not a "forever" queue
@@ -638,7 +639,7 @@ namespace MachineIntelligenceTPLDataFlows
             searchVectorIndex.LinkTo(answerQuestionWithOpenAI, dataFlowLinkOptions);
 
             // TPL: Start the producer by feeding it a list of books
-            var bookSearchesProducer = ProduceGutenbergBooksSearches(searchMessagePipeline, ProjectGutenbergBookService.GetQueries());
+            var bookSearchesProducer = ProduceGutenbergBooksSearches(searchMessagePipeline, projectGutenberService.GetQueriesList());
             await Task.WhenAll(bookSearchesProducer);
             // TPL: Wait for the last block in the pipeline to process all messages.
             answerQuestionWithOpenAI.Completion.Wait();

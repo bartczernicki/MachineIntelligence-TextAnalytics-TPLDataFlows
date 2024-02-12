@@ -2,14 +2,39 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using MachineIntelligenceTPLDataFlows.Classes;
-using static System.Net.WebRequestMethods;
+using System.Threading.Tasks;
 
 namespace MachineIntelligenceTPLDataFlows.Services
 {
-    public static class ProjectGutenbergBookService
+    public class ProjectGutenbergBookService : IProjectGutenbergBooksService
     {
-        public static List<ProjectGutenbergBook> GetBooks()
+        private readonly IHttpClientFactory _clientFactory;
+        private readonly HttpClient _httpClient;
+
+        public ProjectGutenbergBookService(HttpClient client)
+        {
+            _httpClient = client;
+        }
+
+        public async Task<string> GetBookText(string bookUrl)
+        {
+            var bookText = string.Empty;
+
+            var httpClient = _httpClient;
+            var responseService = await httpClient.GetAsync(bookUrl);
+
+            // Check the Response
+            if (responseService.IsSuccessStatusCode)
+            {
+                bookText = await responseService.Content.ReadAsStringAsync();
+            }
+
+            return bookText;
+        }
+
+        public List<ProjectGutenbergBook> GetBooksList()
         {
             // Project Gutenberg list of Mirrors
             // https://www.gutenberg.org/MIRRORS.ALL
@@ -217,13 +242,13 @@ namespace MachineIntelligenceTPLDataFlows.Services
                     Author = "Mark Twain",
                     Url = mirrorLocation + "76/76-0.txt"},
                 new ProjectGutenbergBook{
-                    BookTitle = "The Man that Corrupted Hadleyburg",
+                    BookTitle = "Eve's Diary",
                     Author = "Mark Twain",
-                    Url = mirrorLocation + "1213/1213.txt"},
+                    Url = mirrorLocation + "8525/8525-0.txt"},
                 new ProjectGutenbergBook{
-                    BookTitle = "The Prince and The Pauper",
+                    BookTitle = "Life on the Mississippi",
                     Author = "Mark Twain",
-                    Url = mirrorLocation + "1837/1837-0.txt"},
+                    Url = mirrorLocation + "245/245-0.txt"},
                 new ProjectGutenbergBook{
                     BookTitle = "The Innocents Abroad",
                     Author = "Mark Twain",
@@ -240,13 +265,13 @@ namespace MachineIntelligenceTPLDataFlows.Services
             // For debugging return a two books
             // It will process the sample question below from the top two books fine
             // Otherwise it returns 50 full novels/books
-            return books.Skip(46).Take(1).ToList();
+            return books.Skip(1).Take(1).ToList();
 
 
-            // return books;
+            //return books;
         }
 
-        public static List<SearchMessage> GetQueries()
+        public List<SearchMessage> GetQueriesList()
         {
             var searchMessages = new List<SearchMessage>
             {

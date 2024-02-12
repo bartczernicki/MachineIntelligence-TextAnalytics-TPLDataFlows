@@ -17,12 +17,12 @@ namespace MachineIntelligenceTPLDataFlows.Policies
             .WaitAndRetryAsync(4, retryAttempt => TimeSpan.FromSeconds(Math.Pow(3, retryAttempt)),
                     onRetry: (response, calculatedWaitDuration) =>
                     {
+                        // Note: With OpenAI and AzureOpenAI, you can retrieve the 429 TTM for next request.
                         System.Diagnostics.Debug.WriteLine($"Failed request Status Code: {response.Result.StatusCode}, Request URI: {response.Result.RequestMessage.RequestUri}");
-                        //Console.WriteLine($"Failed attempt. Waited for {calculatedWaitDuration}");// Retrying. {response.Exception.Message} - {response.Exception.StackTrace}");
+                        Console.WriteLine($"**** Failed HttpRequest attempt. Waited for {calculatedWaitDuration} Retrying. {response.Result.StatusCode}, Request URI: {response.Result.RequestMessage.RequestUri}");
                     }
             );
             
-
             return retryPolicy;
         }
     }
