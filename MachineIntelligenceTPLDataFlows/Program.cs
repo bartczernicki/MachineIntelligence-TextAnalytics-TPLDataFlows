@@ -131,6 +131,7 @@ namespace MachineIntelligenceTPLDataFlows
             // Get the encoding for text-embedding-ada-002, set once as it is an expensive constructor
             var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
 
+
             // GET Current Environment Folder
             // Note: This will have the JSON documents from the checked-in code and overwrite each time run
             // Note: Can be used for offline mode in-stead of downloading (not to get your IP blocked), or use VPN
@@ -515,13 +516,13 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Answering Question using OpenAI for '{0}'", searchMessage.SearchString);
 
-                var semanticKernel = new KernelBuilder()
+                var semanticKernelBuilder = new KernelBuilder()
                     // You can use the chat completion service (use GPT 3.5 Turbo or GPT-4)
                     .WithOpenAIChatCompletionService(modelId: MODELID, apiKey: openAIAPIKey)
                     .Build();
 
                 var pluginsDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "SemanticKernelPlugins");
-                var bookPlugin = semanticKernel.ImportSemanticFunctionsFromDirectory(pluginsDirectory, "BookPlugin");
+                var bookPlugin = semanticKernelBuilder.ImportSemanticFunctionsFromDirectory(pluginsDirectory, "BookPlugin");
 
                 var questionContext = new ContextVariables();
                 questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
@@ -530,11 +531,11 @@ namespace MachineIntelligenceTPLDataFlows
                 questionContext.Set("RESPONSEFORMAT", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer) ? string.Empty : "Label the response in the following format.\nANSWER:\n, REASONING:\n CONFIDENCE SCORE:.");
 
 
-                //IChatCompletion skChatCompletion = semanticKernel.GetService<IChatCompletion>();
+                //IChatCompletion skChatCompletion = semanticKernelBuilder.GetService<IChatCompletion>();
                 //ChatHistory chat = skChatCompletion.CreateNewChat("You are an AI assistant that helps answer questions.");
 
 
-                var answerBookQuestion = await semanticKernel.RunAsync(questionContext, bookPlugin[searchMessage.SemanticKernelPluginName]);
+                var answerBookQuestion = await semanticKernelBuilder.RunAsync(questionContext, bookPlugin[searchMessage.SemanticKernelPluginName]);
 
                 //// Manual method of registering SK functions
                 //string answerQuestionContext = """
@@ -561,16 +562,16 @@ namespace MachineIntelligenceTPLDataFlows
                 //var myPromptTemplate = new PromptTemplate(
                 //    answerQuestionContext,
                 //    questionPromptConfig,
-                //    semanticKernel
+                //    semanticKernelBuilder
                 //);
 
                 //var myFunctionConfig = new SemanticFunctionConfig(questionPromptConfig, myPromptTemplate);
-                //var answerFunction = semanticKernel.RegisterSemanticFunction(
+                //var answerFunction = semanticKernelBuilder.RegisterSemanticFunction(
                 //    "VectorSearchAndAnswer",
                 //    "AnswerFromQuestion",
                 //    myFunctionConfig);
 
-                //var openAIQuestionAnswer = await semanticKernel.RunAsync(questionContext, answerFunction);
+                //var openAIQuestionAnswer = await semanticKernelBuilder.RunAsync(questionContext, answerFunction);
 
                 var answer = answerBookQuestion.FunctionResults.FirstOrDefault().ToString();
 
