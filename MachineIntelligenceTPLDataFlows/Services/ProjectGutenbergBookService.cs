@@ -240,10 +240,10 @@ namespace MachineIntelligenceTPLDataFlows.Services
             // For debugging return a two books
             // It will process the sample question below from the top two books fine
             // Otherwise it returns 50 full novels/books
-            // return books.Take(2).ToList();
+            return books.Skip(46).Take(1).ToList();
 
 
-            return books;
+            // return books;
         }
 
         public static List<SearchMessage> GetQueries()

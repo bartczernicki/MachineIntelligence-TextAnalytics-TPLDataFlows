@@ -226,7 +226,11 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Downloading: '{0}'", enrichedDocument.BookTitle);
 
-                enrichedDocument.Text = await new HttpClient().GetStringAsync(enrichedDocument.Url);
+                var result = await new HttpClient().GetAsync(enrichedDocument.Url);
+                if (result.IsSuccessStatusCode)
+                {
+                    enrichedDocument.Text = await result.Content.ReadAsStringAsync();
+                } // TODO: Handle error cases
 
                 // Remove the beginning part of the Project Gutenberg info
                 var indexOfBookBeginning = enrichedDocument.Text.IndexOf("GUTENBERG EBOOK") + "GUTENBERG EBOOK ".Length + enrichedDocument.BookTitle.Length;
@@ -604,9 +608,9 @@ namespace MachineIntelligenceTPLDataFlows
             enrichmentPipeline.LinkTo(downloadBookText, dataFlowLinkOptions);
             downloadBookText.LinkTo(chunkedLinesEnrichment, dataFlowLinkOptions);
             chunkedLinesEnrichment.LinkTo(machineLearningEnrichment, dataFlowLinkOptions);
-            machineLearningEnrichment.LinkTo(retrieveEmbeddings, dataFlowLinkOptions);
-            retrieveEmbeddings.LinkTo(persistToDatabaseAndJson, dataFlowLinkOptions);
-            persistToDatabaseAndJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
+            machineLearningEnrichment.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
+            //retrieveEmbeddings.LinkTo(persistToDatabaseAndJson, dataFlowLinkOptions);
+            //persistToDatabaseAndJson.LinkTo(printEnrichedDocument, dataFlowLinkOptions);
 
             // Only seed the initial pipeline if selected to process
             if (selectedProcessingChoice == ProcessingOptions.RunFullDataEnrichmentPipeline)

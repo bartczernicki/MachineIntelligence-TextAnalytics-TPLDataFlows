@@ -12,12 +12,13 @@ namespace MachineIntelligenceTPLDataFlows.Policies
         {
             var retryPolicy = HttpPolicyExtensions
             .HandleTransientHttpError() // HttpRequestException, 5XX and 408
-            .OrResult(response => response.StatusCode == System.Net.HttpStatusCode.NotFound) //  Handle NotFound 404
+            .OrResult(response => response.StatusCode == System.Net.HttpStatusCode.NotFound) //  Handle NotFound 404      
             .OrResult(response => response.StatusCode == System.Net.HttpStatusCode.TooManyRequests) //  Handle too many requests 429
             .WaitAndRetryAsync(4, retryAttempt => TimeSpan.FromSeconds(Math.Pow(3, retryAttempt)),
                     onRetry: (response, calculatedWaitDuration) =>
                     {
-                        Console.WriteLine($"Failed attempt. Waited for {calculatedWaitDuration}");// Retrying. {response.Exception.Message} - {response.Exception.StackTrace}");
+                        System.Diagnostics.Debug.WriteLine($"Failed request Status Code: {response.Result.StatusCode}, Request URI: {response.Result.RequestMessage.RequestUri}");
+                        //Console.WriteLine($"Failed attempt. Waited for {calculatedWaitDuration}");// Retrying. {response.Exception.Message} - {response.Exception.StackTrace}");
                     }
             );
             
