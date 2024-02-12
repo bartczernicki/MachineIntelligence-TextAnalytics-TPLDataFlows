@@ -19,6 +19,7 @@ namespace MachineIntelligenceTPLDataFlows.Policies
                     {
                         // Note: With OpenAI and AzureOpenAI, you can retrieve the 429 TTM for next request.
                         System.Diagnostics.Debug.WriteLine($"Failed request Status Code: {response.Result.StatusCode}, Request URI: {response.Result.RequestMessage.RequestUri}");
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"**** Failed HttpRequest attempt. Waited for {calculatedWaitDuration} Retrying. {response.Result.StatusCode}, Request URI: {response.Result.RequestMessage.RequestUri}");
                     }
             );
