@@ -127,7 +127,7 @@ namespace MachineIntelligenceTPLDataFlows
             var MAXTOKENSPERLINE = 200;
             var MAXTOKENSPERPARAGRAPH = 840; // Provide enough context to answer questions
             var OVERLAPTOKENSPERPARAGRAPH = 40; // Overlap setting, could be set higher
-            var MODELID = "gpt-3.5-turbo"; // "gpt-3.5-turbo" or "gpt-4" if you have access to OpenAI
+            var MODELID = "gpt-4-turbo-preview"; // "gpt -3.5-turbo"; // "gpt-3.5-turbo" or "gpt-4" if you have access to OpenAI
             // Get the encoding for text-embedding-ada-002, set once as it is an expensive constructor
             var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
 
@@ -523,13 +523,13 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Answering Question using OpenAI for '{0}'", searchMessage.SearchString);
 
-                var semanticKernel = Kernel.Builder
+                var semanticKernel = new KernelBuilder()
                     // You can use the chat completion service (use GPT 3.5 Turbo or GPT-4)
                     .WithOpenAIChatCompletionService(modelId: MODELID, apiKey: openAIAPIKey)
                     .Build();
 
                 var pluginsDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "SemanticKernelPlugins");
-                var bookPlugin = semanticKernel.ImportSemanticSkillFromDirectory(pluginsDirectory, "BookPlugin");
+                var bookPlugin = semanticKernel.ImportSemanticFunctionsFromDirectory(pluginsDirectory, "BookPlugin");
 
                 var questionContext = new ContextVariables();
                 questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
