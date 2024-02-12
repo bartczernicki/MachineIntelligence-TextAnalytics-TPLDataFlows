@@ -131,14 +131,6 @@ namespace MachineIntelligenceTPLDataFlows
             // Get the encoding for text-embedding-ada-002, set once as it is an expensive constructor
             var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
 
-            // UNCOMMENT IF USING AZURE OPENAI
-            // Azure OpenAI (Azure not OpenAI)
-            //var openAIClient = new OpenAIClient(
-            //    new Uri("https://YOURAZUREOPENAIENDPOINT.openai.azure.com"), new Azure.AzureKeyCredential(azureOpenAIAPIKey));
-
-            // OpenAI Client (not Azure OpenAI)
-            // var openAIClient = new OpenAIClient(openAIAPIKey);
-
             // GET Current Environment Folder
             // Note: This will have the JSON documents from the checked-in code and overwrite each time run
             // Note: Can be used for offline mode in-stead of downloading (not to get your IP blocked), or use VPN
