@@ -25,8 +25,7 @@
 * Visual Studio 2022, .NET 8.x
 * SQL Server Connection to either a local SQL Server 2022 (free Devolpment SKU or higher) or Azure SQL Database
 * ******Note: SQL Server 2022 / Azure SQL Database features are used for JSON processing and ordered Columnstore Indexes
-* OpenAI or Azure OpenAI API Access to both embeddings and completions
-* ******Note: When using Azure OpenAI, ensure that the proper OpenAI models are deployed to the Azure OpenAI resource
+* OpenAI for both embeddings and completions
 
 ![Training Job](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLVectorEmbeddingsProcessingConsole.gif)
 
