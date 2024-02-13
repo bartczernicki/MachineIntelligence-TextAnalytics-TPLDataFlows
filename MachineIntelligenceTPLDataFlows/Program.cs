@@ -9,9 +9,6 @@ using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
 using Microsoft.SemanticKernel;
 using Newtonsoft.Json;
-using Polly;
-using Polly.Extensions.Http;
-using Polly.Registry;
 using SharpToken;
 using System;
 using System.Collections.Generic;
@@ -101,10 +98,10 @@ namespace MachineIntelligenceTPLDataFlows
             builder
                 .ConfigureServices((hostContext, services) =>
                 {
-                    // with AddHttpClient we register the IHttpClientFactory
+                    // Add AddHttpClient we register the IHttpClientFactory
                     services.AddHttpClient();
 
-                    // Retrieve Polly retry policy and apply it
+                    // Retrieve Polly retry policy and apply it to all the services making web requests
                     var retryPolicy = Policies.HttpPolicies.GetRetryPolicy();
 
                     // Apply the Polly policy to both the OpenAI and the Project Gutenberg services
@@ -128,7 +125,10 @@ namespace MachineIntelligenceTPLDataFlows
             var MAXTOKENSPERLINE = 200;
             var MAXTOKENSPERPARAGRAPH = 840; // Provide enough context to answer questions
             var OVERLAPTOKENSPERPARAGRAPH = 40; // Overlap setting, could be set higher
-            var MODELID = "gpt-4-turbo-preview"; // "gpt -3.5-turbo"; // "gpt-3.5-turbo" or "gpt-4" if you have access to OpenAI
+            var MODELIDFORQUESTIONANSWER = "gpt-4-turbo-preview"; // "gpt -3.5-turbo"; // "gpt-3.5-turbo" or "gpt-4" if you have access to OpenAI
+            var MODELIDEMBEDDINGS = "text-embedding-3-small";
+            var MODELIDEMBEDDINGSDIMENSIONS = 512;
+
             // Get the encoding for text-embedding-ada-002, set once as it is an expensive constructor
             var cl100kBaseEncoding = GptEncoding.GetEncoding("cl100k_base");
 
@@ -346,6 +346,11 @@ namespace MachineIntelligenceTPLDataFlows
                     // Create the OpenAI Service
                     var openAIService = host.Services.GetRequiredService<IOpenAIServiceManagement>();
                     openAIService.APIKey = openAIAPIKey;
+                    
+                    // Override default and use Ada-003 model
+                    openAIService.ModelIdEmbeddings = MODELIDEMBEDDINGS;
+                    openAIService.ModelIdEmbeddingsDimensions = MODELIDEMBEDDINGSDIMENSIONS;
+
                     var embeddings = await openAIService.GetEmbeddings(paragraph);
                     enrichedDocument.ParagraphEmbeddings.Add(embeddings);
                 }
@@ -475,6 +480,9 @@ namespace MachineIntelligenceTPLDataFlows
                 // Create the OpenAI Service
                 var openAIService = host.Services.GetRequiredService<IOpenAIServiceManagement>();
                 openAIService.APIKey = openAIAPIKey;
+                // Override default and use Ada-003 model
+                openAIService.ModelIdEmbeddings = MODELIDEMBEDDINGS;
+                openAIService.ModelIdEmbeddingsDimensions = MODELIDEMBEDDINGSDIMENSIONS;
                 var embeddings = await openAIService.GetEmbeddings(searchMessage.SearchString);
                 searchMessage.EmbeddingsJsonString = System.Text.Json.JsonSerializer.Serialize(embeddings);
 
@@ -535,7 +543,7 @@ namespace MachineIntelligenceTPLDataFlows
 
                 var semanticKernelBuilder = Kernel.CreateBuilder();
                 semanticKernelBuilder.AddOpenAIChatCompletion(
-                    modelId: MODELID,
+                    modelId: MODELIDFORQUESTIONANSWER,
                     apiKey: openAIAPIKey,
                     httpClient: httpClientForSemanticKernel
                     );

@@ -19,6 +19,10 @@ namespace MachineIntelligenceTPLDataFlows.Services
         public OpenAIServiceManagement(HttpClient client)
         {
             _httpClient = client;
+            // Default to Ada-002 model with 1536, V3 model has multiple options for dimensions
+
+            _modelIdEmbeddings = "text-embedding-ada-002";
+            _modelIdEmbeddingsDimensions = 1536;
         }
 
         private string _apiKey;
@@ -28,12 +32,26 @@ namespace MachineIntelligenceTPLDataFlows.Services
             set => _apiKey = value;
         }
 
+        private string _modelIdEmbeddings;
+        public string ModelIdEmbeddings
+        {
+            get => _modelIdEmbeddings;
+            set => _modelIdEmbeddings = value;
+        }
+
+        private int _modelIdEmbeddingsDimensions;
+        public int ModelIdEmbeddingsDimensions
+        {
+            get => _modelIdEmbeddingsDimensions;
+            set => _modelIdEmbeddingsDimensions = value;
+        }
+
         public async Task<List<float>> GetEmbeddings(string textToEncode)
         {
-            var embeddings = new List<float>(1536);
+            var embeddings = new List<float>(this.ModelIdEmbeddingsDimensions);
 
             var httpClient = _httpClient;
-            var requestBody = new { input = textToEncode, model = "text-embedding-ada-002" };
+            var requestBody = new { input = textToEncode, model = this.ModelIdEmbeddings, dimensions = this.ModelIdEmbeddingsDimensions };
             var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); //ACCEPT header
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + this.APIKey);
@@ -45,7 +63,6 @@ namespace MachineIntelligenceTPLDataFlows.Services
                 var responseJsonString = await responseService.Content.ReadAsStringAsync();
                 var openAIEmbeddings = JsonConvert.DeserializeObject<OpenAIEmbeddings>(responseJsonString);
                 embeddings = openAIEmbeddings.data[0].embedding.ToList();
-                //embeddingsString = System.Text.Json.JsonSerializer.Serialize(embeddingsVectorList);
             }
 
             return embeddings;
