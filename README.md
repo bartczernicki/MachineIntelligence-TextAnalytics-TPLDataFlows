@@ -6,7 +6,9 @@
    * Q&A Over Vector Database Pipeline - Searches the SQL Vector Database with provided question phrase using Semantic Kernel
    * Total Text (OpenAI) Tokens Processed:...............8,267,408    
    * Total Text (Characters) Length Processed:..........33,702,085  
-   * Total cost for processing and building Vector Database using OpenAI Embeddings (Feb 2024 prices):..~$0.84 (~84 cents; this depends on how the chunking of text is configured)
+   * Total cost for processing and building Vector Database using OpenAI Embeddings (Feb 2024 prices):
+       * Ada-002 with 1536 dimensions: ~$0.84 (~84 cents; this depends on how the chunking of text is configured)
+       * Ada-003-Small with 512 dimensions: ~$0.17 (~17 cents; this depends on how the chunking of text is configured)
 
 ![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
 
