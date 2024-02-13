@@ -8,7 +8,6 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
 using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.Orchestration;
 using Newtonsoft.Json;
 using Polly;
 using Polly.Extensions.Http;
@@ -20,6 +19,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
@@ -110,6 +110,7 @@ namespace MachineIntelligenceTPLDataFlows
                     // Apply the Polly policy to both the OpenAI and the Project Gutenberg services
                     services.AddHttpClient<IOpenAIServiceManagement, OpenAIServiceManagement>().AddPolicyHandler(retryPolicy);
                     services.AddHttpClient<IProjectGutenbergBooksService, ProjectGutenbergBookService>().AddPolicyHandler(retryPolicy);
+                    services.AddHttpClient("DefaultSemanticKernelService").AddPolicyHandler(retryPolicy);
                 });
             var host = builder.Build();
 
@@ -162,11 +163,24 @@ namespace MachineIntelligenceTPLDataFlows
                 BoundedCapacity = 10,
                 MaxMessagesPerTask = 10 };
 
+            var dataFlowBlockOptionsAnswerQuestions = new DataflowBlockOptions
+            {
+                EnsureOrdered = true, // Ensures order, this is purely optional but messages will flow in order
+                BoundedCapacity = 1,
+                MaxMessagesPerTask = 1,
+            };
+
             // SET the data flow pipeline options
             // Note: OPTIONAL Set MaxMessages to the number of books to process
             // Note: For example, setting MaxMessages to 2 will run only two books through the pipeline
             // Note: Set MaxMessages to 1 to process in sequence
             var dataFlowLinkOptions = new DataflowLinkOptions {
+                PropagateCompletion = true,
+                MaxMessages = -1
+            };
+
+            var dataFlowLinkOptionsAnswerQuestions = new DataflowLinkOptions
+            {
                 PropagateCompletion = true,
                 MaxMessages = -1
             };
@@ -312,10 +326,11 @@ namespace MachineIntelligenceTPLDataFlows
                 enrichedDocument.TopWordCounts = result;
 
                 // Calculate the Paragraphs based on TokenCount
+#pragma warning disable SKEXP0055 // Type is for evaluation purposes only and is subject to change or removal in future updates.
                 var enrichedDocumentLines = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextLines(enrichedDocument.Text, MAXTOKENSPERLINE);
                 enrichedDocument.ParagraphsWithNoTokensOverlap = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextParagraphs(enrichedDocumentLines, MAXTOKENSPERPARAGRAPH - OVERLAPTOKENSPERPARAGRAPH, overlapTokens: 0);
                 enrichedDocument.Paragraphs = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextParagraphs(enrichedDocumentLines, MAXTOKENSPERPARAGRAPH, overlapTokens: OVERLAPTOKENSPERPARAGRAPH);
-
+#pragma warning restore SKEXP0055 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
                 return enrichedDocument;
             }, executionDataFlowOptions);
@@ -516,68 +531,38 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Answering Question using OpenAI for '{0}'", searchMessage.SearchString);
 
-                var semanticKernelBuilder = new KernelBuilder()
-                    // You can use the chat completion service (use GPT 3.5 Turbo or GPT-4)
-                    .WithOpenAIChatCompletionService(modelId: MODELID, apiKey: openAIAPIKey)
-                    .Build();
+                var httpClientForSemanticKernel = host.Services.GetRequiredService<IHttpClientFactory>().CreateClient("DefaultSemanticKernelService");
 
-                var pluginsDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "SemanticKernelPlugins");
-                var bookPlugin = semanticKernelBuilder.ImportSemanticFunctionsFromDirectory(pluginsDirectory, "BookPlugin");
+                var semanticKernelBuilder = Kernel.CreateBuilder();
+                semanticKernelBuilder.AddOpenAIChatCompletion(
+                    modelId: MODELID,
+                    apiKey: openAIAPIKey,
+                    httpClient: httpClientForSemanticKernel
+                    );
+                var semanticKernel = semanticKernelBuilder.Build();
 
-                var questionContext = new ContextVariables();
-                questionContext.Set("SEARCHSTRING", searchMessage.SearchString);
-                questionContext.Set("PARAGRAPH", searchMessage.TopParagraphSearchResults[1].Paragraph);
-                questionContext.Set("ISREASONINGINCLUDED", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer)? string.Empty : "Provide detailed reasoning how you arrived at the answer. Provide a CONFIDENCE SCORE from 1 to 10 on how confident you are on this answer.");
-                questionContext.Set("RESPONSEFORMAT", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer) ? string.Empty : "Label the response in the following format.\nANSWER:\n, REASONING:\n CONFIDENCE SCORE:.");
+                var pluginsDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "SemanticKernelPlugins", "BookPlugin");
+                var bookPlugin = semanticKernel.CreatePluginFromPromptDirectory(pluginsDirectory);
 
+                var kernelFunction = bookPlugin[searchMessage.SemanticKernelPluginName];
+                var promptsDictionary = new Dictionary<string, object>
+                {
+                    { "SEARCHSTRING", searchMessage.SearchString },
+                    { "PARAGRAPH", searchMessage.TopParagraphSearchResults[1].Paragraph },
+                    { "ISREASONINGINCLUDED", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer)? string.Empty : "Provide detailed reasoning how you arrived at the answer. Provide a CONFIDENCE SCORE from 1 to 10 on how confident you are on this answer." },
+                    { "RESPONSEFORMAT", (selectedProcessingChoice == ProcessingOptions.OnlyPerformQuestionAndAnswer) ? string.Empty : "Label the response in the following format.\nANSWER:\n, REASONING:\n CONFIDENCE SCORE:." }
+                };
 
-                //IChatCompletion skChatCompletion = semanticKernelBuilder.GetService<IChatCompletion>();
-                //ChatHistory chat = skChatCompletion.CreateNewChat("You are an AI assistant that helps answer questions.");
+                var kernelArguments = new KernelArguments(promptsDictionary);
 
+                var chatResult = await semanticKernel.InvokeAsync(kernelFunction, kernelArguments);
 
-                var answerBookQuestion = await semanticKernelBuilder.RunAsync(questionContext, bookPlugin[searchMessage.SemanticKernelPluginName]);
-
-                //// Manual method of registering SK functions
-                //string answerQuestionContext = """
-                //    Answer the following question based on the context paragraph below: 
-                //    ---Begin Question---
-                //    {{$SEARCHSTRING}}
-                //    ---End Question---
-                //    ---Begin Paragraph---
-                //    {{$PARAGRAPH}}
-                //    ---End Paragraph---
-                //    """;
-
-                //var questionPromptConfig = new PromptTemplateConfig
-                //{
-                //    Description = "Search & Answer",
-                //    Completion =
-                //        {
-                //            MaxTokens = 500,
-                //            Temperature = 0.7,
-                //            TopP = 0.6,
-                //        }
-                //};
-
-                //var myPromptTemplate = new PromptTemplate(
-                //    answerQuestionContext,
-                //    questionPromptConfig,
-                //    semanticKernelBuilder
-                //);
-
-                //var myFunctionConfig = new SemanticFunctionConfig(questionPromptConfig, myPromptTemplate);
-                //var answerFunction = semanticKernelBuilder.RegisterSemanticFunction(
-                //    "VectorSearchAndAnswer",
-                //    "AnswerFromQuestion",
-                //    myFunctionConfig);
-
-                //var openAIQuestionAnswer = await semanticKernelBuilder.RunAsync(questionContext, answerFunction);
-
-                var answer = answerBookQuestion.FunctionResults.FirstOrDefault().ToString();
-
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("For the question: '{0}'\nBased on the paragraph found from the vector index search using the '{1}' Semantic Kernel plugin with OpenAI, the answer is: ", searchMessage.SearchString, searchMessage.SemanticKernelPluginName);
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("For the question: '{0}'\nBased on the paragraph found from the vector index search using the '{2}' Semantic Kernel plugin with OpenAI, the answer is:\n'{1}'", searchMessage.SearchString, answer, searchMessage.SemanticKernelPluginName);
-                Console.WriteLine(string.Empty);
+                Console.WriteLine(chatResult.GetValue<string>());
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine();
             });
 
             // TPL: BufferBlock - Seeds the queue with selected Project Gutenberg Books
@@ -626,10 +611,10 @@ namespace MachineIntelligenceTPLDataFlows
 
 
             // Search the Vectors Index, then answer the question using Semantic Kernel
-            var searchMessagePipeline = new BufferBlock<SearchMessage>(dataFlowBlockOptions);
-            searchMessagePipeline.LinkTo(retrieveEmbeddingsForSearch, dataFlowLinkOptions);
-            retrieveEmbeddingsForSearch.LinkTo(searchVectorIndex, dataFlowLinkOptions);
-            searchVectorIndex.LinkTo(answerQuestionWithOpenAI, dataFlowLinkOptions);
+            var searchMessagePipeline = new BufferBlock<SearchMessage>(dataFlowBlockOptionsAnswerQuestions);
+            searchMessagePipeline.LinkTo(retrieveEmbeddingsForSearch, dataFlowLinkOptionsAnswerQuestions);
+            retrieveEmbeddingsForSearch.LinkTo(searchVectorIndex, dataFlowLinkOptionsAnswerQuestions);
+            searchVectorIndex.LinkTo(answerQuestionWithOpenAI, dataFlowLinkOptionsAnswerQuestions);
 
             // TPL: Start the producer by feeding it a list of books
             var bookSearchesProducer = ProduceGutenbergBooksSearches(searchMessagePipeline, projectGutenberService.GetQueriesList());

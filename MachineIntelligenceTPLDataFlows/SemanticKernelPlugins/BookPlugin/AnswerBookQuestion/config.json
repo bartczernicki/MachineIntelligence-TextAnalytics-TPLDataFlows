@@ -1,12 +1,36 @@
 {
   "schema": 1,
-  "description": "Search & Answer",
+  "description": "Search & Answer for Project Gutenberg",
   "type": "completion",
-  "completion": {
-    "max_tokens": 700,
-    "temperature": 0.5,
-    "top_p": 0.7,
-    "presence_penalty": 0.5,
-    "frequency_penalty": 0.0
-  }
+  "execution_settings": {
+    "default": {
+      "max_tokens": 700,
+      "temperature": 0.5,
+      "top_p": 0.7,
+      "presence_penalty": 0.5,
+      "frequency_penalty": 0.0
+    }
+  },
+  "input_variables": [
+    {
+      "name": "ISREASONINGINCLUDED",
+      "description": "Determines whether to include the reasoning behind the answer.",
+      "required": true
+    },
+    {
+      "name": "RESPONSEFORMAT",
+      "description": "Determines the response format.",
+      "required": true
+    },
+    {
+      "name": "SEARCHSTRING",
+      "description": "This is the search string or the question being asked of the book.",
+      "required": true
+    },
+    {
+      "name": "PARAGRAPH",
+      "description": "These are the paragraph(s) from the SQL persisted store, where a potential answer can be found.",
+      "required": true
+    }
+  ]
 }
