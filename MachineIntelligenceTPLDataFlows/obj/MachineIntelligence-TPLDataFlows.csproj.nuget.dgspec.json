@@ -68,7 +68,7 @@
             },
             "Microsoft.Extensions.Http.Polly": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[8.0.2, )"
             },
             "Microsoft.ML": {
               "target": "Package",
@@ -76,7 +76,7 @@
             },
             "Microsoft.SemanticKernel": {
               "target": "Package",
-              "version": "[1.3.1, )"
+              "version": "[1.4.0, )"
             },
             "Polly": {
               "target": "Package",
@@ -84,7 +84,7 @@
             },
             "SharpToken": {
               "target": "Package",
-              "version": "[1.2.15, )"
+              "version": "[1.2.16, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
