@@ -1,11 +1,14 @@
 # MachineIntelligence-TextAnalytics-TPLDataFlows
 
 ## Machine Intelligence Text Analytics Enrichment implemented using Task Parallel Library Data Flow Pipelines:
-* Document Enrichment Pipeline - Builds the entire Vector Database using OpenAI embeddings in SQL using 50 selected books
-* Q&A Over Vector Database Pipeline - Searches the SQL Vector Database with provided question phrase using Semantic Kernel
-* Total Text (OpenAI) Tokens Processed:...............8,267,408    
-* Total Text (Characters) Length Processed:..........33,702,085  
-* Total cost for processing and building Vector Database using OpenAI Embeddings (Feb 2024 prices):..~$0.84 (~84 cents; this depends on how the chunking of text is configured)
+
+   * Document Enrichment Pipeline - Builds the entire Vector Database using OpenAI embeddings in SQL using 50 selected books  
+   * Q&A Over Vector Database Pipeline - Searches the SQL Vector Database with provided question phrase using Semantic Kernel
+   * Total Text (OpenAI) Tokens Processed:...............8,267,408    
+   * Total Text (Characters) Length Processed:..........33,702,085  
+   * Total cost for processing and building Vector Database using OpenAI Embeddings (Feb 2024 prices):
+       * **text-embedding-ada-002** with 1536 dimensions: ~$0.84 (~84 cents; this depends on how the chunking of text is configured)
+       * **text-embedding-3-small** with 512 dimensions: ~$0.17 (~17 cents; this depends on how the chunking of text is configured)
 
 ![TPL Pipeline](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLDataFlows-Pipeline.png)
 
@@ -22,8 +25,7 @@
 * Visual Studio 2022, .NET 8.x
 * SQL Server Connection to either a local SQL Server 2022 (free Devolpment SKU or higher) or Azure SQL Database
 * ******Note: SQL Server 2022 / Azure SQL Database features are used for JSON processing and ordered Columnstore Indexes
-* OpenAI or Azure OpenAI API Access to both embeddings and completions
-* ******Note: When using Azure OpenAI, ensure that the proper OpenAI models are deployed to the Azure OpenAI resource
+* OpenAI for both embeddings and completions
 
 ![Training Job](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLVectorEmbeddingsProcessingConsole.gif)
 
