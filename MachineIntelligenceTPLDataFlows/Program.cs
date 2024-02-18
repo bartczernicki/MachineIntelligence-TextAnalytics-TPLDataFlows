@@ -4,6 +4,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
@@ -542,6 +543,9 @@ namespace MachineIntelligenceTPLDataFlows
                 var httpClientForSemanticKernel = host.Services.GetRequiredService<IHttpClientFactory>().CreateClient("DefaultSemanticKernelService");
 
                 var semanticKernelBuilder = Kernel.CreateBuilder();
+                // Logging will be written to the debug output window
+                semanticKernelBuilder.Services.AddLogging(configure => configure.AddDebug());
+
                 semanticKernelBuilder.AddOpenAIChatCompletion(
                     modelId: MODELIDFORQUESTIONANSWER,
                     apiKey: openAIAPIKey,
