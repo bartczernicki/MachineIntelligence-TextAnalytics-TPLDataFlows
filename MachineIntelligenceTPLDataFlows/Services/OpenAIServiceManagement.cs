@@ -13,7 +13,7 @@ namespace MachineIntelligenceTPLDataFlows.Services
 {
     public class OpenAIServiceManagement : IOpenAIServiceManagement
     {
-        private readonly IHttpClientFactory _clientFactory;
+        // private readonly IHttpClientFactory _clientFactory;
         private readonly HttpClient _httpClient;
 
         public OpenAIServiceManagement(HttpClient client)

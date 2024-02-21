@@ -1419,7 +1419,7 @@
           }
         }
       },
-      "SharpToken/1.2.16": {
+      "SharpToken/1.2.17": {
         "type": "package",
         "compile": {
           "lib/net8.0/SharpToken.dll": {}
@@ -3984,10 +3984,10 @@
         "version.txt"
       ]
     },
-    "SharpToken/1.2.16": {
-      "sha512": "8vcqtFG66v8NuvoknYGkrY0brGs8j7AnRCtC/kxUq40JyQ4A+WZafxDl9653qqBGvjH+kKjM07jDOFmnZTJQdQ==",
+    "SharpToken/1.2.17": {
+      "sha512": "ewVj4YWz+DnQ6/Vaalin6Jg03OHl41XmYBQp6MuXBnHIbMyv6KFb94I899xYsdynX9NZJtc6Crxya9w5Ko8LUg==",
       "type": "package",
-      "path": "sharptoken/1.2.16",
+      "path": "sharptoken/1.2.17",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3996,7 +3996,7 @@
         "lib/net6.0/SharpToken.dll",
         "lib/net8.0/SharpToken.dll",
         "lib/netstandard2.0/SharpToken.dll",
-        "sharptoken.1.2.16.nupkg.sha512",
+        "sharptoken.1.2.17.nupkg.sha512",
         "sharptoken.nuspec"
       ]
     },
@@ -5598,30 +5598,25 @@
       "Microsoft.ML >= 3.0.1",
       "Microsoft.SemanticKernel >= 1.4.0",
       "Polly >= 8.3.0",
-      "SharpToken >= 1.2.16",
+      "SharpToken >= 1.2.17",
       "System.Data.SqlClient >= 4.8.6",
       "System.Threading.Tasks.Dataflow >= 8.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bart\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\bart\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+      "projectUniqueName": "C:\\Users\\bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
       "projectName": "MachineIntelligence-TPLDataFlows",
-      "projectPath": "C:\\Users\\Bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
-      "packagesPath": "C:\\Users\\Bart\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bart\\source\\repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
+      "projectPath": "C:\\Users\\bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\MachineIntelligence-TPLDataFlows.csproj",
+      "packagesPath": "C:\\Users\\bart\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bart\\Source\\Repos\\MachineIntelligence-TextAnalytics-TPLDataFlows\\MachineIntelligenceTPLDataFlows\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Bart\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\bart\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5629,7 +5624,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5687,7 +5681,7 @@
           },
           "SharpToken": {
             "target": "Package",
-            "version": "[1.2.16, )"
+            "version": "[1.2.17, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",

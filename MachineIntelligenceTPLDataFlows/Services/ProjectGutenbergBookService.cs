@@ -10,7 +10,7 @@ namespace MachineIntelligenceTPLDataFlows.Services
 {
     public class ProjectGutenbergBookService : IProjectGutenbergBooksService
     {
-        private readonly IHttpClientFactory _clientFactory;
+        // private readonly IHttpClientFactory _clientFactory;
         private readonly HttpClient _httpClient;
 
         public ProjectGutenbergBookService(HttpClient client)

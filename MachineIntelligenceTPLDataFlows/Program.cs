@@ -544,7 +544,7 @@ namespace MachineIntelligenceTPLDataFlows
 
                 var semanticKernelBuilder = Kernel.CreateBuilder();
                 // Logging will be written to the debug output window
-                semanticKernelBuilder.Services.AddLogging(configure => configure.AddDebug());
+                semanticKernelBuilder.Services.AddLogging(configure => configure.AddConsole());
 
                 semanticKernelBuilder.AddOpenAIChatCompletion(
                     modelId: MODELIDFORQUESTIONANSWER,
