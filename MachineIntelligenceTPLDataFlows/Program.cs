@@ -94,6 +94,8 @@ namespace MachineIntelligenceTPLDataFlows
             string connectionString = configuration.GetSection("SQL")["SqlConnection"];
             var openAIAPIKey = configuration.GetSection("OpenAI")["APIKey"];
             var azureOpenAIAPIKey = configuration.GetSection("AzureOpenAI")["APIKey"];
+            var azureOpenAIModelDeploymentName = configuration.GetSection("AzureOpenAI")["ModelDeploymentName"];
+            var azureOpenAIEndpoint = configuration.GetSection("AzureOpenAI")["Endpoint"];
 
             var builder = new HostBuilder();
             builder
@@ -546,9 +548,10 @@ namespace MachineIntelligenceTPLDataFlows
                 // Logging will be written to the debug output window
                 semanticKernelBuilder.Services.AddLogging(configure => configure.AddConsole());
 
-                semanticKernelBuilder.AddOpenAIChatCompletion(
-                    modelId: MODELIDFORQUESTIONANSWER,
-                    apiKey: openAIAPIKey,
+                semanticKernelBuilder.AddAzureOpenAIChatCompletion(
+                    deploymentName: azureOpenAIModelDeploymentName,
+                    apiKey: azureOpenAIAPIKey,
+                    endpoint: azureOpenAIEndpoint,
                     httpClient: httpClientForSemanticKernel
                     );
                 var semanticKernel = semanticKernelBuilder.Build();
