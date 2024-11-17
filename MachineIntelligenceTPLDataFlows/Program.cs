@@ -128,7 +128,7 @@ namespace MachineIntelligenceTPLDataFlows
             var MAXTOKENSPERLINE = 200;
             var MAXTOKENSPERPARAGRAPH = 840; // Provide enough context to answer questions
             var OVERLAPTOKENSPERPARAGRAPH = 40; // Overlap setting, could be set higher
-            var MODELIDFORQUESTIONANSWER = "gpt-4-turbo-preview"; // "gpt -3.5-turbo"; // "gpt-3.5-turbo" or "gpt-4" if you have access to OpenAI
+            // var MODELIDFORQUESTIONANSWER = "gpt-4o"; // Or other newer models (o1)
             var MODELIDEMBEDDINGS = "text-embedding-3-small";
             var MODELIDEMBEDDINGSDIMENSIONS = 512;
 
@@ -329,11 +329,11 @@ namespace MachineIntelligenceTPLDataFlows
                 enrichedDocument.TopWordCounts = result;
 
                 // Calculate the Paragraphs based on TokenCount
-#pragma warning disable SKEXP0055 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+#pragma warning disable SKEXP0050 // Type is for evaluation purposes only and is subject to change or removal in future updates.
                 var enrichedDocumentLines = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextLines(enrichedDocument.Text, MAXTOKENSPERLINE);
                 enrichedDocument.ParagraphsWithNoTokensOverlap = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextParagraphs(enrichedDocumentLines, MAXTOKENSPERPARAGRAPH - OVERLAPTOKENSPERPARAGRAPH, overlapTokens: 0);
                 enrichedDocument.Paragraphs = Microsoft.SemanticKernel.Text.TextChunker.SplitPlainTextParagraphs(enrichedDocumentLines, MAXTOKENSPERPARAGRAPH, overlapTokens: OVERLAPTOKENSPERPARAGRAPH);
-#pragma warning restore SKEXP0055 // Type is for evaluation purposes only and is subject to change or removal in future updates.
+#pragma warning restore SKEXP0050 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 
                 return enrichedDocument;
             }, executionDataFlowOptions);
