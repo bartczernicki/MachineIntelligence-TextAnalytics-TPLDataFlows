@@ -22,10 +22,10 @@
 * The console application is cross-platform .NET 8.x. It will run on macOS, Linux, Windows 10/11 x64, Windows 11 ARM
 
 ## Requirements:
-* Visual Studio 2022, .NET 8.x
+* Visual Studio 2022, .NET 9.x: https://dotnet.microsoft.com/en-us/download/dotnet/9.0  
 * SQL Server Connection to either a local SQL Server 2022 (free Devolpment SKU or higher) or Azure SQL Database
 * ******Note: SQL Server 2022 / Azure SQL Database features are used for JSON processing and ordered Columnstore Indexes
-* OpenAI for both embeddings and completions
+* Azure OpenAI for both embeddings and Chat Completions
 
 ![Training Job](https://github.com/bartczernicki/MachineIntelligence-TextAnalytics-TPLDataFlows/blob/master/TPLVectorEmbeddingsProcessingConsole.gif)
 
