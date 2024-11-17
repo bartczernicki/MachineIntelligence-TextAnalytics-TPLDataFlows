@@ -14,7 +14,7 @@ namespace MachineIntelligenceTPLDataFlows.Policies
             .HandleTransientHttpError() // HttpRequestException, 5XX and 408
             .OrResult(response => response.StatusCode == System.Net.HttpStatusCode.NotFound) //  Handle NotFound 404      
             .OrResult(response => response.StatusCode == System.Net.HttpStatusCode.TooManyRequests) //  Handle too many requests 429
-            .WaitAndRetryAsync(4, retryAttempt => TimeSpan.FromSeconds(Math.Pow(3, retryAttempt)),
+            .WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(3, retryAttempt)),
                     onRetry: (response, calculatedWaitDuration) =>
                     {
                         // Note: With OpenAI and AzureOpenAI, you can retrieve the 429 TTM for next request.

@@ -9,6 +9,8 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Text;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Connectors.AzureOpenAI;
+using Microsoft.SemanticKernel.Embeddings;
 using Newtonsoft.Json;
 using SharpToken;
 using System;
@@ -344,18 +346,23 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("OpenAI Embeddings for: '{0}'", enrichedDocument.BookTitle);
 
+                var httpClientForSemanticKernel = host.Services.GetRequiredService<IHttpClientFactory>().CreateClient("DefaultSemanticKernelService");
+
                 foreach (var paragraph in enrichedDocument.Paragraphs)
                 {
-                    // Create the OpenAI Service
-                    var openAIService = host.Services.GetRequiredService<IOpenAIServiceManagement>();
-                    openAIService.APIKey = openAIAPIKey;
-                    
-                    // Override default and use Ada-003 model
-                    openAIService.ModelIdEmbeddings = MODELIDEMBEDDINGS;
-                    openAIService.ModelIdEmbeddingsDimensions = MODELIDEMBEDDINGSDIMENSIONS;
+#pragma warning disable SKEXP0010
+                    var azureOpenAIEmbeddingService = new AzureOpenAITextEmbeddingGenerationService(
+                    dimensions: MODELIDEMBEDDINGSDIMENSIONS,
+                    deploymentName: MODELIDEMBEDDINGS,
+                    endpoint: azureOpenAIEndpoint,
+                    apiKey: azureOpenAIAPIKey,
+                    httpClient: httpClientForSemanticKernel
 
-                    var embeddings = await openAIService.GetEmbeddings(paragraph);
-                    enrichedDocument.ParagraphEmbeddings.Add(embeddings);
+                    );
+#pragma warning restore SKEXP0010
+
+                    var embeddings = await azureOpenAIEmbeddingService.GenerateEmbeddingAsync(paragraph);
+                    enrichedDocument.ParagraphEmbeddings.Add(embeddings.ToArray().ToList());
                 }
 
                 return enrichedDocument;
@@ -479,14 +486,19 @@ namespace MachineIntelligenceTPLDataFlows
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("Retrieving OpenAI Embeddings for the phrase: '{0}'", searchMessage.SearchString);
 
+                var httpClientForSemanticKernel = host.Services.GetRequiredService<IHttpClientFactory>().CreateClient("DefaultSemanticKernelService");
 
-                // Create the OpenAI Service
-                var openAIService = host.Services.GetRequiredService<IOpenAIServiceManagement>();
-                openAIService.APIKey = openAIAPIKey;
-                // Override default and use Ada-003 model
-                openAIService.ModelIdEmbeddings = MODELIDEMBEDDINGS;
-                openAIService.ModelIdEmbeddingsDimensions = MODELIDEMBEDDINGSDIMENSIONS;
-                var embeddings = await openAIService.GetEmbeddings(searchMessage.SearchString);
+#pragma warning disable SKEXP0010
+                var azureOpenAIEmbeddingService = new AzureOpenAITextEmbeddingGenerationService(
+                dimensions: MODELIDEMBEDDINGSDIMENSIONS,
+                deploymentName: MODELIDEMBEDDINGS,
+                endpoint: azureOpenAIEndpoint,
+                apiKey: azureOpenAIAPIKey,
+                httpClient: httpClientForSemanticKernel
+                );
+#pragma warning restore SKEXP0010
+
+                var embeddings = await azureOpenAIEmbeddingService.GenerateEmbeddingAsync(searchMessage.SearchString);
                 searchMessage.EmbeddingsJsonString = System.Text.Json.JsonSerializer.Serialize(embeddings);
 
                 return searchMessage;
